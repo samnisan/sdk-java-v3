@@ -40,7 +40,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * The data field name-value pairs for the data elements on which the verification is to be performed
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class BusinessDataFields {
   public static final String SERIALIZED_NAME_BUSINESS_NAME = "BusinessName";
   @SerializedName(SERIALIZED_NAME_BUSINESS_NAME)

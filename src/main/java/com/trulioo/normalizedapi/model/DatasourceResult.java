@@ -39,7 +39,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * A result from a particular datasource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class DatasourceResult {
   public static final String SERIALIZED_NAME_DATASOURCE_STATUS = "DatasourceStatus";
   @SerializedName(SERIALIZED_NAME_DATASOURCE_STATUS)

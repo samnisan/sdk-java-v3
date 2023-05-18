@@ -35,7 +35,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * Business Object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class BusinessSearchRequestBusinessSearchModel {
   public static final String SERIALIZED_NAME_BUSINESS_NAME = "BusinessName";
   @SerializedName(SERIALIZED_NAME_BUSINESS_NAME)

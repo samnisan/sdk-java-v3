@@ -38,7 +38,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * The verification call for the Normalized API is a POST method call
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class VerifyAddressRequest {
   /**
    * The type of verification to perform. i.e &#39;Live&#39; or &#39;Demo&#39;

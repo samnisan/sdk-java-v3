@@ -37,7 +37,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * CommonProviderCacheSchema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class CommonProviderCacheSchema {
   public static final String SERIALIZED_NAME_SUPPORTS_CREDENTIAL_VALIDATION = "SupportsCredentialValidation";
   @SerializedName(SERIALIZED_NAME_SUPPORTS_CREDENTIAL_VALIDATION)

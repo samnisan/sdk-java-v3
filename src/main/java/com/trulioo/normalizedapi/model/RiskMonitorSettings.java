@@ -34,7 +34,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * Fraud Monitoring (Risk) Information
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class RiskMonitorSettings {
   public static final String SERIALIZED_NAME_FREQUENCY = "Frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)

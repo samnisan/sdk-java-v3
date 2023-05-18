@@ -34,7 +34,7 @@ import com.trulioo.normalizedapi.JSON;
 /**
  * Additional Fields for Location
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-05-17T00:47:05.036670600-07:00[America/Los_Angeles]")
+
 public class LocationAdditionalFields {
   public static final String SERIALIZED_NAME_ADDRESS1 = "Address1";
   @SerializedName(SERIALIZED_NAME_ADDRESS1)
