@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.List;
 
 public class RetryingOAuth extends OAuth implements Interceptor {
+    private boolean verifyingSsl = true;
     private OAuthClient oAuthClient;
 
     private TokenRequestBuilder tokenRequestBuilder;
@@ -32,17 +33,21 @@ public class RetryingOAuth extends OAuth implements Interceptor {
      * @param client An OkHttp client
      * @param tokenRequestBuilder A token request builder
      */
-    public RetryingOAuth(OkHttpClient client, TokenRequestBuilder tokenRequestBuilder) {
-        this.oAuthClient = new OAuthClient(new OAuthOkHttpClient(client));
+    public void init(OkHttpClient client, TokenRequestBuilder tokenRequestBuilder) {
+        if (verifyingSsl)
+            this.oAuthClient = new OAuthClient(new OAuthOkHttpClient(client));
+        else
+            this.oAuthClient = new OAuthClient(new OAuthOkHttpClient(client).setVerifyingSsl(false));
         this.tokenRequestBuilder = tokenRequestBuilder;
     }
 
     /**
      * @param tokenRequestBuilder A token request builder
      */
-    public RetryingOAuth(TokenRequestBuilder tokenRequestBuilder) {
-        this(new OkHttpClient(), tokenRequestBuilder);
+    public void init(TokenRequestBuilder tokenRequestBuilder) {
+        init(new OkHttpClient(), tokenRequestBuilder);
     }
+
 
     /**
      * @param tokenUrl The token URL to be used for this OAuth2 flow.
@@ -58,9 +63,11 @@ public class RetryingOAuth extends OAuth implements Interceptor {
             String clientId,
             OAuthFlow flow,
             String clientSecret,
-            Map<String, String> parameters
+            Map<String, String> parameters,
+            boolean verifyingSsl
     ) {
-        this(OAuthClientRequest.tokenLocation(tokenUrl)
+        this.verifyingSsl = verifyingSsl;
+        init(OAuthClientRequest.tokenLocation(tokenUrl)
                 .setClientId(clientId)
                 .setClientSecret(clientSecret));
         setFlow(flow);
@@ -204,7 +211,7 @@ public class RetryingOAuth extends OAuth implements Interceptor {
     // Applying authorization to parameters is performed in the retryingIntercept method
     @Override
     public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
-                             String payload, String method, URI uri) throws ApiException {
+                              String payload, String method, URI uri) throws ApiException {
         // No implementation necessary
     }
 }

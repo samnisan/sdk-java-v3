@@ -5,157 +5,158 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c320e01-8576-402a-bd04-2429628ceb26" name="Changes" comment="\">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.openapi-generator-ignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.openapi-generator/FILES" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.openapi-generator/VERSION" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/openapi.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Address.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/AppendedField.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Business.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessApi.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessDataFields.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessLocation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessRecord.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessRegistrationNumber.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessRegistrationNumberMask.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessResult.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessSearchRequest.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessSearchRequestBusinessSearchModel.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessSearchResponse.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessSearchResponseIndustryCode.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessVerifyRequest.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/BusinessVerifyRequestMetadata.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/CommonProviderCacheSchema.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/CommonRequiredFieldMetadata.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Communication.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/ConnectionApi.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Consent.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/CountrySubdivision.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DataField.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DataFields.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DatasourceField.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DatasourceResult.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DemoPause.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Document.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DriverLicence.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Location.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/LocationAdditionalFields.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/LoginSchemaRequest.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/NationalId.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Passport.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/PersonInfo.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/PersonInfoAdditionalFields.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/PersonOfSignificantControl.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/ProblemDetails.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Record.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/RecordRule.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Result.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/RiskMonitorSettings.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/ServiceError.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/SubmitAddressVerificationCredentialsRequest.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/TransactionRecordResult.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/TransactionStatus.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerificationsApi.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyAddressCredentials.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyAddressRequest.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyAddressResult.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyRequest.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyRequestMetadata.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyResult.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/VerifyResultPartial.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/git_push.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/GzipRequestInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/JSON.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ProgressRequestBody.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ProgressResponseBody.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ServerConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ServerVariable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/StringUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/api/BusinessApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/api/ConnectionApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/api/VerificationsApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/ApiKeyAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/Authentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/HttpBasicAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/HttpBearerAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuthFlow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuthOkHttpClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/RetryingOAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/AbstractOpenApiSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/AppendedField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Business.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessDataFields.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessRegistrationNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessRegistrationNumberMask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchRequestBusinessSearchModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchResponseIndustryCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessVerifyRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessVerifyRequestMetadata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/CommonProviderCacheSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/CommonRequiredFieldMetadata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Communication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Consent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/CountrySubdivision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DataField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DataFields.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DatasourceField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DatasourceResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Document.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DriverLicence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Location.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/LocationAdditionalFields.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/LoginSchemaRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/NationalId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Passport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/PersonInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/PersonInfoAdditionalFields.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/PersonOfSignificantControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/ProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Record.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/RecordRule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/RiskMonitorSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/ServiceError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/SubmitAddressVerificationCredentialsRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/TransactionRecordResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/TransactionStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyAddressCredentials.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyAddressRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyAddressResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyRequestMetadata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyResultPartial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/BusinessApiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/ConnectionApiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/VerificationsApiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.openapi-generator-ignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.openapi-generator/FILES" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.openapi-generator/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/openapi.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Address.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/AppendedField.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Business.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessApi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessDataFields.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessLocation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessRecord.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessRegistrationNumber.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessRegistrationNumberMask.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessResult.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessSearchRequest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessSearchRequestBusinessSearchModel.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessSearchResponse.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessSearchResponseIndustryCode.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessVerifyRequest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/BusinessVerifyRequestMetadata.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CommonProviderCacheSchema.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CommonRequiredFieldMetadata.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Communication.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/ConnectionApi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Consent.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CountrySubdivision.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DataField.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DataFields.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DatasourceField.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DatasourceResult.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DemoPause.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Document.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DriverLicence.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Location.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/LocationAdditionalFields.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/LoginSchemaRequest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/NationalId.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Passport.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/PersonInfo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/PersonInfoAdditionalFields.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/PersonOfSignificantControl.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/ProblemDetails.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Record.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/RecordRule.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Result.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/RiskMonitorSettings.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/ServiceError.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/SubmitAddressVerificationCredentialsRequest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/TransactionRecordResult.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/TransactionStatus.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerificationsApi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyAddressCredentials.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyAddressRequest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyAddressResult.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyRequest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyRequestMetadata.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyResult.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VerifyResultPartial.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/git_push.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiCallback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/Configuration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/GzipRequestInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/JSON.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/Pair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ProgressRequestBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ProgressResponseBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ServerConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/ServerVariable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/StringUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/api/BusinessApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/api/ConnectionApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/api/VerificationsApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/ApiKeyAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/Authentication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/HttpBasicAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/HttpBearerAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuthFlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuthOkHttpClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/RetryingOAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/AbstractOpenApiSchema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/AppendedField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Business.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessDataFields.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessRegistrationNumber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessRegistrationNumberMask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchRequestBusinessSearchModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessSearchResponseIndustryCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessVerifyRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/BusinessVerifyRequestMetadata.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/CommonProviderCacheSchema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/CommonRequiredFieldMetadata.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Communication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Consent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/CountrySubdivision.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DataField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DataFields.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DatasourceField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DatasourceResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Document.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/DriverLicence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/LocationAdditionalFields.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/LoginSchemaRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/NationalId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Passport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/PersonInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/PersonInfoAdditionalFields.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/PersonOfSignificantControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/ProblemDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Record.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/RecordRule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/RiskMonitorSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/ServiceError.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/SubmitAddressVerificationCredentialsRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/TransactionRecordResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/TransactionStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyAddressCredentials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyAddressRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyAddressResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyRequestMetadata.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/model/VerifyResultPartial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/BusinessApiTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/ConnectionApiTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/TestResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/VerificationsApiTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,13 +193,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/simon.erikson/Desktop/finalSDK/sdk-java-v3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/simon.erikson/Desktop/finalSDK/sdk-java-v3"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.trulioo.normalizedapi" />
@@ -335,12 +336,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/BusinessApiTest.java</url>
-          <line>108</line>
+          <line>384</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/BusinessApiTest.java</url>
-          <line>46</line>
+          <line>400</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/trulioo/normalizedapi/api/BusinessApiTest.java</url>
+          <line>134</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -355,8 +361,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/OAuthOkHttpClient.java</url>
-          <line>61</line>
+          <line>107</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/trulioo/normalizedapi/auth/RetryingOAuth.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
