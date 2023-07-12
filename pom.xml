@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.trulioo</groupId>
-    <artifactId>normalizedapi</artifactId>
+    <artifactId>normalizedapi-v3</artifactId>
     <packaging>jar</packaging>
-    <name>normalizedapi</name>
+    <name>normalizedapi-v3</name>
     <version>3.0.0</version>
     <url>https://api.globaldatacompany.com/docs</url>
     <description>Trulioo provides a collection of API methods to help you build business processes powered by the GlobalGateway Normalized API.</description>
@@ -16,8 +16,8 @@
 
     <licenses>
         <license>
-            <name>Unlicense</name>
-            <url>http://unlicense.org</url>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -27,9 +27,20 @@
             <name>Trulioo</name>
             <email>product@trulioo.com</email>
             <organization>Trulioo</organization>
-            <organizationUrl>http://openapitools.org</organizationUrl>
+            <organizationUrl>https://www.trulioo.com/</organizationUrl>
         </developer>
     </developers>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -235,7 +246,12 @@
 
     <profiles>
         <profile>
-            <id>sign-artifacts</id>
+            <id>signing-deploy</id>
+            <activation>
+				<property>
+					<name>gpg.passphrase</name>
+				</property>
+			</activation>
             <build>
                 <plugins>
                     <plugin>

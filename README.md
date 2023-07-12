@@ -100,7 +100,7 @@ import com.trulioo.normalizedapi.api.BusinessApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient client = new ApiClient("http://api.trulioo.com", "-- Client ID --", "-- CLIENT SECRET --", null);
+    ApiClient client = new ApiClient("-- Client ID --", "-- CLIENT SECRET --");
 
     BusinessApi apiInstance = new BusinessApi(client);
     BusinessSearchRequest businessSearchRequest = new BusinessSearchRequest(); // BusinessSearchRequest | 
@@ -201,7 +201,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: application
-- **Authorization URL**: 
+- **Authorization URL**: https://auth-api.globaldatacompany.com/connect/token
 - **Scopes**: N/A
 
 
@@ -209,7 +209,34 @@ Authentication schemes defined for the API:
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
-## Author
+### Changelog
+
+The [CHANGELOG.md](https://github.com/Trulioo/sdk-java-v3/blob/master/CHANGELOG.md) file in the root of the repository contains a description of changes for each version of the SDK.
+
+### Documentation and resources
+
+If you need to know more:
+
+* For more about the Trulioo REST API V3, see the [REST API Reference](https://developer.trulioo.com/reference/trulioo-normalized-api-intro).
+
+* For starter guides, product information and best practices see the [Documentation](https://developer.trulioo.com/docs).
+
+* For more about Trulioo in general, see [Trulioo Website](https://www.trulioo.com/).
+
+### Support
+
+
+1. You will be granted support if you or your company are already covered under an existing maintenance/support agreement. Send an email to _support@trulioo.com_ and include "Trulioo SDK for Java V3" in the subject line.
+
+2. Trulioo will NOT provide support for the extension if the core library has been modified. We would also like to know why you modified the code please send feedback to _support@trulioo.com_
+
+### Contact Us
+
+You can reach via channels listed on [Trulioo website](https://www.trulioo.com/company/contact-us/)
+
+## License
+
+The Trulioo SDK v3 for Java is licensed under the Apache License 2.0. Details about the license can be found in the LICENSE file. Copyright 2023 Trulioo Information Services Inc. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
 
