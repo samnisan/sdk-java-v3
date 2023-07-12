@@ -52,9 +52,10 @@ import com.trulioo.normalizedapi.auth.OAuthFlow;
 public class ApiClient {
 
     private String basePath = "http://api.trulioo.com";
+    private String tokenUrl = "https://auth-api.globaldatacompany.com/connect/token";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
-      "api.trulioo.com",
+      basePath,
       "No description provided",
       new HashMap<String, ServerVariable>()
     )
@@ -127,6 +128,16 @@ public class ApiClient {
     }
 
     /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and client Secret
+     *
+     * @param clientId client ID
+     * @param clientSecret client Secret
+     */
+    public ApiClient(String clientId, String clientSecret) {
+        this(clientId, clientSecret, null);
+    }
+
+    /**
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
      *
      * @param clientId client ID
@@ -159,19 +170,25 @@ public class ApiClient {
         init();
         if (basePath != null) {
             this.basePath = basePath;
+            setServers(new ArrayList<ServerConfiguration>(Arrays.asList(
+                    new ServerConfiguration(
+                            basePath,
+                            "No description provided",
+                            new HashMap<String, ServerVariable>()
+                    )
+            )));
         }
 
-        String tokenUrl = "https://auth-api.globaldatacompany.com/connect/token";
-        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+        if (!"".equals(this.tokenUrl) && !URI.create(this.tokenUrl).isAbsolute()) {
             URI uri = URI.create(getBasePath());
-            tokenUrl = uri.getScheme() + ":" +
+            this.tokenUrl = uri.getScheme() + ":" +
                 (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
-                tokenUrl;
-            if (!URI.create(tokenUrl).isAbsolute()) {
+                this.tokenUrl;
+            if (!URI.create(this.tokenUrl).isAbsolute()) {
                 throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
             }
         }
-        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters, true);
+        RetryingOAuth retryingOAuth = new RetryingOAuth(this.tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters, true);
         authentications.put(
                 "oAuth2",
                 retryingOAuth
@@ -194,23 +211,33 @@ public class ApiClient {
      * @param clientSecret client secret
      * @param parameters a {@link java.util.Map} of parameters
      */
-    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters, boolean verifyingSsl) {
+    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters, boolean verifyingSsl, String tokenUrl) {
         init();
         if (basePath != null) {
             this.basePath = basePath;
+            setServers(new ArrayList<ServerConfiguration>(Arrays.asList(
+                    new ServerConfiguration(
+                            basePath,
+                            "No description provided",
+                            new HashMap<String, ServerVariable>()
+                    )
+            )));
         }
 
-        String tokenUrl = "https://auth-api.globaldatacompany.com/connect/token";
-        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+        if (tokenUrl != null) {
+            this.tokenUrl = tokenUrl;
+        }
+
+        if (!"".equals(this.tokenUrl) && !URI.create(this.tokenUrl).isAbsolute()) {
             URI uri = URI.create(getBasePath());
-            tokenUrl = uri.getScheme() + ":" +
+            this.tokenUrl = uri.getScheme() + ":" +
                     (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
-                    tokenUrl;
-            if (!URI.create(tokenUrl).isAbsolute()) {
+                    this.tokenUrl;
+            if (!URI.create(this.tokenUrl).isAbsolute()) {
                 throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
             }
         }
-        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters, verifyingSsl);
+        RetryingOAuth retryingOAuth = new RetryingOAuth(this.tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters, verifyingSsl);
         authentications.put(
                 "oAuth2",
                 retryingOAuth
