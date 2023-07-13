@@ -83,6 +83,10 @@ public class Business {
   @SerializedName(SERIALIZED_NAME_DUNS_NUMBER)
   private String dunsNumber;
 
+  public static final String SERIALIZED_NAME_ENHANCED_PROFILE = "EnhancedProfile";
+  @SerializedName(SERIALIZED_NAME_ENHANCED_PROFILE)
+  private Boolean enhancedProfile;
+  
   public static final String SERIALIZED_NAME_ENTITIES = "Entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
   private Boolean entities;
@@ -351,6 +355,27 @@ public class Business {
     this.dunsNumber = dunsNumber;
   }
 
+  public Business enhancedProfile(Boolean enhancedProfile) {
+    
+    this.enhancedProfile = enhancedProfile;
+    return this;
+  }
+
+   /**
+   * Whether or not to retrieve enhancedProfile detail
+   * @return enhancedProfile
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getEnhancedProfile() {
+    return enhancedProfile;
+  }
+
+
+  public void setEnhancedProfile(Boolean enhancedProfile) {
+    this.enhancedProfile = enhancedProfile;
+  }
+
 
   public Business entities(Boolean entities) {
     
@@ -513,6 +538,7 @@ public class Business {
         Objects.equals(this.shareholderListDocument, business.shareholderListDocument) &&
         Objects.equals(this.financialInformationDocument, business.financialInformationDocument) &&
         Objects.equals(this.dunsNumber, business.dunsNumber) &&
+        Objects.equals(this.enhancedProfile, business.enhancedProfile) &&
         Objects.equals(this.entities, business.entities) &&
         Objects.equals(this.peopleOfSignificantControl, business.peopleOfSignificantControl) &&
         Objects.equals(this.filings, business.filings) &&
@@ -527,7 +553,7 @@ public class Business {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessName, tradestyleName, taxIDNumber, businessRegistrationNumber, dayOfIncorporation, monthOfIncorporation, yearOfIncorporation, jurisdictionOfIncorporation, shareholderListDocument, financialInformationDocument, dunsNumber, entities, peopleOfSignificantControl, filings, articleOfAssociation, registrationDetails, annualReport);
+    return Objects.hash(businessName, tradestyleName, taxIDNumber, businessRegistrationNumber, dayOfIncorporation, monthOfIncorporation, yearOfIncorporation, jurisdictionOfIncorporation, shareholderListDocument, financialInformationDocument, dunsNumber, enhancedProfile, entities, peopleOfSignificantControl, filings, articleOfAssociation, registrationDetails, annualReport);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -552,6 +578,7 @@ public class Business {
     sb.append("    shareholderListDocument: ").append(toIndentedString(shareholderListDocument)).append("\n");
     sb.append("    financialInformationDocument: ").append(toIndentedString(financialInformationDocument)).append("\n");
     sb.append("    dunsNumber: ").append(toIndentedString(dunsNumber)).append("\n");
+    sb.append("    enhancedProfile: ").append(toIndentedString(enhancedProfile)).append("\n");
     sb.append("    entities: ").append(toIndentedString(entities)).append("\n");
     sb.append("    peopleOfSignificantControl: ").append(toIndentedString(peopleOfSignificantControl)).append("\n");
     sb.append("    filings: ").append(toIndentedString(filings)).append("\n");
@@ -591,6 +618,7 @@ public class Business {
     openapiFields.add("ShareholderListDocument");
     openapiFields.add("FinancialInformationDocument");
     openapiFields.add("DunsNumber");
+    openapiFields.add("EnhancedProfile");
     openapiFields.add("Entities");
     openapiFields.add("PeopleOfSignificantControl");
     openapiFields.add("Filings");

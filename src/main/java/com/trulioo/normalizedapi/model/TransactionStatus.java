@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import org.joda.time.DateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -51,7 +51,7 @@ public class TransactionStatus {
 
   public static final String SERIALIZED_NAME_UPLOADED_DT = "UploadedDt";
   @SerializedName(SERIALIZED_NAME_UPLOADED_DT)
-  private OffsetDateTime uploadedDt;
+  private DateTime uploadedDt;
 
   public static final String SERIALIZED_NAME_IS_TIMED_OUT = "IsTimedOut";
   @SerializedName(SERIALIZED_NAME_IS_TIMED_OUT)
@@ -126,7 +126,7 @@ public class TransactionStatus {
   }
 
 
-  public TransactionStatus uploadedDt(OffsetDateTime uploadedDt) {
+  public TransactionStatus uploadedDt(DateTime uploadedDt) {
     
     this.uploadedDt = uploadedDt;
     return this;
@@ -137,13 +137,12 @@ public class TransactionStatus {
    * @return uploadedDt
   **/
   @javax.annotation.Nullable
-
-  public OffsetDateTime getUploadedDt() {
+  public DateTime getUploadedDt() {
     return uploadedDt;
   }
 
 
-  public void setUploadedDt(OffsetDateTime uploadedDt) {
+  public void setUploadedDt(DateTime uploadedDt) {
     this.uploadedDt = uploadedDt;
   }
 

@@ -2774,19 +2774,6 @@ components:
           nullable: true
           type: array
       type: object
-    DemoPause:
-      additionalProperties: false
-      description: ""
-      properties:
-        DatasourceGroupName:
-          description: ""
-          nullable: true
-          type: string
-        MillisecondDelay:
-          description: ""
-          format: int32
-          type: integer
-      type: object
     Document:
       additionalProperties: false
       description: ""
