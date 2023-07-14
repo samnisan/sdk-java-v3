@@ -8,7 +8,11 @@ import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormatter;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import org.apache.oltu.oauth2.common.message.types.GrantType;
 
 import javax.net.ssl.*;
 import java.io.File;
@@ -29,9 +33,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
@@ -464,23 +465,11 @@ public class ApiClient {
         return this;
     }
 
-    /**
-     * <p>Set OffsetDateTimeFormat.</p>
-     *
-     * @param dateFormat a {@link java.time.format.DateTimeFormatter} object
-     * @return a {@link com.trulioo.normalizedapi.ApiClient} object
-     */
-    public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
-        JSON.setOffsetDateTimeFormat(dateFormat);
+    public ApiClient setDateTimeFormat(DateTimeFormatter dateFormat) {
+        JSON.setDateTimeFormat(dateFormat);
         return this;
     }
 
-    /**
-     * <p>Set LocalDateFormat.</p>
-     *
-     * @param dateFormat a {@link java.time.format.DateTimeFormatter} object
-     * @return a {@link com.trulioo.normalizedapi.ApiClient} object
-     */
     public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
         JSON.setLocalDateFormat(dateFormat);
         return this;
@@ -784,7 +773,7 @@ public class ApiClient {
     public String parameterToString(Object param) {
         if (param == null) {
             return "";
-        } else if (param instanceof Date || param instanceof OffsetDateTime || param instanceof LocalDate) {
+        } else if (param instanceof Date || param instanceof DateTime || param instanceof LocalDate) {
             //Serialize to json string and remove the " enclosing characters
             String jsonStr = JSON.serialize(param);
             return jsonStr.substring(1, jsonStr.length() - 1);
@@ -1145,6 +1134,8 @@ public class ApiClient {
             // Files.createTempFile requires the prefix to be at least three characters long
             if (prefix.length() < 3)
                 prefix = "download-";
+            if (suffix.endsWith(";"))
+                suffix = suffix.replace(";", "");
         }
 
         if (tempFolderPath == null)
@@ -1545,10 +1536,10 @@ public class ApiClient {
     /**
      * Add a Content-Disposition Header for the given key and file to the MultipartBody Builder.
      *
-     * @param mpBuilder MultipartBody.Builder
+     * @param mpBuilder MultipartBody.Builder 
      * @param key The key of the Header element
      * @param file The file to add to the Header
-     */
+     */ 
     private void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
         Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + file.getName() + "\"");
         MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));

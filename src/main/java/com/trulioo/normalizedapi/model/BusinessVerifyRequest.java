@@ -42,13 +42,15 @@ import com.trulioo.normalizedapi.JSON;
 
 public class BusinessVerifyRequest {
   /**
-   * The type of verification to perform. i.e &#39;Live&#39; or &#39;Demo&#39;
+   * The type of verification to perform. i.e &#39;Live&#39; or &#39;Demo&#39; or &#39;Test&#39;
    */
   @JsonAdapter(VerificationTypeEnum.Adapter.class)
   public enum VerificationTypeEnum {
     LIVE("Live"),
     
-    DEMO("Demo");
+    DEMO("Demo"),
+
+    TEST("Test");
 
     private String value;
 

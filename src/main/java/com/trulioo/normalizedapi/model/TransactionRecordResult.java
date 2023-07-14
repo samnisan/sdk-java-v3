@@ -11,9 +11,9 @@ import com.trulioo.normalizedapi.model.DataField;
 import com.trulioo.normalizedapi.model.Record;
 import com.trulioo.normalizedapi.model.ServiceError;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.joda.time.DateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -48,11 +48,11 @@ public class TransactionRecordResult {
 
   public static final String SERIALIZED_NAME_UPLOADED_DT = "UploadedDt";
   @SerializedName(SERIALIZED_NAME_UPLOADED_DT)
-  private OffsetDateTime uploadedDt;
+  private DateTime uploadedDt;
 
   public static final String SERIALIZED_NAME_COMPLETED_DT = "CompletedDt";
   @SerializedName(SERIALIZED_NAME_COMPLETED_DT)
-  private OffsetDateTime completedDt;
+  private DateTime completedDt;
 
   public static final String SERIALIZED_NAME_COUNTRY_CODE = "CountryCode";
   @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
@@ -103,7 +103,7 @@ public class TransactionRecordResult {
   }
 
 
-  public TransactionRecordResult uploadedDt(OffsetDateTime uploadedDt) {
+  public TransactionRecordResult uploadedDt(DateTime uploadedDt) {
     
     this.uploadedDt = uploadedDt;
     return this;
@@ -114,18 +114,17 @@ public class TransactionRecordResult {
    * @return uploadedDt
   **/
   @javax.annotation.Nullable
-
-  public OffsetDateTime getUploadedDt() {
+  public DateTime getUploadedDt() {
     return uploadedDt;
   }
 
 
-  public void setUploadedDt(OffsetDateTime uploadedDt) {
+  public void setUploadedDt(DateTime uploadedDt) {
     this.uploadedDt = uploadedDt;
   }
 
 
-  public TransactionRecordResult completedDt(OffsetDateTime completedDt) {
+  public TransactionRecordResult completedDt(DateTime completedDt) {
     
     this.completedDt = completedDt;
     return this;
@@ -136,13 +135,12 @@ public class TransactionRecordResult {
    * @return completedDt
   **/
   @javax.annotation.Nullable
-
-  public OffsetDateTime getCompletedDt() {
+  public DateTime getCompletedDt() {
     return completedDt;
   }
 
 
-  public void setCompletedDt(OffsetDateTime completedDt) {
+  public void setCompletedDt(DateTime completedDt) {
     this.completedDt = completedDt;
   }
 

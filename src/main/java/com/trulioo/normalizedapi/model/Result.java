@@ -56,7 +56,7 @@ public class Result {
   @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_NUMBER)
   private String businessRegistrationNumber;
 
-  public static final String SERIALIZED_NAME_DUNS_NUMBER = "dunsNumber";
+  public static final String SERIALIZED_NAME_DUNS_NUMBER = "DUNSNumber";
   @SerializedName(SERIALIZED_NAME_DUNS_NUMBER)
   private String dunsNumber;
 
@@ -813,7 +813,7 @@ public class Result {
     openapiFields.add("BusinessName");
     openapiFields.add("MatchingScore");
     openapiFields.add("BusinessRegistrationNumber");
-    openapiFields.add("dunsNumber");
+    openapiFields.add("DUNSNumber");
     openapiFields.add("BusinessTaxIDNumber");
     openapiFields.add("BusinessLicenseNumber");
     openapiFields.add("JurisdictionOfIncorporation");
@@ -870,8 +870,8 @@ public class Result {
       if ((jsonObj.get("BusinessRegistrationNumber") != null && !jsonObj.get("BusinessRegistrationNumber").isJsonNull()) && !jsonObj.get("BusinessRegistrationNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `BusinessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BusinessRegistrationNumber").toString()));
       }
-      if ((jsonObj.get("dunsNumber") != null && !jsonObj.get("dunsNumber").isJsonNull()) && !jsonObj.get("dunsNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dunsNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dunsNumber").toString()));
+      if ((jsonObj.get("DUNSNumber") != null && !jsonObj.get("DUNSNumber").isJsonNull()) && !jsonObj.get("DUNSNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DUNSNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DUNSNumber").toString()));
       }
       if ((jsonObj.get("BusinessTaxIDNumber") != null && !jsonObj.get("BusinessTaxIDNumber").isJsonNull()) && !jsonObj.get("BusinessTaxIDNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `BusinessTaxIDNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BusinessTaxIDNumber").toString()));

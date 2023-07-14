@@ -84,7 +84,7 @@ public class BusinessLocation {
   @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
   private String postalCode;
 
-  public static final String SERIALIZED_NAME_PO_BOX = "poBox";
+  public static final String SERIALIZED_NAME_PO_BOX = "POBox";
   @SerializedName(SERIALIZED_NAME_PO_BOX)
   private String poBox;
 
