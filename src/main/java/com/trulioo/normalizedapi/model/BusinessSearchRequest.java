@@ -45,13 +45,15 @@ public class BusinessSearchRequest {
   private Boolean test;
 
   /**
-   * The type of search to perform. i.e &#39;Live&#39; or &#39;Demo&#39;
+   * The type of search to perform. i.e &#39;Live&#39; or &#39;Demo&#39; or &#39;Test&#39;
    */
   @JsonAdapter(SearchTypeEnum.Adapter.class)
   public enum SearchTypeEnum {
     LIVE("Live"),
     
-    DEMO("Demo");
+    DEMO("Demo"),
+
+    TEST("Test");
 
     private String value;
 

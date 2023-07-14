@@ -49,7 +49,7 @@ public class BusinessSearchRequestBusinessSearchModel {
   @SerializedName(SERIALIZED_NAME_JURISDICTION_OF_INCORPORATION)
   private String jurisdictionOfIncorporation;
 
-  public static final String SERIALIZED_NAME_DUNS_NUMBER = "dunsNumber";
+  public static final String SERIALIZED_NAME_DUNS_NUMBER = "DUNSNumber";
   @SerializedName(SERIALIZED_NAME_DUNS_NUMBER)
   private String dunsNumber;
 
