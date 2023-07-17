@@ -52,8 +52,8 @@ import com.trulioo.normalizedapi.auth.OAuthFlow;
  */
 public class ApiClient {
 
-    private String basePath = "http://api.trulioo.com";
-    private String tokenUrl = "https://auth-api.globaldatacompany.com/connect/token";
+    private String basePath = "https://api.trulioo.com";
+    private String tokenUrl = "https://auth-api.trulioo.com/connect/token";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
       basePath,
