@@ -1,4 +1,3 @@
-@@ -0,0 +1,245 @@
 # Trulioo SDK for Java #
 
 ## Version 3.0.0
@@ -101,7 +100,7 @@ import com.trulioo.normalizedapi.api.BusinessApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient client = new ApiClient("http://api.trulioo.com", "-- Client ID --", "-- CLIENT SECRET --", null);
+    ApiClient client = new ApiClient("-- Client ID --", "-- CLIENT SECRET --");
 
     BusinessApi apiInstance = new BusinessApi(client);
     BusinessSearchRequest businessSearchRequest = new BusinessSearchRequest(); // BusinessSearchRequest | 
