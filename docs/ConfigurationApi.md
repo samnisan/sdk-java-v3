@@ -28,10 +28,6 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://api.trulioo.com");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
 
     ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
     String packageID = "packageID_example"; // String | Package ID
