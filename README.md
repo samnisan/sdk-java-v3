@@ -1,6 +1,6 @@
 # Trulioo SDK for Java #
 
-## Version 3.0.0
+## Version 3.0.1
 
 ### Introduction
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.trulioo</groupId>
   <artifactId>normalizedapi</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.trulioo:normalizedapi:3.0.0"
+     implementation "com.trulioo:normalizedapi:3.0.1"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/normalizedapi-3.0.0.jar`
+* `target/normalizedapi-3.0.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -131,6 +131,7 @@ All URIs are relative to *http://api.trulioo.com*
 | *BusinessApi*      | [**getBusinessRegistrationNumbersWithParameters**](docs/BusinessApi.md#getBusinessRegistrationNumbersWithParameters) | **GET** /v3/business/businessregistrationnumbers/{countryCode}/{jurisdictionCode} | getBusinessRegistrationNumbersWithParameters |
 | *BusinessApi*      | [**getCountryJOI**](docs/BusinessApi.md#getCountryJOI)                                                               | **GET** /v3/business/countryJOI/                                                  | GetCountryJOI                                |
 | *BusinessApi*      | [**getCountryJOIWithCountryCode**](docs/BusinessApi.md#getCountryJOIWithCountryCode)                                 | **GET** /v3/business/countryJOI/{countryCode}                                     | getCountryJOIWithCountryCode                 |
+| *ConfigurationApi* | [**v3ConfigurationAlldatasourcesPackageIDGet**](docs/ConfigurationApi.md#v3ConfigurationAlldatasourcesPackageIDGet)  | **GET** /v3/configuration/alldatasources/{packageID}                              | Get All Datasources by Country               |
 | *ConnectionApi*    | [**sayHello**](docs/ConnectionApi.md#sayHello)                                                                       | **GET** /v3/connection/sayhello/{name}                                            | SayHello                                     |
 | *ConnectionApi*    | [**testAuthentication**](docs/ConnectionApi.md#testAuthentication)                                                   | **GET** /v3/connection/testauthentication                                         | TestAuthentication                           |
 | *VerificationsApi* | [**getDocumentDownload**](docs/VerificationsApi.md#getDocumentDownload)                                              | **GET** /v3/verifications/documentdownload/{transactionRecordID}/{fieldName}      | DocumentDownload                             |
