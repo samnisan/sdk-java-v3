@@ -827,6 +827,47 @@ paths:
       tags:
       - Verifications
       x-accepts: application/json
+  /v3/configuration/alldatasources/{packageID}:
+    get:
+      description: Gets all datasource groups configured for your product.
+      operationId: getAllDatasources
+      parameters:
+      - description: Package ID
+        explode: false
+        in: path
+        name: packageID
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          type: string
+        style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NormalizedDatasourceGroupsWithCountry'
+                type: array
+          description: Success
+      summary: Get All Datasources by Country
+      tags:
+      - Configuration
+      x-accepts: application/json
 components:
   schemas:
     Address:
