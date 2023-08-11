@@ -65,7 +65,7 @@ public class ConfigurationApi {
     }
 
     /**
-     * Build call for v3ConfigurationAlldatasourcesPackageIDGet
+     * Build call for getAllDatasources
      *
      * @param packageID Package ID (required)
      * @param _callback Callback for upload/download progress
@@ -81,7 +81,7 @@ public class ConfigurationApi {
      * <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      * </table>
      */
-    public okhttp3.Call v3ConfigurationAlldatasourcesPackageIDGetCall(String packageID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAllDatasourcesCall(String packageID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[]{};
@@ -127,13 +127,13 @@ public class ConfigurationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v3ConfigurationAlldatasourcesPackageIDGetValidateBeforeCall(String packageID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAllDatasourcesValidateBeforeCall(String packageID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'packageID' is set
-        if (packageID == null) {
-            throw new ApiException("Missing the required parameter 'packageID' when calling v3ConfigurationAlldatasourcesPackageIDGet(Async)");
+        if (packageID == null || packageID.trim().isEmpty()) {
+            throw new ApiException("Missing the required parameter 'packageID' when calling getAllDatasources(Async)");
         }
 
-        return v3ConfigurationAlldatasourcesPackageIDGetCall(packageID, _callback);
+        return getAllDatasourcesCall(packageID, _callback);
 
     }
 
@@ -154,8 +154,8 @@ public class ConfigurationApi {
      * <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      * </table>
      */
-    public List<NormalizedDatasourceGroupsWithCountry> v3ConfigurationAlldatasourcesPackageIDGet(String packageID) throws ApiException {
-        ApiResponse<List<NormalizedDatasourceGroupsWithCountry>> localVarResp = v3ConfigurationAlldatasourcesPackageIDGetWithHttpInfo(packageID);
+    public List<NormalizedDatasourceGroupsWithCountry> getAllDatasources(String packageID) throws ApiException {
+        ApiResponse<List<NormalizedDatasourceGroupsWithCountry>> localVarResp = getAllDatasourcesWithHttpInfo(packageID);
         return localVarResp.getData();
     }
 
@@ -176,8 +176,8 @@ public class ConfigurationApi {
      * <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      * </table>
      */
-    public ApiResponse<List<NormalizedDatasourceGroupsWithCountry>> v3ConfigurationAlldatasourcesPackageIDGetWithHttpInfo(String packageID) throws ApiException {
-        okhttp3.Call localVarCall = v3ConfigurationAlldatasourcesPackageIDGetValidateBeforeCall(packageID, null);
+    public ApiResponse<List<NormalizedDatasourceGroupsWithCountry>> getAllDatasourcesWithHttpInfo(String packageID) throws ApiException {
+        okhttp3.Call localVarCall = getAllDatasourcesValidateBeforeCall(packageID, null);
         Type localVarReturnType = new TypeToken<List<NormalizedDatasourceGroupsWithCountry>>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -201,9 +201,9 @@ public class ConfigurationApi {
      * <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      * </table>
      */
-    public okhttp3.Call v3ConfigurationAlldatasourcesPackageIDGetAsync(String packageID, final ApiCallback<List<NormalizedDatasourceGroupsWithCountry>> _callback) throws ApiException {
+    public okhttp3.Call getAllDatasourcesAsync(String packageID, final ApiCallback<List<NormalizedDatasourceGroupsWithCountry>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v3ConfigurationAlldatasourcesPackageIDGetValidateBeforeCall(packageID, _callback);
+        okhttp3.Call localVarCall = getAllDatasourcesValidateBeforeCall(packageID, _callback);
         Type localVarReturnType = new TypeToken<List<NormalizedDatasourceGroupsWithCountry>>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

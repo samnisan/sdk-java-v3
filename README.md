@@ -1,6 +1,6 @@
 # Trulioo SDK for Java #
 
-## Version 3.0.1
+## Version 3.0.2
 
 ### Introduction
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.trulioo</groupId>
   <artifactId>normalizedapi</artifactId>
-  <version>3.0.1</version>
+  <version>3.0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -131,7 +131,7 @@ All URIs are relative to *http://api.trulioo.com*
 | *BusinessApi*      | [**getBusinessRegistrationNumbersWithParameters**](docs/BusinessApi.md#getBusinessRegistrationNumbersWithParameters) | **GET** /v3/business/businessregistrationnumbers/{countryCode}/{jurisdictionCode} | getBusinessRegistrationNumbersWithParameters |
 | *BusinessApi*      | [**getCountryJOI**](docs/BusinessApi.md#getCountryJOI)                                                               | **GET** /v3/business/countryJOI/                                                  | GetCountryJOI                                |
 | *BusinessApi*      | [**getCountryJOIWithCountryCode**](docs/BusinessApi.md#getCountryJOIWithCountryCode)                                 | **GET** /v3/business/countryJOI/{countryCode}                                     | getCountryJOIWithCountryCode                 |
-| *ConfigurationApi* | [**v3ConfigurationAlldatasourcesPackageIDGet**](docs/ConfigurationApi.md#v3ConfigurationAlldatasourcesPackageIDGet)  | **GET** /v3/configuration/alldatasources/{packageID}                              | Get All Datasources by Country               |
+| *ConfigurationApi* | [**getAllDatasources**](docs/ConfigurationApi.md#getAllDatasources)                                                  | **GET** /v3/configuration/alldatasources/{packageID}                              | Get All Datasources by Country               |
 | *ConnectionApi*    | [**sayHello**](docs/ConnectionApi.md#sayHello)                                                                       | **GET** /v3/connection/sayhello/{name}                                            | SayHello                                     |
 | *ConnectionApi*    | [**testAuthentication**](docs/ConnectionApi.md#testAuthentication)                                                   | **GET** /v3/connection/testauthentication                                         | TestAuthentication                           |
 | *VerificationsApi* | [**getDocumentDownload**](docs/VerificationsApi.md#getDocumentDownload)                                              | **GET** /v3/verifications/documentdownload/{transactionRecordID}/{fieldName}      | DocumentDownload                             |
