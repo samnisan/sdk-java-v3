@@ -129,7 +129,7 @@ public class ConfigurationApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAllDatasourcesValidateBeforeCall(String packageID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'packageID' is set
-        if (packageID == null) {
+        if (packageID == null || packageID.trim().isEmpty()) {
             throw new ApiException("Missing the required parameter 'packageID' when calling getAllDatasources(Async)");
         }
 
