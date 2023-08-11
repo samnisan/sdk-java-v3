@@ -4,11 +4,11 @@ All URIs are relative to *http://api.trulioo.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**v3ConfigurationAlldatasourcesPackageIDGet**](ConfigurationApi.md#v3ConfigurationAlldatasourcesPackageIDGet) | **GET** /v3/configuration/alldatasources/{packageID} | Get All Datasources by Country |
+| [**getAllDatasources**](ConfigurationApi.md#getAllDatasources) | **GET** /v3/configuration/alldatasources/{packageID} | Get All Datasources by Country |
 
-<a id="v3ConfigurationAlldatasourcesPackageIDGet"></a>
-# **v3ConfigurationAlldatasourcesPackageIDGet**
-> List&lt;NormalizedDatasourceGroupsWithCountry&gt; v3ConfigurationAlldatasourcesPackageIDGet(packageID)
+<a id="getAllDatasources"></a>
+# **getAllDatasources**
+> List&lt;NormalizedDatasourceGroupsWithCountry&gt; getAllDatasources(packageID)
 
 Get All Datasources by Country
 
@@ -32,10 +32,10 @@ public class Example {
     ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
     String packageID = "packageID_example"; // String | Package ID
     try {
-      List<NormalizedDatasourceGroupsWithCountry> result = apiInstance.v3ConfigurationAlldatasourcesPackageIDGet(packageID);
+      List<NormalizedDatasourceGroupsWithCountry> result = apiInstance.getAllDatasources(packageID);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#v3ConfigurationAlldatasourcesPackageIDGet");
+      System.err.println("Exception when calling ConfigurationApi#getAllDatasources");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

@@ -52,7 +52,7 @@ public class ConfigurationApiTest {
     @UseDataProvider("getAllDatasourcesDataProvider")
     public void v3ConfigurationAlldatasourcesPackageIDGetTest(String packageID) throws ApiException {
         String packageId = packageID;
-        List<NormalizedDatasourceGroupsWithCountry> response = api.v3ConfigurationAlldatasourcesPackageIDGet(packageId);
+        List<NormalizedDatasourceGroupsWithCountry> response = api.getAllDatasources(packageId);
 
         Assert.assertNotNull(response);
     }
@@ -61,7 +61,7 @@ public class ConfigurationApiTest {
     @UseDataProvider("getAllDatasourcesDataProvider")
     public void getAllDatasourcesAsyncTest(String packageID) throws ApiException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(1);
-        api.v3ConfigurationAlldatasourcesPackageIDGetAsync(packageID, new ApiCallback<List<NormalizedDatasourceGroupsWithCountry>>() {
+        api.getAllDatasourcesAsync(packageID, new ApiCallback<List<NormalizedDatasourceGroupsWithCountry>>() {
             @Override
             public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
             }
