@@ -132,12 +132,12 @@
      @SuppressWarnings("rawtypes")
      private okhttp3.Call getDocumentDownloadValidateBeforeCall(String transactionRecordID, String fieldName, final ApiCallback _callback) throws ApiException {
          // verify the required parameter 'transactionRecordID' is set
-         if (transactionRecordID == null) {
+         if (transactionRecordID == null || transactionRecordID.isEmpty()) {
              throw new ApiException("Missing the required parameter 'transactionRecordID' when calling getDocumentDownload(Async)");
          }
  
          // verify the required parameter 'fieldName' is set
-         if (fieldName == null) {
+         if (fieldName == null || fieldName.isEmpty()) {
              throw new ApiException("Missing the required parameter 'fieldName' when calling getDocumentDownload(Async)");
          }
  
@@ -283,7 +283,7 @@
      @SuppressWarnings("rawtypes")
      private okhttp3.Call getPartialResultValidateBeforeCall(String transactionID, final ApiCallback _callback) throws ApiException {
          // verify the required parameter 'transactionID' is set
-         if (transactionID == null) {
+         if (transactionID == null || transactionID.isEmpty()) {
              throw new ApiException("Missing the required parameter 'transactionID' when calling getPartialResult(Async)");
          }
  
@@ -426,7 +426,7 @@
      @SuppressWarnings("rawtypes")
      private okhttp3.Call getTransactionRecordValidateBeforeCall(String transactionRecordID, final ApiCallback _callback) throws ApiException {
          // verify the required parameter 'transactionRecordID' is set
-         if (transactionRecordID == null) {
+         if (transactionRecordID == null || transactionRecordID.isEmpty()) {
              throw new ApiException("Missing the required parameter 'transactionRecordID' when calling getTransactionRecord(Async)");
          }
  
@@ -569,7 +569,7 @@
      @SuppressWarnings("rawtypes")
      private okhttp3.Call getTransactionStatusValidateBeforeCall(String transactionID, final ApiCallback _callback) throws ApiException {
          // verify the required parameter 'transactionID' is set
-         if (transactionID == null) {
+         if (transactionID == null || transactionID.isEmpty()) {
              throw new ApiException("Missing the required parameter 'transactionID' when calling getTransactionStatus(Async)");
          }
  

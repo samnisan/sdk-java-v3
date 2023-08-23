@@ -22,10 +22,11 @@
 
 ## Enum: SearchTypeEnum
 
-| Name | Value |
-|---- | -----|
+| Name | Value            |
+|------|------------------|
 | LIVE | &quot;Live&quot; |
 | DEMO | &quot;Demo&quot; |
+| TEST | &quot;Test&quot; |
 
 
 
