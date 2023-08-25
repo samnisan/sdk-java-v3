@@ -60,15 +60,15 @@ public class ConnectionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
+    </table>
      */
     public okhttp3.Call sayHelloCall(String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -88,7 +88,7 @@ public class ConnectionApi {
 
         // create path and map variables
         String localVarPath = "/v3/connection/sayhello/{name}"
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+                .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -97,7 +97,7 @@ public class ConnectionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -118,7 +118,7 @@ public class ConnectionApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call sayHelloValidateBeforeCall(String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             throw new ApiException("Missing the required parameter 'name' when calling sayHello(Async)");
         }
 
@@ -133,15 +133,15 @@ public class ConnectionApi {
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
+    </table>
      */
     public Object sayHello(String name) throws ApiException {
         ApiResponse<Object> localVarResp = sayHelloWithHttpInfo(name);
@@ -155,15 +155,15 @@ public class ConnectionApi {
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
+    </table>
      */
     public ApiResponse<Object> sayHelloWithHttpInfo(String name) throws ApiException {
         okhttp3.Call localVarCall = sayHelloValidateBeforeCall(name, null);
@@ -179,15 +179,15 @@ public class ConnectionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> The name that was in the request </td><td>  -  </td></tr>
+    </table>
      */
     public okhttp3.Call sayHelloAsync(String name, final ApiCallback<Object> _callback) throws ApiException {
 
@@ -202,15 +202,15 @@ public class ConnectionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+    </table>
      */
     public okhttp3.Call testAuthenticationCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -238,7 +238,7 @@ public class ConnectionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -268,15 +268,15 @@ public class ConnectionApi {
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+    </table>
      */
     public String testAuthentication() throws ApiException {
         ApiResponse<String> localVarResp = testAuthenticationWithHttpInfo();
@@ -289,15 +289,15 @@ public class ConnectionApi {
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+    </table>
      */
     public ApiResponse<String> testAuthenticationWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = testAuthenticationValidateBeforeCall(null);
@@ -312,15 +312,15 @@ public class ConnectionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
-        <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 400 </td><td> Your request could not be processed, there should be more details in the response. </td><td>  -  </td></tr>
+    <tr><td> 401 </td><td> The token you provided is not valid or you are using an account that is not enabled. </td><td>  -  </td></tr>
+    <tr><td> 408 </td><td> The request took longer to process than we waited. </td><td>  -  </td></tr>
+    <tr><td> 415 </td><td> You asked for a media type that we do not support. You should request application/json in the Content-Type header. </td><td>  -  </td></tr>
+    <tr><td> 500 </td><td> An error happened on the server without a specific message. </td><td>  -  </td></tr>
+    <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+    </table>
      */
     public okhttp3.Call testAuthenticationAsync(final ApiCallback<String> _callback) throws ApiException {
 

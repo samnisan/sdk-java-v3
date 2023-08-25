@@ -3,9 +3,9 @@ info:
   title: NAPI
   version: v3
 servers:
-- url: api.trulioo.com
+  - url: api.trulioo.com
 security:
-- oAuth2: []
+  - oAuth2: []
 paths:
   /v3/business/search:
     post:
@@ -44,20 +44,20 @@ paths:
                 Record:
                   TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
                   DatasourceResults:
-                  - Results:
-                    - Index: "1"
-                      BusinessName: ACME Consulting
-                      MatchingScore: "1"
-                      BusinessRegistrationNumber: "1234"
-                    DatasourceName: Business Search Datasource
-                    Errors: []
+                    - Results:
+                        - Index: "1"
+                          BusinessName: ACME Consulting
+                          MatchingScore: "1"
+                          BusinessRegistrationNumber: "1234"
+                      DatasourceName: Business Search Datasource
+                      Errors: []
                   Errors: []
               schema:
                 $ref: '#/components/schemas/BusinessSearchResponse'
           description: Success
       summary: Search
       tags:
-      - Business
+        - Business
       x-content-type: application/json
       x-accepts: application/json
   /v3/business/countryJOI/{countryCode}:
@@ -65,17 +65,17 @@ paths:
       description: Gets the jurisdictions of incorporation for a country.
       operationId: getCountryJOIWithCountryCode
       parameters:
-      - description: "Country alpha2 code, get via the call to https://developer.trulioo.com/reference#getcountrycodes"
-        explode: false
-        in: path
-        name: countryCode
-        required: true
-        schema:
-          maxLength: 2
-          minLength: 2
-          pattern: "^[a-z]*$"
-          type: string
-        style: simple
+        - description: "Country alpha2 code, get via the call to https://developer.trulioo.com/reference#getcountrycodes"
+          explode: false
+          in: path
+          name: countryCode
+          required: true
+          schema:
+            maxLength: 2
+            minLength: 2
+            pattern: "^[a-z]*$"
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -100,7 +100,7 @@ paths:
           description: Success
       summary: getCountryJOIWithCountryCode
       tags:
-      - Business
+        - Business
       x-accepts: application/json
   /v3/business/countryJOI/:
     get:
@@ -130,7 +130,7 @@ paths:
           description: Success
       summary: GetCountryJOI
       tags:
-      - Business
+        - Business
       x-accepts: application/json
   /v3/business/businessregistrationnumbers:
     get:
@@ -161,7 +161,7 @@ paths:
           description: Success
       summary: GetBusinessRegistrationNumbers
       tags:
-      - Business
+        - Business
       x-accepts: application/json
   /v3/business/businessregistrationnumbers/{countryCode}/{jurisdictionCode}:
     get:
@@ -169,26 +169,26 @@ paths:
         a country and optionally supplied jurisdiction
       operationId: getBusinessRegistrationNumbersWithParameters
       parameters:
-      - description: "Country alpha2 code, get via the call to https://developer.trulioo.com/reference#getcountrycodes"
-        explode: false
-        in: path
-        name: countryCode
-        required: true
-        schema:
-          maxLength: 2
-          minLength: 2
-          pattern: "^[a-z]*$"
-          type: string
-        style: simple
-      - description: "Optional jurisdiction code, get via the call to https://developer.trulioo.com/reference#getcountrysubdivisions"
-        explode: false
-        in: path
-        name: jurisdictionCode
-        required: true
-        schema:
-          maxLength: 25
-          type: string
-        style: simple
+        - description: "Country alpha2 code, get via the call to https://developer.trulioo.com/reference#getcountrycodes"
+          explode: false
+          in: path
+          name: countryCode
+          required: true
+          schema:
+            maxLength: 2
+            minLength: 2
+            pattern: "^[a-z]*$"
+            type: string
+          style: simple
+        - description: "Optional jurisdiction code, get via the call to https://developer.trulioo.com/reference#getcountrysubdivisions"
+          explode: false
+          in: path
+          name: jurisdictionCode
+          required: true
+          schema:
+            maxLength: 25
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -213,7 +213,7 @@ paths:
           description: Success
       summary: getBusinessRegistrationNumbersWithParameters
       tags:
-      - Business
+        - Business
       x-accepts: application/json
   /v3/business/verify:
     post:
@@ -256,76 +256,76 @@ paths:
                   TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
                   RecordStatus: match
                   DatasourceResults:
-                  - DatasourceStatus: match
-                    DatasourceName: Consumer Intl
-                    DatasourceFields:
-                    - FieldName: FirstSurName
-                      Status: match
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: City
-                      Status: match
-                    - FieldName: County
-                      Status: match
-                    - FieldName: BuildingName
-                      Status: match
-                    - FieldName: BuildingNumber
-                      Status: match
-                    - FieldName: PostalCode
-                      Status: match
-                    - FieldName: StreetName
-                      Status: match
-                    - FieldName: StreetType
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
-                  - DatasourceStatus: match
-                    DatasourceName: Resident Files
-                    DatasourceFields:
-                    - FieldName: FirstSurName
-                      Status: match
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: BuildingName
-                      Status: match
-                    - FieldName: BuildingNumber
-                      Status: match
-                    - FieldName: City
-                      Status: match
-                    - FieldName: County
-                      Status: match
-                    - FieldName: StreetName
-                      Status: match
-                    - FieldName: StreetType
-                      Status: match
-                    - FieldName: PostalCode
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
-                  - DatasourceStatus: match
-                    DatasourceName: International Watchlist
-                    DatasourceFields:
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: MiddleName
-                      Status: match
-                    - FieldName: FirstSurName
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Consumer Intl
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Resident Files
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: International Watchlist
+                      DatasourceFields:
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: MiddleName
+                          Status: match
+                        - FieldName: FirstSurName
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
                   Errors:
-                  - Code: "1008"
-                    Message: "Field format invalid: FirstInitial"
+                    - Code: "1008"
+                      Message: "Field format invalid: FirstInitial"
                 Errors: []
               schema:
                 $ref: '#/components/schemas/VerifyResult'
           description: Success
       summary: Verify
       tags:
-      - Business
+        - Business
       x-content-type: application/json
       x-accepts: application/json
   /v3/connection/sayhello/{name}:
@@ -336,15 +336,15 @@ paths:
         \ route constraint"
       operationId: sayHello
       parameters:
-      - description: Name to be returned in the response
-        explode: false
-        in: path
-        name: name
-        required: true
-        schema:
-          maxLength: 100
-          type: string
-        style: simple
+        - description: Name to be returned in the response
+          explode: false
+          in: path
+          name: name
+          required: true
+          schema:
+            maxLength: 100
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -367,16 +367,16 @@ paths:
                 Schema:
                   supportsCredentialValidation: true
                   requiredFieldMetadata:
-                  - fieldName: username
-                    fieldLabel: Email
-                  - fieldName: password
-                    fieldLabel: Password
+                    - fieldName: username
+                      fieldLabel: Email
+                    - fieldName: password
+                      fieldLabel: Password
                 Errors: []
               schema: {}
           description: The name that was in the request
       summary: SayHello
       tags:
-      - Connection
+        - Connection
       x-accepts: application/json
   /v3/connection/testauthentication:
     get:
@@ -406,7 +406,7 @@ paths:
           description: Success
       summary: TestAuthentication
       tags:
-      - Connection
+        - Connection
       x-accepts: application/json
   /v3/verifications/verify:
     post:
@@ -423,8 +423,8 @@ paths:
               VerificationType: Demo
               CleansedAddress: false
               ConsentForDataSources:
-              - DataSource Name 1
-              - DataSource Name 2
+                - DataSource Name 1
+                - DataSource Name 2
               CountryCode: IT
               DataFields:
                 PersonInfo:
@@ -452,10 +452,10 @@ paths:
                   MonthOfExpiry: 1
                   YearOfExpiry: 2021
                 NationalIds:
-                - Number: FBCGQE44Z11T793L
-                  Type: NationalID
-                  CityOfIssue: PALERMO
-                  ProvinceOfIssue: PA
+                  - Number: FBCGQE44Z11T793L
+                    Type: NationalID
+                    CityOfIssue: PALERMO
+                    ProvinceOfIssue: PA
                 Passport:
                   Mrz1: P<MANCINI<<ADELINA<<<<<<<<<<<<<<<<<<<<<<<<<<
                   Mrz2: 99003853<1CZE1101018M1207046110101111<<<<<94
@@ -502,76 +502,76 @@ paths:
                   TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
                   RecordStatus: match
                   DatasourceResults:
-                  - DatasourceStatus: match
-                    DatasourceName: Consumer Intl
-                    DatasourceFields:
-                    - FieldName: FirstSurName
-                      Status: match
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: City
-                      Status: match
-                    - FieldName: County
-                      Status: match
-                    - FieldName: BuildingName
-                      Status: match
-                    - FieldName: BuildingNumber
-                      Status: match
-                    - FieldName: PostalCode
-                      Status: match
-                    - FieldName: StreetName
-                      Status: match
-                    - FieldName: StreetType
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
-                  - DatasourceStatus: match
-                    DatasourceName: Resident Files
-                    DatasourceFields:
-                    - FieldName: FirstSurName
-                      Status: match
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: BuildingName
-                      Status: match
-                    - FieldName: BuildingNumber
-                      Status: match
-                    - FieldName: City
-                      Status: match
-                    - FieldName: County
-                      Status: match
-                    - FieldName: StreetName
-                      Status: match
-                    - FieldName: StreetType
-                      Status: match
-                    - FieldName: PostalCode
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
-                  - DatasourceStatus: match
-                    DatasourceName: International Watchlist
-                    DatasourceFields:
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: MiddleName
-                      Status: match
-                    - FieldName: FirstSurName
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Consumer Intl
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Resident Files
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: International Watchlist
+                      DatasourceFields:
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: MiddleName
+                          Status: match
+                        - FieldName: FirstSurName
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
                   Errors:
-                  - Code: "1008"
-                    Message: "Field format invalid: FirstInitial"
+                    - Code: "1008"
+                      Message: "Field format invalid: FirstInitial"
                 Errors: []
               schema:
                 $ref: '#/components/schemas/VerifyResult'
           description: Success
       summary: Verify
       tags:
-      - Verifications
+        - Verifications
       x-content-type: application/json
       x-accepts: application/json
   /v3/verifications/transactionrecord/{transactionRecordID}:
@@ -584,16 +584,16 @@ paths:
         \ to the callback URL provided."
       operationId: getTransactionRecord
       parameters:
-      - description: "id of the transactionrecord, this will be a GUID"
-        explode: false
-        in: path
-        name: transactionRecordID
-        required: true
-        schema:
-          maxLength: 36
-          minLength: 36
-          type: string
-        style: simple
+        - description: "id of the transactionrecord, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionRecordID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -619,76 +619,76 @@ paths:
                   TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
                   RecordStatus: match
                   DatasourceResults:
-                  - DatasourceStatus: match
-                    DatasourceName: Consumer Intl
-                    DatasourceFields:
-                    - FieldName: FirstSurName
-                      Status: match
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: City
-                      Status: match
-                    - FieldName: County
-                      Status: match
-                    - FieldName: BuildingName
-                      Status: match
-                    - FieldName: BuildingNumber
-                      Status: match
-                    - FieldName: PostalCode
-                      Status: match
-                    - FieldName: StreetName
-                      Status: match
-                    - FieldName: StreetType
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
-                  - DatasourceStatus: match
-                    DatasourceName: Resident Files
-                    DatasourceFields:
-                    - FieldName: FirstSurName
-                      Status: match
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: BuildingName
-                      Status: match
-                    - FieldName: BuildingNumber
-                      Status: match
-                    - FieldName: City
-                      Status: match
-                    - FieldName: County
-                      Status: match
-                    - FieldName: StreetName
-                      Status: match
-                    - FieldName: StreetType
-                      Status: match
-                    - FieldName: PostalCode
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
-                  - DatasourceStatus: match
-                    DatasourceName: International Watchlist
-                    DatasourceFields:
-                    - FieldName: FirstGivenName
-                      Status: match
-                    - FieldName: MiddleName
-                      Status: match
-                    - FieldName: FirstSurName
-                      Status: match
-                    AppendedFields: []
-                    Errors: []
-                    FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Consumer Intl
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Resident Files
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: International Watchlist
+                      DatasourceFields:
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: MiddleName
+                          Status: match
+                        - FieldName: FirstSurName
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
                   Errors:
-                  - Code: "1008"
-                    Message: "Field format invalid: FirstInitial"
+                    - Code: "1008"
+                      Message: "Field format invalid: FirstInitial"
                 Errors: []
               schema:
                 $ref: '#/components/schemas/TransactionRecordResult'
           description: Success
       summary: GetTransactionRecord
       tags:
-      - Verifications
+        - Verifications
       x-accepts: application/json
   /v3/verifications/transaction/{transactionID}/status:
     get:
@@ -698,16 +698,16 @@ paths:
         \ as whether the verification request has timed out."
       operationId: getTransactionStatus
       parameters:
-      - description: "id of the asynchronous transaction, this will be a GUID"
-        explode: false
-        in: path
-        name: transactionID
-        required: true
-        schema:
-          maxLength: 36
-          minLength: 36
-          type: string
-        style: simple
+        - description: "id of the asynchronous transaction, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -736,32 +736,32 @@ paths:
           description: Success
       summary: GetTransactionStatus
       tags:
-      - Verifications
+        - Verifications
       x-accepts: application/json
   /v3/verifications/documentdownload/{transactionRecordID}/{fieldName}:
     get:
       description: Download Document
       operationId: getDocumentDownload
       parameters:
-      - description: "id of the transactionrecord, this will be a GUID"
-        explode: false
-        in: path
-        name: transactionRecordID
-        required: true
-        schema:
-          maxLength: 36
-          minLength: 36
-          type: string
-        style: simple
-      - description: document field name
-        explode: false
-        in: path
-        name: fieldName
-        required: true
-        schema:
-          maxLength: 256
-          type: string
-        style: simple
+        - description: "id of the transactionrecord, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionRecordID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+        - description: document field name
+          explode: false
+          in: path
+          name: fieldName
+          required: true
+          schema:
+            maxLength: 256
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -785,7 +785,7 @@ paths:
           description: Success
       summary: DocumentDownload
       tags:
-      - Verifications
+        - Verifications
       x-accepts: application/json
   /v3/verifications/transaction/{transactionID}/partialresult:
     get:
@@ -793,16 +793,16 @@ paths:
         transaction.
       operationId: getPartialResult
       parameters:
-      - description: "id of the asynchronous transaction, this will be a GUID"
-        explode: false
-        in: path
-        name: transactionID
-        required: true
-        schema:
-          maxLength: 36
-          minLength: 36
-          type: string
-        style: simple
+        - description: "id of the asynchronous transaction, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
       responses:
         "400":
           description: "Your request could not be processed, there should be more\
@@ -825,7 +825,48 @@ paths:
           description: Success
       summary: PartialResult
       tags:
-      - Verifications
+        - Verifications
+      x-accepts: application/json
+  /v3/configuration/alldatasources/{packageID}:
+    get:
+      description: Gets all datasource groups configured for your product.
+      operationId: getAllDatasources
+      parameters:
+        - description: Package ID
+          explode: false
+          in: path
+          name: packageID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NormalizedDatasourceGroupsWithCountry'
+                type: array
+          description: Success
+      summary: Get All Datasources by Country
+      tags:
+        - Configuration
       x-accepts: application/json
 components:
   schemas:
@@ -967,24 +1008,24 @@ components:
         FinancialInformationDocument: true
         YearOfIncorporation: 1
         PeopleOfSignificantControl:
-        - DayOfBirth: DayOfBirth
-          BusinessName: BusinessName
-          YearOfBirth: YearOfBirth
-          FullName: FullName
-          MonthOfBirth: MonthOfBirth
-          FirstSurname: FirstSurname
-          SecondSurname: SecondSurname
-          FirstGivenName: FirstGivenName
-          MiddleName: MiddleName
-        - DayOfBirth: DayOfBirth
-          BusinessName: BusinessName
-          YearOfBirth: YearOfBirth
-          FullName: FullName
-          MonthOfBirth: MonthOfBirth
-          FirstSurname: FirstSurname
-          SecondSurname: SecondSurname
-          FirstGivenName: FirstGivenName
-          MiddleName: MiddleName
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
         Filings: true
       properties:
         BusinessName:
@@ -1086,54 +1127,54 @@ components:
             key: CountrySpecific
         YearOfIncorporation: 5
         PeopleOfSignificantControl:
-        - DayOfBirth: DayOfBirth
-          BusinessName: BusinessName
-          YearOfBirth: YearOfBirth
-          FullName: FullName
-          MonthOfBirth: MonthOfBirth
-          FirstSurname: FirstSurname
-          SecondSurname: SecondSurname
-          FirstGivenName: FirstGivenName
-          MiddleName: MiddleName
-        - DayOfBirth: DayOfBirth
-          BusinessName: BusinessName
-          YearOfBirth: YearOfBirth
-          FullName: FullName
-          MonthOfBirth: MonthOfBirth
-          FirstSurname: FirstSurname
-          SecondSurname: SecondSurname
-          FirstGivenName: FirstGivenName
-          MiddleName: MiddleName
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
         Filings: true
         Location:
-        - StreetName: StreetName
-          Suburb: Suburb
-          BuildingName: BuildingName
-          StateProvinceCode: StateProvinceCode
-          PostalCode: PostalCode
-          Index: 5
-          City: City
-          Address1: Address1
-          StreetType: StreetType
-          County: County
-          poBox: poBox
-          BuildingNumber: BuildingNumber
-          Country: Country
-          UnitNumber: UnitNumber
-        - StreetName: StreetName
-          Suburb: Suburb
-          BuildingName: BuildingName
-          StateProvinceCode: StateProvinceCode
-          PostalCode: PostalCode
-          Index: 5
-          City: City
-          Address1: Address1
-          StreetType: StreetType
-          County: County
-          poBox: poBox
-          BuildingNumber: BuildingNumber
-          Country: Country
-          UnitNumber: UnitNumber
+          - StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            PostalCode: PostalCode
+            Index: 5
+            City: City
+            Address1: Address1
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
+          - StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            PostalCode: PostalCode
+            Index: 5
+            City: City
+            Address1: Address1
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
       properties:
         BusinessName:
           description: Name of the business to be verified
@@ -1312,233 +1353,233 @@ components:
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         DatasourceResults:
-        - Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
-          DatasourceName: DatasourceName
-          Results:
-          - FullAddress: FullAddress
-            TaxIDNumber: TaxIDNumber
-            BusinessName: BusinessName
-            Address:
-              StreetName: StreetName
-              Suburb: Suburb
-              BuildingName: BuildingName
-              StateProvince: StateProvince
-              StateProvinceCode: StateProvinceCode
-              PostalCode: PostalCode
-              City: City
-              Address1: Address1
-              StreetType: StreetType
-              BuildingNumber: BuildingNumber
-              Country: Country
-              UnitNumber: UnitNumber
-              AddressType: AddressType
-              CountryCode: CountryCode
-            Telephone: Telephone
-            BusinessRegistrationNumber: BusinessRegistrationNumber
-            BusinessType: BusinessType
-            Website: Website
-            TaxIDNumbers:
-            - TaxIDNumbers
-            - TaxIDNumbers
-            Index: Index
-            WebDomain: WebDomain
-            MatchingScore: MatchingScore
-            Sic:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-            BusinessStatus: BusinessStatus
-            EmailAddress: EmailAddress
-            TradeStyleName: TradeStyleName
-            OtherBusinessNames:
-            - OtherBusinessNames
-            - OtherBusinessNames
-            BusinessTaxIDNumber: BusinessTaxIDNumber
-            JurisdictionOfIncorporation: JurisdictionOfIncorporation
-            BusinessLicenseNumber: BusinessLicenseNumber
-            OriginalBusinessStatus: OriginalBusinessStatus
-            WebDomains:
-            - WebDomains
-            - WebDomains
-            dunsNumber: dunsNumber
-            Naics:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-          - FullAddress: FullAddress
-            TaxIDNumber: TaxIDNumber
-            BusinessName: BusinessName
-            Address:
-              StreetName: StreetName
-              Suburb: Suburb
-              BuildingName: BuildingName
-              StateProvince: StateProvince
-              StateProvinceCode: StateProvinceCode
-              PostalCode: PostalCode
-              City: City
-              Address1: Address1
-              StreetType: StreetType
-              BuildingNumber: BuildingNumber
-              Country: Country
-              UnitNumber: UnitNumber
-              AddressType: AddressType
-              CountryCode: CountryCode
-            Telephone: Telephone
-            BusinessRegistrationNumber: BusinessRegistrationNumber
-            BusinessType: BusinessType
-            Website: Website
-            TaxIDNumbers:
-            - TaxIDNumbers
-            - TaxIDNumbers
-            Index: Index
-            WebDomain: WebDomain
-            MatchingScore: MatchingScore
-            Sic:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-            BusinessStatus: BusinessStatus
-            EmailAddress: EmailAddress
-            TradeStyleName: TradeStyleName
-            OtherBusinessNames:
-            - OtherBusinessNames
-            - OtherBusinessNames
-            BusinessTaxIDNumber: BusinessTaxIDNumber
-            JurisdictionOfIncorporation: JurisdictionOfIncorporation
-            BusinessLicenseNumber: BusinessLicenseNumber
-            OriginalBusinessStatus: OriginalBusinessStatus
-            WebDomains:
-            - WebDomains
-            - WebDomains
-            dunsNumber: dunsNumber
-            Naics:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-        - Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
-          DatasourceName: DatasourceName
-          Results:
-          - FullAddress: FullAddress
-            TaxIDNumber: TaxIDNumber
-            BusinessName: BusinessName
-            Address:
-              StreetName: StreetName
-              Suburb: Suburb
-              BuildingName: BuildingName
-              StateProvince: StateProvince
-              StateProvinceCode: StateProvinceCode
-              PostalCode: PostalCode
-              City: City
-              Address1: Address1
-              StreetType: StreetType
-              BuildingNumber: BuildingNumber
-              Country: Country
-              UnitNumber: UnitNumber
-              AddressType: AddressType
-              CountryCode: CountryCode
-            Telephone: Telephone
-            BusinessRegistrationNumber: BusinessRegistrationNumber
-            BusinessType: BusinessType
-            Website: Website
-            TaxIDNumbers:
-            - TaxIDNumbers
-            - TaxIDNumbers
-            Index: Index
-            WebDomain: WebDomain
-            MatchingScore: MatchingScore
-            Sic:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-            BusinessStatus: BusinessStatus
-            EmailAddress: EmailAddress
-            TradeStyleName: TradeStyleName
-            OtherBusinessNames:
-            - OtherBusinessNames
-            - OtherBusinessNames
-            BusinessTaxIDNumber: BusinessTaxIDNumber
-            JurisdictionOfIncorporation: JurisdictionOfIncorporation
-            BusinessLicenseNumber: BusinessLicenseNumber
-            OriginalBusinessStatus: OriginalBusinessStatus
-            WebDomains:
-            - WebDomains
-            - WebDomains
-            dunsNumber: dunsNumber
-            Naics:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-          - FullAddress: FullAddress
-            TaxIDNumber: TaxIDNumber
-            BusinessName: BusinessName
-            Address:
-              StreetName: StreetName
-              Suburb: Suburb
-              BuildingName: BuildingName
-              StateProvince: StateProvince
-              StateProvinceCode: StateProvinceCode
-              PostalCode: PostalCode
-              City: City
-              Address1: Address1
-              StreetType: StreetType
-              BuildingNumber: BuildingNumber
-              Country: Country
-              UnitNumber: UnitNumber
-              AddressType: AddressType
-              CountryCode: CountryCode
-            Telephone: Telephone
-            BusinessRegistrationNumber: BusinessRegistrationNumber
-            BusinessType: BusinessType
-            Website: Website
-            TaxIDNumbers:
-            - TaxIDNumbers
-            - TaxIDNumbers
-            Index: Index
-            WebDomain: WebDomain
-            MatchingScore: MatchingScore
-            Sic:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
-            BusinessStatus: BusinessStatus
-            EmailAddress: EmailAddress
-            TradeStyleName: TradeStyleName
-            OtherBusinessNames:
-            - OtherBusinessNames
-            - OtherBusinessNames
-            BusinessTaxIDNumber: BusinessTaxIDNumber
-            JurisdictionOfIncorporation: JurisdictionOfIncorporation
-            BusinessLicenseNumber: BusinessLicenseNumber
-            OriginalBusinessStatus: OriginalBusinessStatus
-            WebDomains:
-            - WebDomains
-            - WebDomains
-            dunsNumber: dunsNumber
-            Naics:
-            - Description: Description
-              Code: Code
-            - Description: Description
-              Code: Code
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceName: DatasourceName
+            Results:
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceName: DatasourceName
+            Results:
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
         TransactionRecordID: TransactionRecordID
         RecordStatus: RecordStatus
       properties:
@@ -1575,16 +1616,16 @@ components:
         Country: Country
         Supported: true
         Masks:
-        - OverwriteRepeating: true
-          IgnoreSpecialCharacter: true
-          PrependZeroes: true
-          Mask: Mask
-          IgnoreWhitespace: true
-        - OverwriteRepeating: true
-          IgnoreSpecialCharacter: true
-          PrependZeroes: true
-          Mask: Mask
-          IgnoreWhitespace: true
+          - OverwriteRepeating: true
+            IgnoreSpecialCharacter: true
+            PrependZeroes: true
+            Mask: Mask
+            IgnoreWhitespace: true
+          - OverwriteRepeating: true
+            IgnoreSpecialCharacter: true
+            PrependZeroes: true
+            Mask: Mask
+            IgnoreWhitespace: true
         Name: Name
       properties:
         Name:
@@ -1664,116 +1705,116 @@ components:
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         DatasourceName: DatasourceName
         Results:
-        - FullAddress: FullAddress
-          TaxIDNumber: TaxIDNumber
-          BusinessName: BusinessName
-          Address:
-            StreetName: StreetName
-            Suburb: Suburb
-            BuildingName: BuildingName
-            StateProvince: StateProvince
-            StateProvinceCode: StateProvinceCode
-            PostalCode: PostalCode
-            City: City
-            Address1: Address1
-            StreetType: StreetType
-            BuildingNumber: BuildingNumber
-            Country: Country
-            UnitNumber: UnitNumber
-            AddressType: AddressType
-            CountryCode: CountryCode
-          Telephone: Telephone
-          BusinessRegistrationNumber: BusinessRegistrationNumber
-          BusinessType: BusinessType
-          Website: Website
-          TaxIDNumbers:
-          - TaxIDNumbers
-          - TaxIDNumbers
-          Index: Index
-          WebDomain: WebDomain
-          MatchingScore: MatchingScore
-          Sic:
-          - Description: Description
-            Code: Code
-          - Description: Description
-            Code: Code
-          BusinessStatus: BusinessStatus
-          EmailAddress: EmailAddress
-          TradeStyleName: TradeStyleName
-          OtherBusinessNames:
-          - OtherBusinessNames
-          - OtherBusinessNames
-          BusinessTaxIDNumber: BusinessTaxIDNumber
-          JurisdictionOfIncorporation: JurisdictionOfIncorporation
-          BusinessLicenseNumber: BusinessLicenseNumber
-          OriginalBusinessStatus: OriginalBusinessStatus
-          WebDomains:
-          - WebDomains
-          - WebDomains
-          dunsNumber: dunsNumber
-          Naics:
-          - Description: Description
-            Code: Code
-          - Description: Description
-            Code: Code
-        - FullAddress: FullAddress
-          TaxIDNumber: TaxIDNumber
-          BusinessName: BusinessName
-          Address:
-            StreetName: StreetName
-            Suburb: Suburb
-            BuildingName: BuildingName
-            StateProvince: StateProvince
-            StateProvinceCode: StateProvinceCode
-            PostalCode: PostalCode
-            City: City
-            Address1: Address1
-            StreetType: StreetType
-            BuildingNumber: BuildingNumber
-            Country: Country
-            UnitNumber: UnitNumber
-            AddressType: AddressType
-            CountryCode: CountryCode
-          Telephone: Telephone
-          BusinessRegistrationNumber: BusinessRegistrationNumber
-          BusinessType: BusinessType
-          Website: Website
-          TaxIDNumbers:
-          - TaxIDNumbers
-          - TaxIDNumbers
-          Index: Index
-          WebDomain: WebDomain
-          MatchingScore: MatchingScore
-          Sic:
-          - Description: Description
-            Code: Code
-          - Description: Description
-            Code: Code
-          BusinessStatus: BusinessStatus
-          EmailAddress: EmailAddress
-          TradeStyleName: TradeStyleName
-          OtherBusinessNames:
-          - OtherBusinessNames
-          - OtherBusinessNames
-          BusinessTaxIDNumber: BusinessTaxIDNumber
-          JurisdictionOfIncorporation: JurisdictionOfIncorporation
-          BusinessLicenseNumber: BusinessLicenseNumber
-          OriginalBusinessStatus: OriginalBusinessStatus
-          WebDomains:
-          - WebDomains
-          - WebDomains
-          dunsNumber: dunsNumber
-          Naics:
-          - Description: Description
-            Code: Code
-          - Description: Description
-            Code: Code
+          - FullAddress: FullAddress
+            TaxIDNumber: TaxIDNumber
+            BusinessName: BusinessName
+            Address:
+              StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvince: StateProvince
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+              AddressType: AddressType
+              CountryCode: CountryCode
+            Telephone: Telephone
+            BusinessRegistrationNumber: BusinessRegistrationNumber
+            BusinessType: BusinessType
+            Website: Website
+            TaxIDNumbers:
+              - TaxIDNumbers
+              - TaxIDNumbers
+            Index: Index
+            WebDomain: WebDomain
+            MatchingScore: MatchingScore
+            Sic:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+            BusinessStatus: BusinessStatus
+            EmailAddress: EmailAddress
+            TradeStyleName: TradeStyleName
+            OtherBusinessNames:
+              - OtherBusinessNames
+              - OtherBusinessNames
+            BusinessTaxIDNumber: BusinessTaxIDNumber
+            JurisdictionOfIncorporation: JurisdictionOfIncorporation
+            BusinessLicenseNumber: BusinessLicenseNumber
+            OriginalBusinessStatus: OriginalBusinessStatus
+            WebDomains:
+              - WebDomains
+              - WebDomains
+            dunsNumber: dunsNumber
+            Naics:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+          - FullAddress: FullAddress
+            TaxIDNumber: TaxIDNumber
+            BusinessName: BusinessName
+            Address:
+              StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvince: StateProvince
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+              AddressType: AddressType
+              CountryCode: CountryCode
+            Telephone: Telephone
+            BusinessRegistrationNumber: BusinessRegistrationNumber
+            BusinessType: BusinessType
+            Website: Website
+            TaxIDNumbers:
+              - TaxIDNumbers
+              - TaxIDNumbers
+            Index: Index
+            WebDomain: WebDomain
+            MatchingScore: MatchingScore
+            Sic:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+            BusinessStatus: BusinessStatus
+            EmailAddress: EmailAddress
+            TradeStyleName: TradeStyleName
+            OtherBusinessNames:
+              - OtherBusinessNames
+              - OtherBusinessNames
+            BusinessTaxIDNumber: BusinessTaxIDNumber
+            JurisdictionOfIncorporation: JurisdictionOfIncorporation
+            BusinessLicenseNumber: BusinessLicenseNumber
+            OriginalBusinessStatus: OriginalBusinessStatus
+            WebDomains:
+              - WebDomains
+              - WebDomains
+            dunsNumber: dunsNumber
+            Naics:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
       properties:
         Results:
           description: ""
@@ -1798,8 +1839,8 @@ components:
       description: ""
       example:
         ConsentForDataSources:
-        - ConsentForDataSources
-        - ConsentForDataSources
+          - ConsentForDataSources
+          - ConsentForDataSources
         Test: true
         Timeout: 0
         CallBackUrl: CallBackUrl
@@ -1807,10 +1848,10 @@ components:
         SearchType: Live
         CountryCode: CountryCode
         RequestErrors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         Business:
           BusinessName: BusinessName
           JurisdictionOfIncorporation: JurisdictionOfIncorporation
@@ -1838,8 +1879,8 @@ components:
         SearchType:
           description: The type of search to perform. i.e 'Live' or 'Demo'
           enum:
-          - Live
-          - Demo
+            - Live
+            - Demo
           type: string
         PackageId:
           description: The Package ID to run the transaction under which can be obtained
@@ -1878,8 +1919,8 @@ components:
           nullable: true
           type: array
       required:
-      - countryCode
-      - packageId
+        - countryCode
+        - packageId
       type: object
     BusinessSearchRequest.BusinessSearchModel:
       additionalProperties: false
@@ -1937,240 +1978,240 @@ components:
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         ProductName: ProductName
         Record:
           Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
           DatasourceResults:
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceName: DatasourceName
-            Results:
-            - FullAddress: FullAddress
-              TaxIDNumber: TaxIDNumber
-              BusinessName: BusinessName
-              Address:
-                StreetName: StreetName
-                Suburb: Suburb
-                BuildingName: BuildingName
-                StateProvince: StateProvince
-                StateProvinceCode: StateProvinceCode
-                PostalCode: PostalCode
-                City: City
-                Address1: Address1
-                StreetType: StreetType
-                BuildingNumber: BuildingNumber
-                Country: Country
-                UnitNumber: UnitNumber
-                AddressType: AddressType
-                CountryCode: CountryCode
-              Telephone: Telephone
-              BusinessRegistrationNumber: BusinessRegistrationNumber
-              BusinessType: BusinessType
-              Website: Website
-              TaxIDNumbers:
-              - TaxIDNumbers
-              - TaxIDNumbers
-              Index: Index
-              WebDomain: WebDomain
-              MatchingScore: MatchingScore
-              Sic:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-              BusinessStatus: BusinessStatus
-              EmailAddress: EmailAddress
-              TradeStyleName: TradeStyleName
-              OtherBusinessNames:
-              - OtherBusinessNames
-              - OtherBusinessNames
-              BusinessTaxIDNumber: BusinessTaxIDNumber
-              JurisdictionOfIncorporation: JurisdictionOfIncorporation
-              BusinessLicenseNumber: BusinessLicenseNumber
-              OriginalBusinessStatus: OriginalBusinessStatus
-              WebDomains:
-              - WebDomains
-              - WebDomains
-              dunsNumber: dunsNumber
-              Naics:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-            - FullAddress: FullAddress
-              TaxIDNumber: TaxIDNumber
-              BusinessName: BusinessName
-              Address:
-                StreetName: StreetName
-                Suburb: Suburb
-                BuildingName: BuildingName
-                StateProvince: StateProvince
-                StateProvinceCode: StateProvinceCode
-                PostalCode: PostalCode
-                City: City
-                Address1: Address1
-                StreetType: StreetType
-                BuildingNumber: BuildingNumber
-                Country: Country
-                UnitNumber: UnitNumber
-                AddressType: AddressType
-                CountryCode: CountryCode
-              Telephone: Telephone
-              BusinessRegistrationNumber: BusinessRegistrationNumber
-              BusinessType: BusinessType
-              Website: Website
-              TaxIDNumbers:
-              - TaxIDNumbers
-              - TaxIDNumbers
-              Index: Index
-              WebDomain: WebDomain
-              MatchingScore: MatchingScore
-              Sic:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-              BusinessStatus: BusinessStatus
-              EmailAddress: EmailAddress
-              TradeStyleName: TradeStyleName
-              OtherBusinessNames:
-              - OtherBusinessNames
-              - OtherBusinessNames
-              BusinessTaxIDNumber: BusinessTaxIDNumber
-              JurisdictionOfIncorporation: JurisdictionOfIncorporation
-              BusinessLicenseNumber: BusinessLicenseNumber
-              OriginalBusinessStatus: OriginalBusinessStatus
-              WebDomains:
-              - WebDomains
-              - WebDomains
-              dunsNumber: dunsNumber
-              Naics:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceName: DatasourceName
-            Results:
-            - FullAddress: FullAddress
-              TaxIDNumber: TaxIDNumber
-              BusinessName: BusinessName
-              Address:
-                StreetName: StreetName
-                Suburb: Suburb
-                BuildingName: BuildingName
-                StateProvince: StateProvince
-                StateProvinceCode: StateProvinceCode
-                PostalCode: PostalCode
-                City: City
-                Address1: Address1
-                StreetType: StreetType
-                BuildingNumber: BuildingNumber
-                Country: Country
-                UnitNumber: UnitNumber
-                AddressType: AddressType
-                CountryCode: CountryCode
-              Telephone: Telephone
-              BusinessRegistrationNumber: BusinessRegistrationNumber
-              BusinessType: BusinessType
-              Website: Website
-              TaxIDNumbers:
-              - TaxIDNumbers
-              - TaxIDNumbers
-              Index: Index
-              WebDomain: WebDomain
-              MatchingScore: MatchingScore
-              Sic:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-              BusinessStatus: BusinessStatus
-              EmailAddress: EmailAddress
-              TradeStyleName: TradeStyleName
-              OtherBusinessNames:
-              - OtherBusinessNames
-              - OtherBusinessNames
-              BusinessTaxIDNumber: BusinessTaxIDNumber
-              JurisdictionOfIncorporation: JurisdictionOfIncorporation
-              BusinessLicenseNumber: BusinessLicenseNumber
-              OriginalBusinessStatus: OriginalBusinessStatus
-              WebDomains:
-              - WebDomains
-              - WebDomains
-              dunsNumber: dunsNumber
-              Naics:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-            - FullAddress: FullAddress
-              TaxIDNumber: TaxIDNumber
-              BusinessName: BusinessName
-              Address:
-                StreetName: StreetName
-                Suburb: Suburb
-                BuildingName: BuildingName
-                StateProvince: StateProvince
-                StateProvinceCode: StateProvinceCode
-                PostalCode: PostalCode
-                City: City
-                Address1: Address1
-                StreetType: StreetType
-                BuildingNumber: BuildingNumber
-                Country: Country
-                UnitNumber: UnitNumber
-                AddressType: AddressType
-                CountryCode: CountryCode
-              Telephone: Telephone
-              BusinessRegistrationNumber: BusinessRegistrationNumber
-              BusinessType: BusinessType
-              Website: Website
-              TaxIDNumbers:
-              - TaxIDNumbers
-              - TaxIDNumbers
-              Index: Index
-              WebDomain: WebDomain
-              MatchingScore: MatchingScore
-              Sic:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
-              BusinessStatus: BusinessStatus
-              EmailAddress: EmailAddress
-              TradeStyleName: TradeStyleName
-              OtherBusinessNames:
-              - OtherBusinessNames
-              - OtherBusinessNames
-              BusinessTaxIDNumber: BusinessTaxIDNumber
-              JurisdictionOfIncorporation: JurisdictionOfIncorporation
-              BusinessLicenseNumber: BusinessLicenseNumber
-              OriginalBusinessStatus: OriginalBusinessStatus
-              WebDomains:
-              - WebDomains
-              - WebDomains
-              dunsNumber: dunsNumber
-              Naics:
-              - Description: Description
-                Code: Code
-              - Description: Description
-                Code: Code
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceName: DatasourceName
+              Results:
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceName: DatasourceName
+              Results:
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
           TransactionRecordID: TransactionRecordID
           RecordStatus: RecordStatus
         UploadedDt: 2000-01-23T04:56:07.000+00:00
@@ -2221,8 +2262,8 @@ components:
         method call
       example:
         ConsentForDataSources:
-        - ConsentForDataSources
-        - ConsentForDataSources
+          - ConsentForDataSources
+          - ConsentForDataSources
         CustomerReferenceID: CustomerReferenceID
         VerificationType: Live
         Timeout: 0
@@ -2248,74 +2289,74 @@ components:
               key: CountrySpecific
           YearOfIncorporation: 5
           PeopleOfSignificantControl:
-          - DayOfBirth: DayOfBirth
-            BusinessName: BusinessName
-            YearOfBirth: YearOfBirth
-            FullName: FullName
-            MonthOfBirth: MonthOfBirth
-            FirstSurname: FirstSurname
-            SecondSurname: SecondSurname
-            FirstGivenName: FirstGivenName
-            MiddleName: MiddleName
-          - DayOfBirth: DayOfBirth
-            BusinessName: BusinessName
-            YearOfBirth: YearOfBirth
-            FullName: FullName
-            MonthOfBirth: MonthOfBirth
-            FirstSurname: FirstSurname
-            SecondSurname: SecondSurname
-            FirstGivenName: FirstGivenName
-            MiddleName: MiddleName
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
           Filings: true
           Location:
-          - StreetName: StreetName
-            Suburb: Suburb
-            BuildingName: BuildingName
-            StateProvinceCode: StateProvinceCode
-            PostalCode: PostalCode
-            Index: 5
-            City: City
-            Address1: Address1
-            StreetType: StreetType
-            County: County
-            poBox: poBox
-            BuildingNumber: BuildingNumber
-            Country: Country
-            UnitNumber: UnitNumber
-          - StreetName: StreetName
-            Suburb: Suburb
-            BuildingName: BuildingName
-            StateProvinceCode: StateProvinceCode
-            PostalCode: PostalCode
-            Index: 5
-            City: City
-            Address1: Address1
-            StreetType: StreetType
-            County: County
-            poBox: poBox
-            BuildingNumber: BuildingNumber
-            Country: Country
-            UnitNumber: UnitNumber
+            - StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              Index: 5
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              County: County
+              poBox: poBox
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+            - StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              Index: 5
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              County: County
+              poBox: poBox
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
         PackageId: PackageId
         VerboseMode: false
         CleansedAddress: true
         CountryCode: CountryCode
         RequestErrors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         RequestMetadata:
-        - Channel: Channel
-          Value: Value
-        - Channel: Channel
-          Value: Value
+          - Channel: Channel
+            Value: Value
+          - Channel: Channel
+            Value: Value
       properties:
         VerificationType:
           description: The type of verification to perform. i.e 'Live' or 'Demo'
           enum:
-          - Live
-          - Demo
+            - Live
+            - Demo
           type: string
         PackageId:
           description: The Package ID to run the transaction under which can be obtained
@@ -2374,9 +2415,9 @@ components:
           nullable: true
           type: array
       required:
-      - businessDataFields
-      - countryCode
-      - packageId
+        - businessDataFields
+        - countryCode
+        - packageId
       type: object
     BusinessVerifyRequest.Metadata:
       additionalProperties: false
@@ -2401,10 +2442,10 @@ components:
       additionalProperties: false
       example:
         RequiredFieldMetadata:
-        - FieldLabel: FieldLabel
-          FieldName: FieldName
-        - FieldLabel: FieldLabel
-          FieldName: FieldName
+          - FieldLabel: FieldLabel
+            FieldName: FieldName
+          - FieldLabel: FieldLabel
+            FieldName: FieldName
         SupportsCredentialValidation: true
       properties:
         SupportsCredentialValidation:
@@ -2560,18 +2601,18 @@ components:
           State: State
           YearOfExpiry: 7
         NationalIds:
-        - Type: Type
-          DistrictOfIssue: DistrictOfIssue
-          CountyOfIssue: CountyOfIssue
-          Number: Number
-          CityOfIssue: CityOfIssue
-          ProvinceOfIssue: ProvinceOfIssue
-        - Type: Type
-          DistrictOfIssue: DistrictOfIssue
-          CountyOfIssue: CountyOfIssue
-          Number: Number
-          CityOfIssue: CityOfIssue
-          ProvinceOfIssue: ProvinceOfIssue
+          - Type: Type
+            DistrictOfIssue: DistrictOfIssue
+            CountyOfIssue: CountyOfIssue
+            Number: Number
+            CityOfIssue: CityOfIssue
+            ProvinceOfIssue: ProvinceOfIssue
+          - Type: Type
+            DistrictOfIssue: DistrictOfIssue
+            CountyOfIssue: CountyOfIssue
+            Number: Number
+            CityOfIssue: CityOfIssue
+            ProvinceOfIssue: ProvinceOfIssue
         Risk:
           CallbackUrl: CallbackUrl
           Action: Action
@@ -2628,24 +2669,24 @@ components:
           FinancialInformationDocument: true
           YearOfIncorporation: 1
           PeopleOfSignificantControl:
-          - DayOfBirth: DayOfBirth
-            BusinessName: BusinessName
-            YearOfBirth: YearOfBirth
-            FullName: FullName
-            MonthOfBirth: MonthOfBirth
-            FirstSurname: FirstSurname
-            SecondSurname: SecondSurname
-            FirstGivenName: FirstGivenName
-            MiddleName: MiddleName
-          - DayOfBirth: DayOfBirth
-            BusinessName: BusinessName
-            YearOfBirth: YearOfBirth
-            FullName: FullName
-            MonthOfBirth: MonthOfBirth
-            FirstSurname: FirstSurname
-            SecondSurname: SecondSurname
-            FirstGivenName: FirstGivenName
-            MiddleName: MiddleName
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
           Filings: true
       properties:
         PersonInfo:
@@ -2715,31 +2756,31 @@ components:
       description: A result from a particular datasource
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         DatasourceFields:
-        - Status: Status
-          TruMatchThreshold: TruMatchThreshold
-          TruMatchValue: TruMatchValue
-          FieldGroup: FieldGroup
-          FieldName: FieldName
-        - Status: Status
-          TruMatchThreshold: TruMatchThreshold
-          TruMatchValue: TruMatchValue
-          FieldGroup: FieldGroup
-          FieldName: FieldName
+          - Status: Status
+            TruMatchThreshold: TruMatchThreshold
+            TruMatchValue: TruMatchValue
+            FieldGroup: FieldGroup
+            FieldName: FieldName
+          - Status: Status
+            TruMatchThreshold: TruMatchThreshold
+            TruMatchValue: TruMatchValue
+            FieldGroup: FieldGroup
+            FieldName: FieldName
         AppendedFields:
-        - Data: ""
-          FieldName: FieldName
-        - Data: ""
-          FieldName: FieldName
+          - Data: ""
+            FieldName: FieldName
+          - Data: ""
+            FieldName: FieldName
         DatasourceStatus: DatasourceStatus
         DatasourceName: DatasourceName
         FieldGroups:
-        - FieldGroups
-        - FieldGroups
+          - FieldGroups
+          - FieldGroups
       properties:
         DatasourceStatus:
           description: ""
@@ -2949,8 +2990,8 @@ components:
           minLength: 1
           type: string
       required:
-      - countryCode
-      - providerName
+        - countryCode
+        - providerName
       type: object
     NationalId:
       additionalProperties: false
@@ -3185,63 +3226,63 @@ components:
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         DatasourceResults:
-        - Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
-          DatasourceFields:
-          - Status: Status
-            TruMatchThreshold: TruMatchThreshold
-            TruMatchValue: TruMatchValue
-            FieldGroup: FieldGroup
-            FieldName: FieldName
-          - Status: Status
-            TruMatchThreshold: TruMatchThreshold
-            TruMatchValue: TruMatchValue
-            FieldGroup: FieldGroup
-            FieldName: FieldName
-          AppendedFields:
-          - Data: ""
-            FieldName: FieldName
-          - Data: ""
-            FieldName: FieldName
-          DatasourceStatus: DatasourceStatus
-          DatasourceName: DatasourceName
-          FieldGroups:
-          - FieldGroups
-          - FieldGroups
-        - Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
-          DatasourceFields:
-          - Status: Status
-            TruMatchThreshold: TruMatchThreshold
-            TruMatchValue: TruMatchValue
-            FieldGroup: FieldGroup
-            FieldName: FieldName
-          - Status: Status
-            TruMatchThreshold: TruMatchThreshold
-            TruMatchValue: TruMatchValue
-            FieldGroup: FieldGroup
-            FieldName: FieldName
-          AppendedFields:
-          - Data: ""
-            FieldName: FieldName
-          - Data: ""
-            FieldName: FieldName
-          DatasourceStatus: DatasourceStatus
-          DatasourceName: DatasourceName
-          FieldGroups:
-          - FieldGroups
-          - FieldGroups
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceFields:
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+            AppendedFields:
+              - Data: ""
+                FieldName: FieldName
+              - Data: ""
+                FieldName: FieldName
+            DatasourceStatus: DatasourceStatus
+            DatasourceName: DatasourceName
+            FieldGroups:
+              - FieldGroups
+              - FieldGroups
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceFields:
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+            AppendedFields:
+              - Data: ""
+                FieldName: FieldName
+              - Data: ""
+                FieldName: FieldName
+            DatasourceStatus: DatasourceStatus
+            DatasourceName: DatasourceName
+            FieldGroups:
+              - FieldGroups
+              - FieldGroups
         SecondaryRecordStatus: SecondaryRecordStatus
         TransactionRecordID: TransactionRecordID
         Rule:
@@ -3333,35 +3374,35 @@ components:
         BusinessType: BusinessType
         Website: Website
         TaxIDNumbers:
-        - TaxIDNumbers
-        - TaxIDNumbers
+          - TaxIDNumbers
+          - TaxIDNumbers
         Index: Index
         WebDomain: WebDomain
         MatchingScore: MatchingScore
         Sic:
-        - Description: Description
-          Code: Code
-        - Description: Description
-          Code: Code
+          - Description: Description
+            Code: Code
+          - Description: Description
+            Code: Code
         BusinessStatus: BusinessStatus
         EmailAddress: EmailAddress
         TradeStyleName: TradeStyleName
         OtherBusinessNames:
-        - OtherBusinessNames
-        - OtherBusinessNames
+          - OtherBusinessNames
+          - OtherBusinessNames
         BusinessTaxIDNumber: BusinessTaxIDNumber
         JurisdictionOfIncorporation: JurisdictionOfIncorporation
         BusinessLicenseNumber: BusinessLicenseNumber
         OriginalBusinessStatus: OriginalBusinessStatus
         WebDomains:
-        - WebDomains
-        - WebDomains
+          - WebDomains
+          - WebDomains
         dunsNumber: dunsNumber
         Naics:
-        - Description: Description
-          Code: Code
-        - Description: Description
-          Code: Code
+          - Description: Description
+            Code: Code
+          - Description: Description
+            Code: Code
       properties:
         Index:
           description: ""
@@ -3618,78 +3659,78 @@ components:
           nullable: true
           type: string
       required:
-      - transactionID
+        - transactionID
       type: object
     TransactionRecordResult:
       additionalProperties: false
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         ProductName: ProductName
         CustomerReferenceID: CustomerReferenceID
         Record:
           Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
           DatasourceResults:
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceFields:
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            AppendedFields:
-            - Data: ""
-              FieldName: FieldName
-            - Data: ""
-              FieldName: FieldName
-            DatasourceStatus: DatasourceStatus
-            DatasourceName: DatasourceName
-            FieldGroups:
-            - FieldGroups
-            - FieldGroups
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceFields:
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            AppendedFields:
-            - Data: ""
-              FieldName: FieldName
-            - Data: ""
-              FieldName: FieldName
-            DatasourceStatus: DatasourceStatus
-            DatasourceName: DatasourceName
-            FieldGroups:
-            - FieldGroups
-            - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
           SecondaryRecordStatus: SecondaryRecordStatus
           TransactionRecordID: TransactionRecordID
           Rule:
@@ -3703,12 +3744,12 @@ components:
         CompletedDt: 2000-01-23T04:56:07.000+00:00
         TransactionID: TransactionID
         InputFields:
-        - FieldGroup: FieldGroup
-          Value: Value
-          FieldName: FieldName
-        - FieldGroup: FieldGroup
-          Value: Value
-          FieldName: FieldName
+          - FieldGroup: FieldGroup
+            Value: Value
+            FieldName: FieldName
+          - FieldGroup: FieldGroup
+            Value: Value
+            FieldName: FieldName
       properties:
         TransactionID:
           description: The id for the transaction it will be a GUID
@@ -3832,8 +3873,8 @@ components:
       description: The verification call for the Normalized API is a POST method call
       example:
         ConsentForDataSources:
-        - ConsentForDataSources
-        - ConsentForDataSources
+          - ConsentForDataSources
+          - ConsentForDataSources
         ProviderName: ProviderName
         ProviderCredentials:
           Username3: Username3
@@ -3878,18 +3919,18 @@ components:
             State: State
             YearOfExpiry: 7
           NationalIds:
-          - Type: Type
-            DistrictOfIssue: DistrictOfIssue
-            CountyOfIssue: CountyOfIssue
-            Number: Number
-            CityOfIssue: CityOfIssue
-            ProvinceOfIssue: ProvinceOfIssue
-          - Type: Type
-            DistrictOfIssue: DistrictOfIssue
-            CountyOfIssue: CountyOfIssue
-            Number: Number
-            CityOfIssue: CityOfIssue
-            ProvinceOfIssue: ProvinceOfIssue
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
           Risk:
             CallbackUrl: CallbackUrl
             Action: Action
@@ -3946,30 +3987,30 @@ components:
             FinancialInformationDocument: true
             YearOfIncorporation: 1
             PeopleOfSignificantControl:
-            - DayOfBirth: DayOfBirth
-              BusinessName: BusinessName
-              YearOfBirth: YearOfBirth
-              FullName: FullName
-              MonthOfBirth: MonthOfBirth
-              FirstSurname: FirstSurname
-              SecondSurname: SecondSurname
-              FirstGivenName: FirstGivenName
-              MiddleName: MiddleName
-            - DayOfBirth: DayOfBirth
-              BusinessName: BusinessName
-              YearOfBirth: YearOfBirth
-              FullName: FullName
-              MonthOfBirth: MonthOfBirth
-              FirstSurname: FirstSurname
-              SecondSurname: SecondSurname
-              FirstGivenName: FirstGivenName
-              MiddleName: MiddleName
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
             Filings: true
       properties:
         VerificationType:
           description: The type of verification to perform. i.e 'Live' or 'Demo'
           enum:
-          - Live
+            - Live
           type: string
         PackageId:
           description: The Package ID to run the transaction under which can be obtained
@@ -4015,27 +4056,27 @@ components:
         ProviderCredentials:
           $ref: '#/components/schemas/VerifyAddressCredentials'
       required:
-      - callBackUrl
-      - countryCode
-      - dataFields
-      - packageId
-      - providerName
+        - callBackUrl
+        - countryCode
+        - dataFields
+        - packageId
+        - providerName
       type: object
     VerifyAddressResult:
       additionalProperties: false
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         Schema:
           RequiredFieldMetadata:
-          - FieldLabel: FieldLabel
-            FieldName: FieldName
-          - FieldLabel: FieldLabel
-            FieldName: FieldName
+            - FieldLabel: FieldLabel
+              FieldName: FieldName
+            - FieldLabel: FieldLabel
+              FieldName: FieldName
           SupportsCredentialValidation: true
         TransactionID: TransactionID
       properties:
@@ -4056,8 +4097,8 @@ components:
       description: The verification call for the Normalized API is a POST method call
       example:
         ConsentForDataSources:
-        - ConsentForDataSources
-        - ConsentForDataSources
+          - ConsentForDataSources
+          - ConsentForDataSources
         CustomerReferenceID: CustomerReferenceID
         VerificationType: Live
         Timeout: 0
@@ -4094,18 +4135,18 @@ components:
             State: State
             YearOfExpiry: 7
           NationalIds:
-          - Type: Type
-            DistrictOfIssue: DistrictOfIssue
-            CountyOfIssue: CountyOfIssue
-            Number: Number
-            CityOfIssue: CityOfIssue
-            ProvinceOfIssue: ProvinceOfIssue
-          - Type: Type
-            DistrictOfIssue: DistrictOfIssue
-            CountyOfIssue: CountyOfIssue
-            Number: Number
-            CityOfIssue: CityOfIssue
-            ProvinceOfIssue: ProvinceOfIssue
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
           Risk:
             CallbackUrl: CallbackUrl
             Action: Action
@@ -4162,41 +4203,41 @@ components:
             FinancialInformationDocument: true
             YearOfIncorporation: 1
             PeopleOfSignificantControl:
-            - DayOfBirth: DayOfBirth
-              BusinessName: BusinessName
-              YearOfBirth: YearOfBirth
-              FullName: FullName
-              MonthOfBirth: MonthOfBirth
-              FirstSurname: FirstSurname
-              SecondSurname: SecondSurname
-              FirstGivenName: FirstGivenName
-              MiddleName: MiddleName
-            - DayOfBirth: DayOfBirth
-              BusinessName: BusinessName
-              YearOfBirth: YearOfBirth
-              FullName: FullName
-              MonthOfBirth: MonthOfBirth
-              FirstSurname: FirstSurname
-              SecondSurname: SecondSurname
-              FirstGivenName: FirstGivenName
-              MiddleName: MiddleName
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
             Filings: true
         RequestErrors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         RequestMetadata:
-        - Channel: Channel
-          Value: Value
-        - Channel: Channel
-          Value: Value
+          - Channel: Channel
+            Value: Value
+          - Channel: Channel
+            Value: Value
       properties:
         VerificationType:
           description: The type of verification to perform. i.e 'Live' or 'Demo'
           enum:
-          - Live
-          - Demo
+            - Live
+            - Demo
           type: string
         PackageId:
           description: The Package ID to run the transaction under which can be obtained
@@ -4255,9 +4296,9 @@ components:
           nullable: true
           type: array
       required:
-      - countryCode
-      - dataFields
-      - packageId
+        - countryCode
+        - dataFields
+        - packageId
       type: object
     VerifyRequest.Metadata:
       additionalProperties: false
@@ -4283,71 +4324,71 @@ components:
       description: ""
       example:
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         ProductName: ProductName
         CustomerReferenceID: CustomerReferenceID
         Record:
           Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
           DatasourceResults:
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceFields:
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            AppendedFields:
-            - Data: ""
-              FieldName: FieldName
-            - Data: ""
-              FieldName: FieldName
-            DatasourceStatus: DatasourceStatus
-            DatasourceName: DatasourceName
-            FieldGroups:
-            - FieldGroups
-            - FieldGroups
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceFields:
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            AppendedFields:
-            - Data: ""
-              FieldName: FieldName
-            - Data: ""
-              FieldName: FieldName
-            DatasourceStatus: DatasourceStatus
-            DatasourceName: DatasourceName
-            FieldGroups:
-            - FieldGroups
-            - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
           SecondaryRecordStatus: SecondaryRecordStatus
           TransactionRecordID: TransactionRecordID
           Rule:
@@ -4401,71 +4442,71 @@ components:
       example:
         Status: Status
         Errors:
-        - Message: Message
-          Code: Code
-        - Message: Message
-          Code: Code
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
         ProductName: ProductName
         CustomerReferenceID: CustomerReferenceID
         Record:
           Errors:
-          - Message: Message
-            Code: Code
-          - Message: Message
-            Code: Code
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
           DatasourceResults:
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceFields:
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            AppendedFields:
-            - Data: ""
-              FieldName: FieldName
-            - Data: ""
-              FieldName: FieldName
-            DatasourceStatus: DatasourceStatus
-            DatasourceName: DatasourceName
-            FieldGroups:
-            - FieldGroups
-            - FieldGroups
-          - Errors:
-            - Message: Message
-              Code: Code
-            - Message: Message
-              Code: Code
-            DatasourceFields:
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            - Status: Status
-              TruMatchThreshold: TruMatchThreshold
-              TruMatchValue: TruMatchValue
-              FieldGroup: FieldGroup
-              FieldName: FieldName
-            AppendedFields:
-            - Data: ""
-              FieldName: FieldName
-            - Data: ""
-              FieldName: FieldName
-            DatasourceStatus: DatasourceStatus
-            DatasourceName: DatasourceName
-            FieldGroups:
-            - FieldGroups
-            - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
           SecondaryRecordStatus: SecondaryRecordStatus
           TransactionRecordID: TransactionRecordID
           Rule:
@@ -4478,8 +4519,8 @@ components:
         CountryCode: CountryCode
         CompletedDt: 2000-01-23T04:56:07.000+00:00
         DatasourcesAwaitingResult:
-        - DatasourcesAwaitingResult
-        - DatasourcesAwaitingResult
+          - DatasourcesAwaitingResult
+          - DatasourcesAwaitingResult
         TransactionID: TransactionID
       properties:
         TransactionID:

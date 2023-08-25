@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'com.trulioo'
-version = '3.0.0'
+version = '3.0.2'
 
 buildscript {
     repositories {
@@ -89,15 +89,15 @@ if(hasProperty('target') && target == 'android') {
     publishing {
         publications {
             maven(MavenPublication) {
-               artifactId = 'normalizedapi'
-               from components.java
+                artifactId = 'normalizedapi'
+                from components.java
             }
         }
     }
 
     task execute(type:JavaExec) {
-       main = System.getProperty('mainClass')
-       classpath = sourceSets.main.runtimeClasspath
+        main = System.getProperty('mainClass')
+        classpath = sourceSets.main.runtimeClasspath
     }
 }
 

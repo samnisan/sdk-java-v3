@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "com.trulioo",
     name := "normalizedapi",
-    version := "3.0.0",
+    version := "3.0.2",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),

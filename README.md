@@ -1,6 +1,6 @@
 # Trulioo SDK for Java #
 
-## Version 3.0.0
+## Version 3.0.2
 
 ### Introduction
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.trulioo</groupId>
   <artifactId>normalizedapi</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.trulioo:normalizedapi:3.0.0"
+     implementation "com.trulioo:normalizedapi:3.0.2"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/normalizedapi-3.0.0.jar`
+* `target/normalizedapi-3.0.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -131,6 +131,7 @@ All URIs are relative to *http://api.trulioo.com*
 | *BusinessApi*      | [**getBusinessRegistrationNumbersWithParameters**](docs/BusinessApi.md#getBusinessRegistrationNumbersWithParameters) | **GET** /v3/business/businessregistrationnumbers/{countryCode}/{jurisdictionCode} | getBusinessRegistrationNumbersWithParameters |
 | *BusinessApi*      | [**getCountryJOI**](docs/BusinessApi.md#getCountryJOI)                                                               | **GET** /v3/business/countryJOI/                                                  | GetCountryJOI                                |
 | *BusinessApi*      | [**getCountryJOIWithCountryCode**](docs/BusinessApi.md#getCountryJOIWithCountryCode)                                 | **GET** /v3/business/countryJOI/{countryCode}                                     | getCountryJOIWithCountryCode                 |
+| *ConfigurationApi* | [**getAllDatasources**](docs/ConfigurationApi.md#getAllDatasources)                                                  | **GET** /v3/configuration/alldatasources/{packageID}                              | Get All Datasources by Country               |
 | *ConnectionApi*    | [**sayHello**](docs/ConnectionApi.md#sayHello)                                                                       | **GET** /v3/connection/sayhello/{name}                                            | SayHello                                     |
 | *ConnectionApi*    | [**testAuthentication**](docs/ConnectionApi.md#testAuthentication)                                                   | **GET** /v3/connection/testauthentication                                         | TestAuthentication                           |
 | *VerificationsApi* | [**getDocumentDownload**](docs/VerificationsApi.md#getDocumentDownload)                                              | **GET** /v3/verifications/documentdownload/{transactionRecordID}/{fieldName}      | DocumentDownload                             |
@@ -141,57 +142,57 @@ All URIs are relative to *http://api.trulioo.com*
 
 ## Documentation for Models
 
- - [Address](docs/Address.md)
- - [AppendedField](docs/AppendedField.md)
- - [Business](docs/Business.md)
- - [BusinessDataFields](docs/BusinessDataFields.md)
- - [BusinessLocation](docs/BusinessLocation.md)
- - [BusinessRecord](docs/BusinessRecord.md)
- - [BusinessRegistrationNumber](docs/BusinessRegistrationNumber.md)
- - [BusinessRegistrationNumberMask](docs/BusinessRegistrationNumberMask.md)
- - [BusinessResult](docs/BusinessResult.md)
- - [BusinessSearchRequest](docs/BusinessSearchRequest.md)
- - [BusinessSearchRequestBusinessSearchModel](docs/BusinessSearchRequestBusinessSearchModel.md)
- - [BusinessSearchResponse](docs/BusinessSearchResponse.md)
- - [BusinessSearchResponseIndustryCode](docs/BusinessSearchResponseIndustryCode.md)
- - [BusinessVerifyRequest](docs/BusinessVerifyRequest.md)
- - [BusinessVerifyRequestMetadata](docs/BusinessVerifyRequestMetadata.md)
- - [CommonProviderCacheSchema](docs/CommonProviderCacheSchema.md)
- - [CommonRequiredFieldMetadata](docs/CommonRequiredFieldMetadata.md)
- - [Communication](docs/Communication.md)
- - [Consent](docs/Consent.md)
- - [CountrySubdivision](docs/CountrySubdivision.md)
- - [DataField](docs/DataField.md)
- - [DataFields](docs/DataFields.md)
- - [DatasourceField](docs/DatasourceField.md)
- - [DatasourceResult](docs/DatasourceResult.md)
- - [DemoPause](docs/DemoPause.md)
- - [Document](docs/Document.md)
- - [DriverLicence](docs/DriverLicence.md)
- - [Location](docs/Location.md)
- - [LocationAdditionalFields](docs/LocationAdditionalFields.md)
- - [LoginSchemaRequest](docs/LoginSchemaRequest.md)
- - [NationalId](docs/NationalId.md)
- - [Passport](docs/Passport.md)
- - [PersonInfo](docs/PersonInfo.md)
- - [PersonInfoAdditionalFields](docs/PersonInfoAdditionalFields.md)
- - [PersonOfSignificantControl](docs/PersonOfSignificantControl.md)
- - [ProblemDetails](docs/ProblemDetails.md)
- - [Record](docs/Record.md)
- - [RecordRule](docs/RecordRule.md)
- - [Result](docs/Result.md)
- - [RiskMonitorSettings](docs/RiskMonitorSettings.md)
- - [ServiceError](docs/ServiceError.md)
- - [SubmitAddressVerificationCredentialsRequest](docs/SubmitAddressVerificationCredentialsRequest.md)
- - [TransactionRecordResult](docs/TransactionRecordResult.md)
- - [TransactionStatus](docs/TransactionStatus.md)
- - [VerifyAddressCredentials](docs/VerifyAddressCredentials.md)
- - [VerifyAddressRequest](docs/VerifyAddressRequest.md)
- - [VerifyAddressResult](docs/VerifyAddressResult.md)
- - [VerifyRequest](docs/VerifyRequest.md)
- - [VerifyRequestMetadata](docs/VerifyRequestMetadata.md)
- - [VerifyResult](docs/VerifyResult.md)
- - [VerifyResultPartial](docs/VerifyResultPartial.md)
+- [Address](docs/Address.md)
+- [AppendedField](docs/AppendedField.md)
+- [Business](docs/Business.md)
+- [BusinessDataFields](docs/BusinessDataFields.md)
+- [BusinessLocation](docs/BusinessLocation.md)
+- [BusinessRecord](docs/BusinessRecord.md)
+- [BusinessRegistrationNumber](docs/BusinessRegistrationNumber.md)
+- [BusinessRegistrationNumberMask](docs/BusinessRegistrationNumberMask.md)
+- [BusinessResult](docs/BusinessResult.md)
+- [BusinessSearchRequest](docs/BusinessSearchRequest.md)
+- [BusinessSearchRequestBusinessSearchModel](docs/BusinessSearchRequestBusinessSearchModel.md)
+- [BusinessSearchResponse](docs/BusinessSearchResponse.md)
+- [BusinessSearchResponseIndustryCode](docs/BusinessSearchResponseIndustryCode.md)
+- [BusinessVerifyRequest](docs/BusinessVerifyRequest.md)
+- [BusinessVerifyRequestMetadata](docs/BusinessVerifyRequestMetadata.md)
+- [CommonProviderCacheSchema](docs/CommonProviderCacheSchema.md)
+- [CommonRequiredFieldMetadata](docs/CommonRequiredFieldMetadata.md)
+- [Communication](docs/Communication.md)
+- [Consent](docs/Consent.md)
+- [CountrySubdivision](docs/CountrySubdivision.md)
+- [DataField](docs/DataField.md)
+- [DataFields](docs/DataFields.md)
+- [DatasourceField](docs/DatasourceField.md)
+- [DatasourceResult](docs/DatasourceResult.md)
+- [DemoPause](docs/DemoPause.md)
+- [Document](docs/Document.md)
+- [DriverLicence](docs/DriverLicence.md)
+- [Location](docs/Location.md)
+- [LocationAdditionalFields](docs/LocationAdditionalFields.md)
+- [LoginSchemaRequest](docs/LoginSchemaRequest.md)
+- [NationalId](docs/NationalId.md)
+- [Passport](docs/Passport.md)
+- [PersonInfo](docs/PersonInfo.md)
+- [PersonInfoAdditionalFields](docs/PersonInfoAdditionalFields.md)
+- [PersonOfSignificantControl](docs/PersonOfSignificantControl.md)
+- [ProblemDetails](docs/ProblemDetails.md)
+- [Record](docs/Record.md)
+- [RecordRule](docs/RecordRule.md)
+- [Result](docs/Result.md)
+- [RiskMonitorSettings](docs/RiskMonitorSettings.md)
+- [ServiceError](docs/ServiceError.md)
+- [SubmitAddressVerificationCredentialsRequest](docs/SubmitAddressVerificationCredentialsRequest.md)
+- [TransactionRecordResult](docs/TransactionRecordResult.md)
+- [TransactionStatus](docs/TransactionStatus.md)
+- [VerifyAddressCredentials](docs/VerifyAddressCredentials.md)
+- [VerifyAddressRequest](docs/VerifyAddressRequest.md)
+- [VerifyAddressResult](docs/VerifyAddressResult.md)
+- [VerifyRequest](docs/VerifyRequest.md)
+- [VerifyRequestMetadata](docs/VerifyRequestMetadata.md)
+- [VerifyResult](docs/VerifyResult.md)
+- [VerifyResultPartial](docs/VerifyResultPartial.md)
 
 
 ## Documentation for Authorization

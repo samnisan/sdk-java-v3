@@ -25,10 +25,11 @@ The verification call for the Normalized API is a POST method call
 
 ## Enum: VerificationTypeEnum
 
-| Name | Value |
-|---- | -----|
+| Name | Value            |
+|------|------------------|
 | LIVE | &quot;Live&quot; |
 | DEMO | &quot;Demo&quot; |
+| TEST | &quot;Test&quot; |
 
 
 

@@ -55,12 +55,12 @@ public class ApiClient {
     private String basePath = "https://api.trulioo.com";
     private String tokenUrl = "https://auth-api.trulioo.com/connect/token";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
-    new ServerConfiguration(
-      basePath,
-      "No description provided",
-      new HashMap<String, ServerVariable>()
-    )
-  ));
+            new ServerConfiguration(
+                    basePath,
+                    "No description provided",
+                    new HashMap<String, ServerVariable>()
+            )
+    ));
     protected Integer serverIndex = 0;
     protected Map<String, String> serverVariables = null;
     private boolean debugging = false;
@@ -183,8 +183,8 @@ public class ApiClient {
         if (!"".equals(this.tokenUrl) && !URI.create(this.tokenUrl).isAbsolute()) {
             URI uri = URI.create(getBasePath());
             this.tokenUrl = uri.getScheme() + ":" +
-                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
-                this.tokenUrl;
+                    (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
+                    this.tokenUrl;
             if (!URI.create(this.tokenUrl).isAbsolute()) {
                 throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
             }
@@ -273,7 +273,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("trulioo-sdk-java/3.0.0");
+        setUserAgent("trulioo-sdk-java/3.0.2");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -1371,7 +1371,7 @@ public class ApiClient {
             if (serverIndex != null) {
                 if (serverIndex < 0 || serverIndex >= servers.size()) {
                     throw new ArrayIndexOutOfBoundsException(String.format(
-                    "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
+                            "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
                     ));
                 }
                 baseURL = servers.get(serverIndex).URL(serverVariables);
@@ -1539,7 +1539,7 @@ public class ApiClient {
      * @param mpBuilder MultipartBody.Builder 
      * @param key The key of the Header element
      * @param file The file to add to the Header
-     */ 
+     */
     private void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
         Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + file.getName() + "\"");
         MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
@@ -1584,8 +1584,8 @@ public class ApiClient {
                 if (request.tag() instanceof ApiCallback) {
                     final ApiCallback callback = (ApiCallback) request.tag();
                     return originalResponse.newBuilder()
-                        .body(new ProgressResponseBody(originalResponse.body(), callback))
-                        .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), callback))
+                            .build();
                 }
                 return originalResponse;
             }
@@ -1650,9 +1650,9 @@ public class ApiClient {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(keyManagers, trustManagers, new SecureRandom());
             httpClient = httpClient.newBuilder()
-                            .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
-                            .hostnameVerifier(hostnameVerifier)
-                            .build();
+                    .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
+                    .hostnameVerifier(hostnameVerifier)
+                    .build();
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }
