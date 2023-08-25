@@ -118,7 +118,7 @@ public class ConnectionApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call sayHelloValidateBeforeCall(String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             throw new ApiException("Missing the required parameter 'name' when calling sayHello(Async)");
         }
 
