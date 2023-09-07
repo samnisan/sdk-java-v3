@@ -1,0 +1,4575 @@
+openapi: 3.0.1
+info:
+  title: NAPI
+  version: v3
+servers:
+  - url: api.trulioo.com
+security:
+  - oAuth2: []
+paths:
+  /v3/business/search:
+    post:
+      description: Calling this method will perform a business search.
+      operationId: businessSearch
+      requestBody:
+        content:
+          application/json:
+            example:
+              SearchType: Live
+              Business:
+                BusinessName: ACME Consulting
+              CountryCode: US
+            schema:
+              $ref: '#/components/schemas/BusinessSearchRequest'
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example:
+                TransactionID: c03ad3c9-da6b-452c-8a2e-fd1923973b99
+                UploadedDt: 2015-02-19T13:25:50
+                Record:
+                  TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
+                  DatasourceResults:
+                    - Results:
+                        - Index: "1"
+                          BusinessName: ACME Consulting
+                          MatchingScore: "1"
+                          BusinessRegistrationNumber: "1234"
+                      DatasourceName: Business Search Datasource
+                      Errors: []
+                  Errors: []
+              schema:
+                $ref: '#/components/schemas/BusinessSearchResponse'
+          description: Success
+      summary: Search
+      tags:
+        - Business
+      x-content-type: application/json
+      x-accepts: application/json
+  /v3/business/countryJOI/{countryCode}:
+    get:
+      description: Gets the jurisdictions of incorporation for a country.
+      operationId: getCountryJOIWithCountryCode
+      parameters:
+        - description: "Country alpha2 code, get via the call to https://developer.trulioo.com/reference#getcountrycodes"
+          explode: false
+          in: path
+          name: countryCode
+          required: true
+          schema:
+            maxLength: 2
+            minLength: 2
+            pattern: "^[a-z]*$"
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CountrySubdivision'
+                type: array
+          description: Success
+      summary: getCountryJOIWithCountryCode
+      tags:
+        - Business
+      x-accepts: application/json
+  /v3/business/countryJOI/:
+    get:
+      description: Gets all jurisdictions of incorporation for all countries.
+      operationId: getCountryJOI
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CountrySubdivision'
+                type: array
+          description: Success
+      summary: GetCountryJOI
+      tags:
+        - Business
+      x-accepts: application/json
+  /v3/business/businessregistrationnumbers:
+    get:
+      description: Gets the currently configured business registration numbers for
+        optionally supplied country and jurisdiction
+      operationId: getBusinessRegistrationNumbers
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BusinessRegistrationNumber'
+                type: array
+          description: Success
+      summary: GetBusinessRegistrationNumbers
+      tags:
+        - Business
+      x-accepts: application/json
+  /v3/business/businessregistrationnumbers/{countryCode}/{jurisdictionCode}:
+    get:
+      description: Gets the currently configured business registration numbers for
+        a country and optionally supplied jurisdiction
+      operationId: getBusinessRegistrationNumbersWithParameters
+      parameters:
+        - description: "Country alpha2 code, get via the call to https://developer.trulioo.com/reference#getcountrycodes"
+          explode: false
+          in: path
+          name: countryCode
+          required: true
+          schema:
+            maxLength: 2
+            minLength: 2
+            pattern: "^[a-z]*$"
+            type: string
+          style: simple
+        - description: "Optional jurisdiction code, get via the call to https://developer.trulioo.com/reference#getcountrysubdivisions"
+          explode: false
+          in: path
+          name: jurisdictionCode
+          required: true
+          schema:
+            maxLength: 25
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BusinessRegistrationNumber'
+                type: array
+          description: Success
+      summary: getBusinessRegistrationNumbersWithParameters
+      tags:
+        - Business
+      x-accepts: application/json
+  /v3/business/verify:
+    post:
+      description: Calling this method will perform a verification. If your account
+        includes address cleansing set the CleansedAddress flag to get additional
+        address information in the result.  You can query configuration to get what
+        fields are available to you in each each country. It is also possible to get
+        sample requests from the customer portal.
+      operationId: businessVerify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessVerifyRequest'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example:
+                TransactionID: c03ad3c9-da6b-452c-8a2e-fd1923973b99
+                UploadedDt: 2015-02-19T13:25:50
+                Record:
+                  TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
+                  RecordStatus: match
+                  DatasourceResults:
+                    - DatasourceStatus: match
+                      DatasourceName: Consumer Intl
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Resident Files
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: International Watchlist
+                      DatasourceFields:
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: MiddleName
+                          Status: match
+                        - FieldName: FirstSurName
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                  Errors:
+                    - Code: "1008"
+                      Message: "Field format invalid: FirstInitial"
+                Errors: []
+              schema:
+                $ref: '#/components/schemas/VerifyResult'
+          description: Success
+      summary: Verify
+      tags:
+        - Business
+      x-content-type: application/json
+      x-accepts: application/json
+  /v3/connection/sayhello/{name}:
+    get:
+      description: "This method enables you to check if your system can connect to\
+        \ our system. You can even use a web browser to verify a connection to our\
+        \ system.\r\nApplied a maximum length for the name parameter of 100 via a\
+        \ route constraint"
+      operationId: sayHello
+      parameters:
+        - description: Name to be returned in the response
+          explode: false
+          in: path
+          name: name
+          required: true
+          schema:
+            maxLength: 100
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example:
+                TransactionID: 5f14cc1d-a984-4332-a3da-653741d8da54
+                Schema:
+                  supportsCredentialValidation: true
+                  requiredFieldMetadata:
+                    - fieldName: username
+                      fieldLabel: Email
+                    - fieldName: password
+                      fieldLabel: Password
+                Errors: []
+              schema: {}
+          description: The name that was in the request
+      summary: SayHello
+      tags:
+        - Connection
+      x-accepts: application/json
+  /v3/connection/testauthentication:
+    get:
+      description: This method enables you to check if your credentials are valid.
+        You will need to provide a valid token to ensure a successful response.
+      operationId: testAuthentication
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example: Hello JoeNapoli_API_Demo
+              schema:
+                type: string
+          description: Success
+      summary: TestAuthentication
+      tags:
+        - Connection
+      x-accepts: application/json
+  /v3/verifications/verify:
+    post:
+      description: Calling this method will perform a verification. If your account
+        includes address cleansing set the CleansedAddress flag to get additional
+        address information in the result. You can query configuration to get what
+        fields are available to you in each each country. It is also possible to get
+        sample requests from the customer portal.
+      operationId: verify
+      requestBody:
+        content:
+          application/json:
+            example:
+              VerificationType: Demo
+              CleansedAddress: false
+              ConsentForDataSources:
+                - DataSource Name 1
+                - DataSource Name 2
+              CountryCode: IT
+              DataFields:
+                PersonInfo:
+                  FirstGivenName: Adelina
+                  FirstSurName: Mancini
+                  DayOfBirth: 4
+                  MonthOfBirth: 7
+                  YearOfBirth: 1978
+                  Gender: M
+                Location:
+                  BuildingNumber: "12"
+                  UnitNumber: "2"
+                  StreetName: VIA MACEDONIA
+                  City: NAPOLI
+                  StateProvinceCode: NA
+                  PostalCode: "80137"
+                  AdditionalFields:
+                    Address1: VIA MACEDONIA 12/2
+                Communication:
+                  Telephone: "817519358"
+                DriverLicence:
+                  Number: "12"
+                  State: WA
+                  DayOfExpiry: 5
+                  MonthOfExpiry: 1
+                  YearOfExpiry: 2021
+                NationalIds:
+                  - Number: FBCGQE44Z11T793L
+                    Type: NationalID
+                    CityOfIssue: PALERMO
+                    ProvinceOfIssue: PA
+                Passport:
+                  Mrz1: P<MANCINI<<ADELINA<<<<<<<<<<<<<<<<<<<<<<<<<<
+                  Mrz2: 99003853<1CZE1101018M1207046110101111<<<<<94
+                  Number: YA0000000
+                  DayOfExpiry: 5
+                  MonthOfExpiry: 1
+                  YearOfExpiry: 2021
+                CountrySpecific:
+                  IT:
+                    CountryOfBirth: IT
+                    CityOfBirth: POLLA
+                    ProvinceOfBirth: SA
+                    ItIdDocumentType: Identity Card
+                    ItIdDocumentNumber: AC91833762
+                    ItIdDocumentYearOfIssue: "2007"
+                    ItIdDocumentMonthOfIssue: "02"
+                    ItIdDocumentDayOfIssue: "14"
+                    ItIdDocumentCountryOfIssue: IT
+              VerboseMode: false
+              RequestMetadata: []
+            schema:
+              $ref: '#/components/schemas/VerifyRequest'
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example:
+                TransactionID: c03ad3c9-da6b-452c-8a2e-fd1923973b99
+                UploadedDt: 2015-02-19T13:25:50
+                Record:
+                  TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
+                  RecordStatus: match
+                  DatasourceResults:
+                    - DatasourceStatus: match
+                      DatasourceName: Consumer Intl
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Resident Files
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: International Watchlist
+                      DatasourceFields:
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: MiddleName
+                          Status: match
+                        - FieldName: FirstSurName
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                  Errors:
+                    - Code: "1008"
+                      Message: "Field format invalid: FirstInitial"
+                Errors: []
+              schema:
+                $ref: '#/components/schemas/VerifyResult'
+          description: Success
+      summary: Verify
+      tags:
+        - Verifications
+      x-content-type: application/json
+      x-accepts: application/json
+  /v3/verifications/transactionrecord/{transactionRecordID}:
+    get:
+      description: "This endpoint will provide the final results once the transaction\
+        \ completes. The response will have match signals per Name and Address fields\
+        \ and notify if the individual is verified. It may take a few minutes for\
+        \ the transaction to complete.Once the results are available, the callback\
+        \ status updates to “Success”. The Transaction Record ID (TRID) will be sent\
+        \ to the callback URL provided."
+      operationId: getTransactionRecord
+      parameters:
+        - description: "id of the transactionrecord, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionRecordID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example:
+                InputFields: []
+                TransactionID: c03ad3c9-da6b-452c-8a2e-fd1923973b99
+                UploadedDt: 2015-02-19T13:25:50
+                Record:
+                  TransactionRecordID: c47d485d-005a-4e0c-8ef0-06f16ddbaeb6
+                  RecordStatus: match
+                  DatasourceResults:
+                    - DatasourceStatus: match
+                      DatasourceName: Consumer Intl
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: Resident Files
+                      DatasourceFields:
+                        - FieldName: FirstSurName
+                          Status: match
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: BuildingName
+                          Status: match
+                        - FieldName: BuildingNumber
+                          Status: match
+                        - FieldName: City
+                          Status: match
+                        - FieldName: County
+                          Status: match
+                        - FieldName: StreetName
+                          Status: match
+                        - FieldName: StreetType
+                          Status: match
+                        - FieldName: PostalCode
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                    - DatasourceStatus: match
+                      DatasourceName: International Watchlist
+                      DatasourceFields:
+                        - FieldName: FirstGivenName
+                          Status: match
+                        - FieldName: MiddleName
+                          Status: match
+                        - FieldName: FirstSurName
+                          Status: match
+                      AppendedFields: []
+                      Errors: []
+                      FieldGroups: []
+                  Errors:
+                    - Code: "1008"
+                      Message: "Field format invalid: FirstInitial"
+                Errors: []
+              schema:
+                $ref: '#/components/schemas/TransactionRecordResult'
+          description: Success
+      summary: GetTransactionRecord
+      tags:
+        - Verifications
+      x-accepts: application/json
+  /v3/verifications/transaction/{transactionID}/status:
+    get:
+      description: "This method is used to retrieve the processing status of an asynchronous\
+        \ transaction. The response for this method includes the processing status\
+        \ of the verification, the TransactionID, the TransactionRecordID as well\
+        \ as whether the verification request has timed out."
+      operationId: getTransactionStatus
+      parameters:
+        - description: "id of the asynchronous transaction, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              example:
+                TransactionId: 111-2222-333-4444-5555
+                TransactionRecordId: 6666-7777-8888-99999
+                Status: InProgress
+                UploadedDt: 2017-07-11T21:47:50
+                IsTimedOut: false
+              schema:
+                $ref: '#/components/schemas/TransactionStatus'
+          description: Success
+      summary: GetTransactionStatus
+      tags:
+        - Verifications
+      x-accepts: application/json
+  /v3/verifications/documentdownload/{transactionRecordID}/{fieldName}:
+    get:
+      description: Download Document
+      operationId: getDocumentDownload
+      parameters:
+        - description: "id of the transactionrecord, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionRecordID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+        - description: document field name
+          explode: false
+          in: path
+          name: fieldName
+          required: true
+          schema:
+            maxLength: 256
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: Success
+      summary: DocumentDownload
+      tags:
+        - Verifications
+      x-accepts: application/json
+  /v3/verifications/transaction/{transactionID}/partialresult:
+    get:
+      description: This method is used to retrieve the partial result of an asynchronous
+        transaction.
+      operationId: getPartialResult
+      parameters:
+        - description: "id of the asynchronous transaction, this will be a GUID"
+          explode: false
+          in: path
+          name: transactionID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyResultPartial'
+          description: Success
+      summary: PartialResult
+      tags:
+        - Verifications
+      x-accepts: application/json
+  /v3/configuration/alldatasources/{packageID}:
+    get:
+      description: Gets all datasource groups configured for your product.
+      operationId: getAllDatasources
+      parameters:
+        - description: Package ID
+          explode: false
+          in: path
+          name: packageID
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+          style: simple
+      responses:
+        "400":
+          description: "Your request could not be processed, there should be more\
+            \ details in the response."
+        "401":
+          description: The token you provided is not valid or you are using an account
+            that is not enabled.
+        "408":
+          description: The request took longer to process than we waited.
+        "415":
+          description: You asked for a media type that we do not support. You should
+            request application/json in the Content-Type header.
+        "500":
+          description: An error happened on the server without a specific message.
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NormalizedDatasourceGroupsWithCountry'
+                type: array
+          description: Success
+      summary: Get All Datasources by Country
+      tags:
+        - Configuration
+      x-accepts: application/json
+components:
+  schemas:
+    Address:
+      additionalProperties: false
+      description: ""
+      example:
+        StreetName: StreetName
+        Suburb: Suburb
+        BuildingName: BuildingName
+        StateProvince: StateProvince
+        StateProvinceCode: StateProvinceCode
+        PostalCode: PostalCode
+        City: City
+        Address1: Address1
+        StreetType: StreetType
+        BuildingNumber: BuildingNumber
+        Country: Country
+        UnitNumber: UnitNumber
+        AddressType: AddressType
+        CountryCode: CountryCode
+      properties:
+        UnitNumber:
+          description: Flat/Unit/Apartment number of address
+          nullable: true
+          type: string
+        BuildingNumber:
+          description: House / Civic / Building number of address
+          nullable: true
+          type: string
+        BuildingName:
+          description: Name of building
+          nullable: true
+          type: string
+        StreetName:
+          description: Street name
+          nullable: true
+          type: string
+        StreetType:
+          description: "Street type of address (Typically St, Rd etc)"
+          nullable: true
+          type: string
+        City:
+          description: City
+          nullable: true
+          type: string
+        Suburb:
+          description: Suburb / Subdivision / Municipality
+          nullable: true
+          type: string
+        StateProvinceCode:
+          description: State or province of address. US sources expect 2 characters.
+            Australian sources expect 2 or 3 characters.
+          nullable: true
+          type: string
+        PostalCode:
+          description: ZIP Code or Postal Code
+          nullable: true
+          type: string
+        Address1:
+          description: Address1
+          nullable: true
+          type: string
+        AddressType:
+          description: Address Type
+          nullable: true
+          type: string
+        StateProvince:
+          description: State Province
+          nullable: true
+          type: string
+        Country:
+          description: ""
+          nullable: true
+          type: string
+        CountryCode:
+          description: ""
+          nullable: true
+          type: string
+      type: object
+    AppendedField:
+      additionalProperties: false
+      description: "<p>Types of fields you will see here include</p>\r\n<table class=\"\
+        help-page-table\">\r\n  <thead>\r\n    <tr>\r\n      <td>\r\n        <b>FieldName</b>\r\
+        \n      </td>\r\n      <td>\r\n        <b>Data</b>\r\n      </td>\r\n    \
+        \  <td>\r\n        <b>Comments</b>\r\n      </td>\r\n    </tr>\r\n  </thead>\r\
+        \n  <tbody>\r\n    <tr>\r\n      <td>WatchlistState</td>\r\n      <td>Clear</td>\r\
+        \n      <td>If the submitted individual did not match any watchlist checks,\
+        \ the appended field data will appear as clear</td>\r\n    </tr>\r\n    <tr>\r\
+        \n      <td>WatchlistState</td>\r\n      <td>Hit</td>\r\n      <td>If the\
+        \ submitted individual triggered a watchlist hit, the watchlistdata field\
+        \ also be included as below:</td>\r\n    </tr>\r\n    <tr>\r\n      <td>WatchlistData</td>\r\
+        \n      <td>Name|URL\\tName2|URL</td>\r\n      <td> Name of the source a pipe\
+        \ (|) the url of the source each source is separated with a tab (\\t )</td>\r\
+        \n    </tr>\r\n    <tr>\r\n      <td>CanadaSixMonthResidency</td>\r\n    \
+        \  <td>YES</td>\r\n      <td>The Canadian Credit Agency provides a flag to\
+        \ indicate that an individual has been at the specified\r\n            residence\
+        \ for at least six months.The canadasixmonthresidency field is returned with\
+        \ a value of either YES or NO.</td>\r\n    </tr>\r\n    <tr>\r\n      <td>IsDeceased</td>\r\
+        \n      <td>False</td>\r\n      <td>The IsDeceased field is returned by various\
+        \ datasources to indicate whether the input information was screened against\
+        \ an available death file.\r\n            Check with your Trulioo Technical\
+        \ Account Manager to see which datasources support this option.</td>\r\n \
+        \   </tr>\r\n    <tr>\r\n      <td>IsDeceased</td>\r\n      <td>True</td>\r\
+        \n      <td></td>\r\n    </tr>\r\n    <tr>\r\n      <td>FraudFlag</td>\r\n\
+        \      <td>True</td>\r\n      <td></td>\r\n    </tr>\r\n    <tr>\r\n     \
+        \ <td>FraudFlag</td>\r\n      <td>False</td>\r\n      <td></td>\r\n    </tr>\r\
+        \n  </tbody>\r\n</table>\r\n<p>If you are retrieving transaction with address\
+        \ corrected values you will also see address fields in appended data</p>"
+      example:
+        Data: ""
+        FieldName: FieldName
+      properties:
+        FieldName:
+          description: ""
+          nullable: true
+          type: string
+        Data:
+          description: ""
+          nullable: true
+      type: object
+    Business:
+      additionalProperties: false
+      description: ""
+      example:
+        MonthOfIncorporation: 7
+        TaxIDNumber: TaxIDNumber
+        BusinessName: BusinessName
+        BusinessRegistrationNumber: BusinessRegistrationNumber
+        ShareholderListDocument: true
+        AnnualReport: true
+        DunsNumber: DunsNumber
+        RegistrationDetails: true
+        TradestyleName: TradestyleName
+        Entities: true
+        DayOfIncorporation: 4
+        ArticleOfAssociation: true
+        JurisdictionOfIncorporation: JurisdictionOfIncorporation
+        FinancialInformationDocument: true
+        YearOfIncorporation: 1
+        PeopleOfSignificantControl:
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
+        Filings: true
+      properties:
+        BusinessName:
+          description: Name of the business to be verified
+          nullable: true
+          type: string
+        TradestyleName:
+          description: Trade Style Name of the business to be verified
+          nullable: true
+          type: string
+        TaxIDNumber:
+          description: Tax ID Number of the business to be verified
+          nullable: true
+          type: string
+        BusinessRegistrationNumber:
+          description: Registration number of business to be verified
+          nullable: true
+          type: string
+        DayOfIncorporation:
+          description: Day of incorporation of the business to be verified
+          format: int32
+          nullable: true
+          type: integer
+        MonthOfIncorporation:
+          description: Month of incorporation of the business to be verified
+          format: int32
+          nullable: true
+          type: integer
+        YearOfIncorporation:
+          description: Year of incorporation of the business to be verified
+          format: int32
+          nullable: true
+          type: integer
+        JurisdictionOfIncorporation:
+          description: Jurisdiction Of Incorporation of the business to be verified
+          nullable: true
+          type: string
+        ShareholderListDocument:
+          description: Whether or not to retrieve shareholderList document
+          nullable: true
+          type: boolean
+        FinancialInformationDocument:
+          description: Whether or not to retrieve financial information document
+          nullable: true
+          type: boolean
+        DunsNumber:
+          description: Duns Number
+          nullable: true
+          type: string
+        Entities:
+          description: Whether or not to retrieve entity detail
+          nullable: true
+          type: boolean
+        PeopleOfSignificantControl:
+          description: A list of people to check for their matchstatus
+          items:
+            $ref: '#/components/schemas/PersonOfSignificantControl'
+          nullable: true
+          type: array
+        Filings:
+          description: Whether or not to retrieve filing detail
+          nullable: true
+          type: boolean
+        ArticleOfAssociation:
+          description: Whether or not to retrieve article of association document
+          nullable: true
+          type: boolean
+        RegistrationDetails:
+          description: Whether or not to retrieve registration detail document
+          nullable: true
+          type: boolean
+        AnnualReport:
+          description: Whether or not to retrieve annual report document
+          nullable: true
+          type: boolean
+      type: object
+    BusinessDataFields:
+      additionalProperties: false
+      description: The data field name-value pairs for the data elements on which
+        the verification is to be performed
+      example:
+        MonthOfIncorporation: 1
+        TaxIDNumber: TaxIDNumber
+        BusinessName: BusinessName
+        Telephone: Telephone
+        BusinessRegistrationNumber: BusinessRegistrationNumber
+        ShareholderListDocument: true
+        AnnualReport: true
+        DunsNumber: DunsNumber
+        RegistrationDetails: true
+        TradestyleName: TradestyleName
+        Entities: true
+        DayOfIncorporation: 6
+        ArticleOfAssociation: true
+        JurisdictionOfIncorporation: JurisdictionOfIncorporation
+        FinancialInformationDocument: true
+        CountrySpecific:
+          key:
+            key: CountrySpecific
+        YearOfIncorporation: 5
+        PeopleOfSignificantControl:
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
+          - DayOfBirth: DayOfBirth
+            BusinessName: BusinessName
+            YearOfBirth: YearOfBirth
+            FullName: FullName
+            MonthOfBirth: MonthOfBirth
+            FirstSurname: FirstSurname
+            SecondSurname: SecondSurname
+            FirstGivenName: FirstGivenName
+            MiddleName: MiddleName
+        Filings: true
+        Location:
+          - StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            PostalCode: PostalCode
+            Index: 5
+            City: City
+            Address1: Address1
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
+          - StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            PostalCode: PostalCode
+            Index: 5
+            City: City
+            Address1: Address1
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
+      properties:
+        BusinessName:
+          description: Name of the business to be verified
+          nullable: true
+          type: string
+        TradestyleName:
+          description: Trade Style Name of the business to be verified
+          nullable: true
+          type: string
+        TaxIDNumber:
+          description: Tax ID Number of the business to be verified
+          nullable: true
+          type: string
+        BusinessRegistrationNumber:
+          description: Registration number of business to be verified
+          nullable: true
+          type: string
+        DayOfIncorporation:
+          description: Day of incorporation of the business to be verified
+          format: int32
+          nullable: true
+          type: integer
+        MonthOfIncorporation:
+          description: Month of incorporation of the business to be verified
+          format: int32
+          nullable: true
+          type: integer
+        YearOfIncorporation:
+          description: Year of incorporation of the business to be verified
+          format: int32
+          nullable: true
+          type: integer
+        JurisdictionOfIncorporation:
+          description: Jurisdiction Of Incorporation of the business to be verified
+          nullable: true
+          type: string
+        ShareholderListDocument:
+          description: Whether or not to retrieve shareholderList document
+          nullable: true
+          type: boolean
+        FinancialInformationDocument:
+          description: Whether or not to retrieve financial information document
+          nullable: true
+          type: boolean
+        DunsNumber:
+          description: Duns Number
+          nullable: true
+          type: string
+        Entities:
+          description: Whether or not to retrieve entity detail
+          nullable: true
+          type: boolean
+        PeopleOfSignificantControl:
+          description: A list of people to check for their matchstatus
+          items:
+            $ref: '#/components/schemas/PersonOfSignificantControl'
+          nullable: true
+          type: array
+        Filings:
+          description: Whether or not to retrieve filing detail
+          nullable: true
+          type: boolean
+        ArticleOfAssociation:
+          description: Whether or not to retrieve article of association document
+          nullable: true
+          type: boolean
+        RegistrationDetails:
+          description: Whether or not to retrieve registration detail document
+          nullable: true
+          type: boolean
+        AnnualReport:
+          description: Whether or not to retrieve annual report document
+          nullable: true
+          type: boolean
+        Telephone:
+          description: Telephone number of the business to be verified
+          nullable: true
+          type: string
+        CountrySpecific:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: "CountrySpecific fields\r\n{\"CountryCode\" : {\"Field1\" :\
+            \ \"Value\",\r\n\"Field2\" : \"Value\"\r\n}}"
+          nullable: true
+          type: object
+        Location:
+          description: Location Information
+          items:
+            $ref: '#/components/schemas/BusinessLocation'
+          nullable: true
+          type: array
+      type: object
+    BusinessLocation:
+      additionalProperties: false
+      description: ""
+      example:
+        StreetName: StreetName
+        Suburb: Suburb
+        BuildingName: BuildingName
+        StateProvinceCode: StateProvinceCode
+        PostalCode: PostalCode
+        Index: 5
+        City: City
+        Address1: Address1
+        StreetType: StreetType
+        County: County
+        poBox: poBox
+        BuildingNumber: BuildingNumber
+        Country: Country
+        UnitNumber: UnitNumber
+      properties:
+        Index:
+          description: The index in the list of locations.  Currently only 1 and 2
+            are valid if in a collection of more than 1
+          format: int32
+          nullable: true
+          type: integer
+        BuildingNumber:
+          description: House / Civic / Building number of home address
+          nullable: true
+          type: string
+        BuildingName:
+          description: Name of building of home address
+          nullable: true
+          type: string
+        UnitNumber:
+          description: Flat/Unit/Apartment number of home address
+          nullable: true
+          type: string
+        StreetName:
+          description: Street name of primary residence
+          nullable: true
+          type: string
+        StreetType:
+          description: "Street type of primary residence (e.g. St, Rd etc)"
+          nullable: true
+          type: string
+        City:
+          description: City of home address
+          nullable: true
+          type: string
+        Suburb:
+          description: Suburb / Subdivision / Municipality of home address
+          nullable: true
+          type: string
+        County:
+          description: County / District of home address
+          nullable: true
+          type: string
+        StateProvinceCode:
+          description: State of primary residence. US sources expect 2 characters.
+            Australian sources expect 2 or 3 characters.
+          nullable: true
+          type: string
+        Country:
+          description: Country of physical address (ISO 3166-1 alpha-2)
+          nullable: true
+          type: string
+        PostalCode:
+          description: ZIP Code or Postal Code of home address
+          nullable: true
+          type: string
+        poBox:
+          description: Post Office Box
+          nullable: true
+          type: string
+        Address1:
+          description: A non-segmented version of the first line of the address
+          nullable: true
+          type: string
+      type: object
+    BusinessRecord:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        DatasourceResults:
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceName: DatasourceName
+            Results:
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceName: DatasourceName
+            Results:
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+              - FullAddress: FullAddress
+                TaxIDNumber: TaxIDNumber
+                BusinessName: BusinessName
+                Address:
+                  StreetName: StreetName
+                  Suburb: Suburb
+                  BuildingName: BuildingName
+                  StateProvince: StateProvince
+                  StateProvinceCode: StateProvinceCode
+                  PostalCode: PostalCode
+                  City: City
+                  Address1: Address1
+                  StreetType: StreetType
+                  BuildingNumber: BuildingNumber
+                  Country: Country
+                  UnitNumber: UnitNumber
+                  AddressType: AddressType
+                  CountryCode: CountryCode
+                Telephone: Telephone
+                BusinessRegistrationNumber: BusinessRegistrationNumber
+                BusinessType: BusinessType
+                Website: Website
+                TaxIDNumbers:
+                  - TaxIDNumbers
+                  - TaxIDNumbers
+                Index: Index
+                WebDomain: WebDomain
+                MatchingScore: MatchingScore
+                Sic:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+                BusinessStatus: BusinessStatus
+                EmailAddress: EmailAddress
+                TradeStyleName: TradeStyleName
+                OtherBusinessNames:
+                  - OtherBusinessNames
+                  - OtherBusinessNames
+                BusinessTaxIDNumber: BusinessTaxIDNumber
+                JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                BusinessLicenseNumber: BusinessLicenseNumber
+                OriginalBusinessStatus: OriginalBusinessStatus
+                WebDomains:
+                  - WebDomains
+                  - WebDomains
+                dunsNumber: dunsNumber
+                Naics:
+                  - Description: Description
+                    Code: Code
+                  - Description: Description
+                    Code: Code
+        TransactionRecordID: TransactionRecordID
+        RecordStatus: RecordStatus
+      properties:
+        TransactionRecordID:
+          description: "The TransactionRecordID, this is the ID you will use to fetch\
+            \ the transaction again."
+          nullable: true
+          type: string
+        RecordStatus:
+          description: '''match'' or ''nomatch'' if the verification passed the rules
+            configured on your account this will be ''match''.'
+          nullable: true
+          type: string
+        DatasourceResults:
+          description: Results for each datasource that was queried
+          items:
+            $ref: '#/components/schemas/BusinessResult'
+          nullable: true
+          type: array
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+      type: object
+    BusinessRegistrationNumber:
+      additionalProperties: false
+      description: ""
+      example:
+        Jurisdiction: Jurisdiction
+        Type: Type
+        Description: Description
+        Country: Country
+        Supported: true
+        Masks:
+          - OverwriteRepeating: true
+            IgnoreSpecialCharacter: true
+            PrependZeroes: true
+            Mask: Mask
+            IgnoreWhitespace: true
+          - OverwriteRepeating: true
+            IgnoreSpecialCharacter: true
+            PrependZeroes: true
+            Mask: Mask
+            IgnoreWhitespace: true
+        Name: Name
+      properties:
+        Name:
+          description: The name of the business registration number
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        Description:
+          description: Brief description of the business registration number
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        Country:
+          description: Country to which the business registration number applies
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        Jurisdiction:
+          description: Optional jurisdiction to which the business registration number
+            applies
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        Supported:
+          description: Whether the business registration number is supported by Trulioo's
+            systems
+          type: boolean
+        Type:
+          description: The specified type of this business registration number
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        Masks:
+          description: The mask(s) describing this business registration number
+          items:
+            $ref: '#/components/schemas/BusinessRegistrationNumberMask'
+          nullable: true
+          type: array
+      type: object
+    BusinessRegistrationNumberMask:
+      additionalProperties: false
+      description: ""
+      example:
+        OverwriteRepeating: true
+        IgnoreSpecialCharacter: true
+        PrependZeroes: true
+        Mask: Mask
+        IgnoreWhitespace: true
+      properties:
+        Mask:
+          description: The mask used to validate the format of the business registration
+            number
+          maxLength: 255
+          minLength: 0
+          nullable: true
+          type: string
+        IgnoreWhitespace:
+          description: Flag showing whether we can ignore whitespace
+          type: boolean
+        IgnoreSpecialCharacter:
+          description: Flag showing whether we can ignore special character
+          type: boolean
+        PrependZeroes:
+          description: Flag showing if 0s should be prepended to meet Mask Length
+          type: boolean
+        OverwriteRepeating:
+          description: Flag showing if repeating characters should be overwritten
+          type: boolean
+      type: object
+    BusinessResult:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        DatasourceName: DatasourceName
+        Results:
+          - FullAddress: FullAddress
+            TaxIDNumber: TaxIDNumber
+            BusinessName: BusinessName
+            Address:
+              StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvince: StateProvince
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+              AddressType: AddressType
+              CountryCode: CountryCode
+            Telephone: Telephone
+            BusinessRegistrationNumber: BusinessRegistrationNumber
+            BusinessType: BusinessType
+            Website: Website
+            TaxIDNumbers:
+              - TaxIDNumbers
+              - TaxIDNumbers
+            Index: Index
+            WebDomain: WebDomain
+            MatchingScore: MatchingScore
+            Sic:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+            BusinessStatus: BusinessStatus
+            EmailAddress: EmailAddress
+            TradeStyleName: TradeStyleName
+            OtherBusinessNames:
+              - OtherBusinessNames
+              - OtherBusinessNames
+            BusinessTaxIDNumber: BusinessTaxIDNumber
+            JurisdictionOfIncorporation: JurisdictionOfIncorporation
+            BusinessLicenseNumber: BusinessLicenseNumber
+            OriginalBusinessStatus: OriginalBusinessStatus
+            WebDomains:
+              - WebDomains
+              - WebDomains
+            dunsNumber: dunsNumber
+            Naics:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+          - FullAddress: FullAddress
+            TaxIDNumber: TaxIDNumber
+            BusinessName: BusinessName
+            Address:
+              StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvince: StateProvince
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+              AddressType: AddressType
+              CountryCode: CountryCode
+            Telephone: Telephone
+            BusinessRegistrationNumber: BusinessRegistrationNumber
+            BusinessType: BusinessType
+            Website: Website
+            TaxIDNumbers:
+              - TaxIDNumbers
+              - TaxIDNumbers
+            Index: Index
+            WebDomain: WebDomain
+            MatchingScore: MatchingScore
+            Sic:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+            BusinessStatus: BusinessStatus
+            EmailAddress: EmailAddress
+            TradeStyleName: TradeStyleName
+            OtherBusinessNames:
+              - OtherBusinessNames
+              - OtherBusinessNames
+            BusinessTaxIDNumber: BusinessTaxIDNumber
+            JurisdictionOfIncorporation: JurisdictionOfIncorporation
+            BusinessLicenseNumber: BusinessLicenseNumber
+            OriginalBusinessStatus: OriginalBusinessStatus
+            WebDomains:
+              - WebDomains
+              - WebDomains
+            dunsNumber: dunsNumber
+            Naics:
+              - Description: Description
+                Code: Code
+              - Description: Description
+                Code: Code
+      properties:
+        Results:
+          description: ""
+          items:
+            $ref: '#/components/schemas/Result'
+          nullable: true
+          type: array
+        DatasourceName:
+          description: ""
+          nullable: true
+          type: string
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    BusinessSearchRequest:
+      additionalProperties: false
+      description: ""
+      example:
+        ConsentForDataSources:
+          - ConsentForDataSources
+          - ConsentForDataSources
+        Test: true
+        Timeout: 0
+        CallBackUrl: CallBackUrl
+        PackageId: PackageId
+        SearchType: Live
+        CountryCode: CountryCode
+        RequestErrors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        Business:
+          BusinessName: BusinessName
+          JurisdictionOfIncorporation: JurisdictionOfIncorporation
+          Website: Website
+          dunsNumber: dunsNumber
+          Location:
+            StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            AdditionalFields:
+              Address1: Address1
+            PostalCode: PostalCode
+            City: City
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
+      properties:
+        Test:
+          readOnly: true
+          type: boolean
+        SearchType:
+          description: The type of search to perform. i.e 'Live' or 'Demo'
+          enum:
+            - Live
+            - Demo
+          type: string
+        PackageId:
+          description: The Package ID to run the transaction under which can be obtained
+            by your Customer Success Manager or via a support ticket.
+          maxLength: 36
+          minLength: 0
+          type: string
+        CallBackUrl:
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        Timeout:
+          format: int32
+          nullable: true
+          type: integer
+        ConsentForDataSources:
+          description: "Some datasources required your customer provide consent to\
+            \ access them.  Set that the customer has provided consent for each\r\n\
+            datasource that requires one.  If consent is not provided the datasource\
+            \ will not be queried."
+          items:
+            type: string
+          nullable: true
+          type: array
+        Business:
+          $ref: '#/components/schemas/BusinessSearchRequest.BusinessSearchModel'
+        CountryCode:
+          description: The country code for which the verification needs to be performed.
+          minLength: 1
+          type: string
+        RequestErrors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+      required:
+        - countryCode
+        - packageId
+      type: object
+    BusinessSearchRequest.BusinessSearchModel:
+      additionalProperties: false
+      description: Business Object
+      example:
+        BusinessName: BusinessName
+        JurisdictionOfIncorporation: JurisdictionOfIncorporation
+        Website: Website
+        dunsNumber: dunsNumber
+        Location:
+          StreetName: StreetName
+          Suburb: Suburb
+          BuildingName: BuildingName
+          StateProvinceCode: StateProvinceCode
+          AdditionalFields:
+            Address1: Address1
+          PostalCode: PostalCode
+          City: City
+          StreetType: StreetType
+          County: County
+          poBox: poBox
+          BuildingNumber: BuildingNumber
+          Country: Country
+          UnitNumber: UnitNumber
+      properties:
+        BusinessName:
+          description: Name of the business to be verified
+          maxLength: 250
+          minLength: 0
+          nullable: true
+          type: string
+        Website:
+          description: Website of the business
+          maxLength: 250
+          minLength: 0
+          nullable: true
+          type: string
+        JurisdictionOfIncorporation:
+          description: Jurisdiction Of Incorporation of the business to be verified
+          maxLength: 250
+          minLength: 0
+          nullable: true
+          type: string
+        dunsNumber:
+          description: DUNS number of the business to be verified
+          maxLength: 250
+          minLength: 0
+          nullable: true
+          type: string
+        Location:
+          $ref: '#/components/schemas/Location'
+      type: object
+    BusinessSearchResponse:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        ProductName: ProductName
+        Record:
+          Errors:
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
+          DatasourceResults:
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceName: DatasourceName
+              Results:
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceName: DatasourceName
+              Results:
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                - FullAddress: FullAddress
+                  TaxIDNumber: TaxIDNumber
+                  BusinessName: BusinessName
+                  Address:
+                    StreetName: StreetName
+                    Suburb: Suburb
+                    BuildingName: BuildingName
+                    StateProvince: StateProvince
+                    StateProvinceCode: StateProvinceCode
+                    PostalCode: PostalCode
+                    City: City
+                    Address1: Address1
+                    StreetType: StreetType
+                    BuildingNumber: BuildingNumber
+                    Country: Country
+                    UnitNumber: UnitNumber
+                    AddressType: AddressType
+                    CountryCode: CountryCode
+                  Telephone: Telephone
+                  BusinessRegistrationNumber: BusinessRegistrationNumber
+                  BusinessType: BusinessType
+                  Website: Website
+                  TaxIDNumbers:
+                    - TaxIDNumbers
+                    - TaxIDNumbers
+                  Index: Index
+                  WebDomain: WebDomain
+                  MatchingScore: MatchingScore
+                  Sic:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+                  BusinessStatus: BusinessStatus
+                  EmailAddress: EmailAddress
+                  TradeStyleName: TradeStyleName
+                  OtherBusinessNames:
+                    - OtherBusinessNames
+                    - OtherBusinessNames
+                  BusinessTaxIDNumber: BusinessTaxIDNumber
+                  JurisdictionOfIncorporation: JurisdictionOfIncorporation
+                  BusinessLicenseNumber: BusinessLicenseNumber
+                  OriginalBusinessStatus: OriginalBusinessStatus
+                  WebDomains:
+                    - WebDomains
+                    - WebDomains
+                  dunsNumber: dunsNumber
+                  Naics:
+                    - Description: Description
+                      Code: Code
+                    - Description: Description
+                      Code: Code
+          TransactionRecordID: TransactionRecordID
+          RecordStatus: RecordStatus
+        UploadedDt: 2000-01-23T04:56:07.000+00:00
+        CountryCode: CountryCode
+        TransactionID: TransactionID
+      properties:
+        TransactionID:
+          description: The id for the transaction it will be a GUID
+          nullable: true
+          type: string
+        UploadedDt:
+          description: Time in UTC
+          format: date-time
+          type: string
+        CountryCode:
+          description: The country code for which the verification was performed.
+          nullable: true
+          type: string
+        ProductName:
+          description: Product Name
+          nullable: true
+          type: string
+        Record:
+          $ref: '#/components/schemas/BusinessRecord'
+        Errors:
+          description: Collection of record errors
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+      type: object
+    BusinessSearchResponseIndustryCode:
+      additionalProperties: false
+      example:
+        Description: Description
+        Code: Code
+      properties:
+        Code:
+          nullable: true
+          type: string
+        Description:
+          nullable: true
+          type: string
+      type: object
+    BusinessVerifyRequest:
+      additionalProperties: false
+      description: The business verification call for the Normalized API is a POST
+        method call
+      example:
+        ConsentForDataSources:
+          - ConsentForDataSources
+          - ConsentForDataSources
+        CustomerReferenceID: CustomerReferenceID
+        VerificationType: Live
+        Timeout: 0
+        CallBackUrl: CallBackUrl
+        BusinessDataFields:
+          MonthOfIncorporation: 1
+          TaxIDNumber: TaxIDNumber
+          BusinessName: BusinessName
+          Telephone: Telephone
+          BusinessRegistrationNumber: BusinessRegistrationNumber
+          ShareholderListDocument: true
+          AnnualReport: true
+          DunsNumber: DunsNumber
+          RegistrationDetails: true
+          TradestyleName: TradestyleName
+          Entities: true
+          DayOfIncorporation: 6
+          ArticleOfAssociation: true
+          JurisdictionOfIncorporation: JurisdictionOfIncorporation
+          FinancialInformationDocument: true
+          CountrySpecific:
+            key:
+              key: CountrySpecific
+          YearOfIncorporation: 5
+          PeopleOfSignificantControl:
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
+          Filings: true
+          Location:
+            - StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              Index: 5
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              County: County
+              poBox: poBox
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+            - StreetName: StreetName
+              Suburb: Suburb
+              BuildingName: BuildingName
+              StateProvinceCode: StateProvinceCode
+              PostalCode: PostalCode
+              Index: 5
+              City: City
+              Address1: Address1
+              StreetType: StreetType
+              County: County
+              poBox: poBox
+              BuildingNumber: BuildingNumber
+              Country: Country
+              UnitNumber: UnitNumber
+        PackageId: PackageId
+        VerboseMode: false
+        CleansedAddress: true
+        CountryCode: CountryCode
+        RequestErrors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        RequestMetadata:
+          - Channel: Channel
+            Value: Value
+          - Channel: Channel
+            Value: Value
+      properties:
+        VerificationType:
+          description: The type of verification to perform. i.e 'Live' or 'Demo'
+          enum:
+            - Live
+            - Demo
+          type: string
+        PackageId:
+          description: The Package ID to run the transaction under which can be obtained
+            by your Customer Success Manager or via a support ticket.
+          maxLength: 36
+          minLength: 0
+          type: string
+        CallBackUrl:
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        Timeout:
+          format: int32
+          nullable: true
+          type: integer
+        CleansedAddress:
+          description: "Set to true if you want to receive address cleanse information,\r\
+            \nThis will only change the response if you have address cleansing enabled\
+            \ for the country you are querying for."
+          type: boolean
+        ConsentForDataSources:
+          description: "Some datasources required your customer provide consent to\
+            \ access them.  Set that the customer has provided consent for each\r\n\
+            datasource that requires one.  If consent is not provided the datasource\
+            \ will not be queried."
+          items:
+            type: string
+          nullable: true
+          type: array
+        CountryCode:
+          description: The country code for which the verification needs to be performed.
+          minLength: 1
+          type: string
+        CustomerReferenceID:
+          description: Customer Reference Id
+          maxLength: 128
+          minLength: 0
+          nullable: true
+          type: string
+        BusinessDataFields:
+          $ref: '#/components/schemas/BusinessDataFields'
+        RequestErrors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+        VerboseMode:
+          default: false
+          description: Verbose Mode Output Flag.
+          type: boolean
+        RequestMetadata:
+          items:
+            $ref: '#/components/schemas/BusinessVerifyRequest.Metadata'
+          nullable: true
+          type: array
+      required:
+        - businessDataFields
+        - countryCode
+        - packageId
+      type: object
+    BusinessVerifyRequest.Metadata:
+      additionalProperties: false
+      example:
+        Channel: Channel
+        Value: Value
+      properties:
+        Channel:
+          description: ""
+          maxLength: 32
+          minLength: 0
+          nullable: true
+          type: string
+        Value:
+          description: ""
+          maxLength: 255
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
+    CommonProviderCacheSchema:
+      additionalProperties: false
+      example:
+        RequiredFieldMetadata:
+          - FieldLabel: FieldLabel
+            FieldName: FieldName
+          - FieldLabel: FieldLabel
+            FieldName: FieldName
+        SupportsCredentialValidation: true
+      properties:
+        SupportsCredentialValidation:
+          nullable: true
+          type: boolean
+        RequiredFieldMetadata:
+          items:
+            $ref: '#/components/schemas/CommonRequiredFieldMetadata'
+          nullable: true
+          type: array
+      type: object
+    CommonRequiredFieldMetadata:
+      additionalProperties: false
+      example:
+        FieldLabel: FieldLabel
+        FieldName: FieldName
+      properties:
+        FieldName:
+          nullable: true
+          type: string
+        FieldLabel:
+          nullable: true
+          type: string
+      type: object
+    Communication:
+      additionalProperties: false
+      description: ""
+      example:
+        MobileNumber: MobileNumber
+        Telephone: Telephone
+        Telephone2: Telephone2
+        EmailAddress: EmailAddress
+      properties:
+        MobileNumber:
+          description: Mobile phone number
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Telephone:
+          description: Telephone number of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Telephone2:
+          description: Additional Phone/Mobile Number of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        EmailAddress:
+          description: Email address of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
+    Consent:
+      additionalProperties: false
+      description: Consents required from datasource
+      example:
+        Text: Text
+        Url: Url
+        Name: Name
+      properties:
+        Name:
+          description: Name of the datasource requiring consent
+          nullable: true
+          type: string
+        Text:
+          description: Text outlining how the user is consenting for their data to
+            be used
+          nullable: true
+          type: string
+        Url:
+          description: URL where the user can find more information about how the
+            datasource will use their data
+          nullable: true
+          type: string
+      type: object
+    CountrySubdivision:
+      additionalProperties: false
+      example:
+        ParentCode: ParentCode
+        CountryCode: CountryCode
+        Code: Code
+        Name: Name
+      properties:
+        Code:
+          nullable: true
+          type: string
+        Name:
+          nullable: true
+          type: string
+        ParentCode:
+          nullable: true
+          type: string
+        CountryCode:
+          nullable: true
+          type: string
+      type: object
+    DataField:
+      additionalProperties: false
+      description: ""
+      example:
+        FieldGroup: FieldGroup
+        Value: Value
+        FieldName: FieldName
+      properties:
+        FieldName:
+          description: ""
+          nullable: true
+          type: string
+        Value:
+          description: ""
+          nullable: true
+          type: string
+        FieldGroup:
+          description: ""
+          nullable: true
+          type: string
+      type: object
+    DataFields:
+      additionalProperties: false
+      description: The data field name-value pairs for the data elements on which
+        the verification is to be performed
+      example:
+        Passport:
+          Number: Number
+          DayOfExpiry: 9
+          MonthOfExpiry: 3
+          YearOfExpiry: 2
+          Mrz1: Mrz1
+          Mrz2: Mrz2
+        PersonInfo:
+          DayOfBirth: 0
+          YearOfBirth: 1
+          AdditionalFields:
+            FullName: FullName
+          FirstSurName: FirstSurName
+          MonthOfBirth: 6
+          SecondSurname: SecondSurname
+          MinimumAge: 5
+          FirstGivenName: FirstGivenName
+          Gender: Gender
+          MiddleName: MiddleName
+          isoLatin1Name: isoLatin1Name
+        DriverLicence:
+          Number: Number
+          DayOfExpiry: 5
+          MonthOfExpiry: 2
+          State: State
+          YearOfExpiry: 7
+        NationalIds:
+          - Type: Type
+            DistrictOfIssue: DistrictOfIssue
+            CountyOfIssue: CountyOfIssue
+            Number: Number
+            CityOfIssue: CityOfIssue
+            ProvinceOfIssue: ProvinceOfIssue
+          - Type: Type
+            DistrictOfIssue: DistrictOfIssue
+            CountyOfIssue: CountyOfIssue
+            Number: Number
+            CityOfIssue: CityOfIssue
+            ProvinceOfIssue: ProvinceOfIssue
+        Risk:
+          CallbackUrl: CallbackUrl
+          Action: Action
+          Email: Email
+          DeviceID: DeviceID
+          Phone: Phone
+          Ip: Ip
+          UserAgent: UserAgent
+          Frequency: Frequency
+        Document:
+          AcceptIncompleteDocument: true
+          DocumentBackImage: DocumentBackImage
+          ValidateDocumentImageQuality: true
+          DocumentType: DocumentType
+          DocumentFrontImage: DocumentFrontImage
+          LivePhoto: LivePhoto
+        CountrySpecific:
+          key:
+            key: CountrySpecific
+        Location:
+          StreetName: StreetName
+          Suburb: Suburb
+          BuildingName: BuildingName
+          StateProvinceCode: StateProvinceCode
+          AdditionalFields:
+            Address1: Address1
+          PostalCode: PostalCode
+          City: City
+          StreetType: StreetType
+          County: County
+          poBox: poBox
+          BuildingNumber: BuildingNumber
+          Country: Country
+          UnitNumber: UnitNumber
+        Communication:
+          MobileNumber: MobileNumber
+          Telephone: Telephone
+          Telephone2: Telephone2
+          EmailAddress: EmailAddress
+        Business:
+          MonthOfIncorporation: 7
+          TaxIDNumber: TaxIDNumber
+          BusinessName: BusinessName
+          BusinessRegistrationNumber: BusinessRegistrationNumber
+          ShareholderListDocument: true
+          AnnualReport: true
+          DunsNumber: DunsNumber
+          RegistrationDetails: true
+          TradestyleName: TradestyleName
+          Entities: true
+          DayOfIncorporation: 4
+          ArticleOfAssociation: true
+          JurisdictionOfIncorporation: JurisdictionOfIncorporation
+          FinancialInformationDocument: true
+          YearOfIncorporation: 1
+          PeopleOfSignificantControl:
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
+            - DayOfBirth: DayOfBirth
+              BusinessName: BusinessName
+              YearOfBirth: YearOfBirth
+              FullName: FullName
+              MonthOfBirth: MonthOfBirth
+              FirstSurname: FirstSurname
+              SecondSurname: SecondSurname
+              FirstGivenName: FirstGivenName
+              MiddleName: MiddleName
+          Filings: true
+      properties:
+        PersonInfo:
+          $ref: '#/components/schemas/PersonInfo'
+        Location:
+          $ref: '#/components/schemas/Location'
+        Communication:
+          $ref: '#/components/schemas/Communication'
+        DriverLicence:
+          $ref: '#/components/schemas/DriverLicence'
+        NationalIds:
+          description: National Identification Information
+          items:
+            $ref: '#/components/schemas/NationalId'
+          nullable: true
+          type: array
+        Passport:
+          $ref: '#/components/schemas/Passport'
+        Document:
+          $ref: '#/components/schemas/Document'
+        Business:
+          $ref: '#/components/schemas/Business'
+        Risk:
+          $ref: '#/components/schemas/RiskMonitorSettings'
+        CountrySpecific:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: "CountrySpecific fields\r\n{\"CountryCode\" : {\"Field1\" :\
+            \ \"Value\",\r\n\"Field2\" : \"Value\"\r\n}}"
+          nullable: true
+          type: object
+      type: object
+    DatasourceField:
+      additionalProperties: false
+      description: ""
+      example:
+        Status: Status
+        TruMatchThreshold: TruMatchThreshold
+        TruMatchValue: TruMatchValue
+        FieldGroup: FieldGroup
+        FieldName: FieldName
+      properties:
+        FieldName:
+          description: ""
+          nullable: true
+          type: string
+        Status:
+          description: ""
+          nullable: true
+          type: string
+        TruMatchValue:
+          description: ""
+          nullable: true
+          type: string
+        TruMatchThreshold:
+          nullable: true
+          type: string
+        FieldGroup:
+          description: ""
+          nullable: true
+          type: string
+      type: object
+    DatasourceResult:
+      additionalProperties: false
+      description: A result from a particular datasource
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        DatasourceFields:
+          - Status: Status
+            TruMatchThreshold: TruMatchThreshold
+            TruMatchValue: TruMatchValue
+            FieldGroup: FieldGroup
+            FieldName: FieldName
+          - Status: Status
+            TruMatchThreshold: TruMatchThreshold
+            TruMatchValue: TruMatchValue
+            FieldGroup: FieldGroup
+            FieldName: FieldName
+        AppendedFields:
+          - Data: ""
+            FieldName: FieldName
+          - Data: ""
+            FieldName: FieldName
+        DatasourceStatus: DatasourceStatus
+        DatasourceName: DatasourceName
+        FieldGroups:
+          - FieldGroups
+          - FieldGroups
+      properties:
+        DatasourceStatus:
+          description: ""
+          nullable: true
+          type: string
+        DatasourceName:
+          description: ""
+          nullable: true
+          type: string
+        DatasourceFields:
+          description: ""
+          items:
+            $ref: '#/components/schemas/DatasourceField'
+          nullable: true
+          type: array
+        AppendedFields:
+          description: ""
+          items:
+            $ref: '#/components/schemas/AppendedField'
+          nullable: true
+          type: array
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+        FieldGroups:
+          description: ""
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    Document:
+      additionalProperties: false
+      description: ""
+      example:
+        AcceptIncompleteDocument: true
+        DocumentBackImage: DocumentBackImage
+        ValidateDocumentImageQuality: true
+        DocumentType: DocumentType
+        DocumentFrontImage: DocumentFrontImage
+        LivePhoto: LivePhoto
+      properties:
+        DocumentFrontImage:
+          description: Front of the document
+          format: byte
+          nullable: true
+          type: string
+        DocumentBackImage:
+          description: Back of the document
+          format: byte
+          nullable: true
+          type: string
+        LivePhoto:
+          description: Selfie image
+          format: byte
+          nullable: true
+          type: string
+        DocumentType:
+          description: Document type
+          nullable: true
+          type: string
+        AcceptIncompleteDocument:
+          description: Accept Incomplete Document
+          nullable: true
+          type: boolean
+        ValidateDocumentImageQuality:
+          description: Validate Document Image Quality
+          nullable: true
+          type: boolean
+      type: object
+    DriverLicence:
+      additionalProperties: false
+      description: ""
+      example:
+        Number: Number
+        DayOfExpiry: 5
+        MonthOfExpiry: 2
+        State: State
+        YearOfExpiry: 7
+      properties:
+        Number:
+          description: Driver's Licence Number of the individual to be verified
+          nullable: true
+          type: string
+        State:
+          description: State of issue for Driver's Licence
+          nullable: true
+          type: string
+        DayOfExpiry:
+          description: Driver's Licence day of expiry of the individual to be verified
+          format: int32
+          nullable: true
+          type: integer
+        MonthOfExpiry:
+          description: Driver's Licence month of expiry of the individual to be verified
+          format: int32
+          nullable: true
+          type: integer
+        YearOfExpiry:
+          description: Driver's Licence year of expiry of the individual to be verified
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    Location:
+      additionalProperties: false
+      description: ""
+      example:
+        StreetName: StreetName
+        Suburb: Suburb
+        BuildingName: BuildingName
+        StateProvinceCode: StateProvinceCode
+        AdditionalFields:
+          Address1: Address1
+        PostalCode: PostalCode
+        City: City
+        StreetType: StreetType
+        County: County
+        poBox: poBox
+        BuildingNumber: BuildingNumber
+        Country: Country
+        UnitNumber: UnitNumber
+      properties:
+        BuildingNumber:
+          description: House / Civic / Building number of home address
+          nullable: true
+          type: string
+        BuildingName:
+          description: Name of building of home address
+          nullable: true
+          type: string
+        UnitNumber:
+          description: Flat/Unit/Apartment number of home address
+          nullable: true
+          type: string
+        StreetName:
+          description: Street name of primary residence
+          nullable: true
+          type: string
+        StreetType:
+          description: "Street type of primary residence (e.g. St, Rd etc)"
+          nullable: true
+          type: string
+        City:
+          description: City of home address
+          nullable: true
+          type: string
+        Suburb:
+          description: Suburb / Subdivision / Municipality of home address
+          nullable: true
+          type: string
+        County:
+          description: County / District of home address
+          nullable: true
+          type: string
+        StateProvinceCode:
+          description: State of primary residence. US sources expect 2 characters.
+            Australian sources expect 2 or 3 characters.
+          nullable: true
+          type: string
+        Country:
+          description: Country of physical address (ISO 3166-1 alpha-2)
+          nullable: true
+          type: string
+        PostalCode:
+          description: ZIP Code or Postal Code of home address
+          nullable: true
+          type: string
+        poBox:
+          description: Post Office Box
+          nullable: true
+          type: string
+        AdditionalFields:
+          $ref: '#/components/schemas/LocationAdditionalFields'
+      type: object
+    LocationAdditionalFields:
+      additionalProperties: false
+      description: Additional Fields for Location
+      example:
+        Address1: Address1
+      properties:
+        Address1:
+          description: "Address1 is available in certain countries. It can be used\
+            \ to pass a compiled address field instead of sending individual address\
+            \ attributes (such as UnitNumber, BuidlingNumber, BuildingName, StreetName\
+            \ and StreetType). \r\nGlobalGateway will provide a pass through of Address1\
+            \ directly to connected datasources for the selected country. \r\nPlease\
+            \ note: each datasource requires the address fields to be configured in\
+            \ a certain manner, implementing and sending Address1 instead of individual\
+            \ address fields may affect your ability to verify this address."
+          nullable: true
+          type: string
+      type: object
+    LoginSchemaRequest:
+      additionalProperties: false
+      example:
+        ProviderName: ProviderName
+        CountryCode: CountryCode
+      properties:
+        CountryCode:
+          minLength: 1
+          type: string
+        ProviderName:
+          minLength: 1
+          type: string
+      required:
+        - countryCode
+        - providerName
+      type: object
+    NationalId:
+      additionalProperties: false
+      description: ""
+      example:
+        Type: Type
+        DistrictOfIssue: DistrictOfIssue
+        CountyOfIssue: CountyOfIssue
+        Number: Number
+        CityOfIssue: CityOfIssue
+        ProvinceOfIssue: ProvinceOfIssue
+      properties:
+        Number:
+          description: ""
+          nullable: true
+          type: string
+        Type:
+          description: "Supported Types: NationalID, Health, SocialService, TaxIDNumber"
+          nullable: true
+          type: string
+        DistrictOfIssue:
+          description: District that issued the ID
+          nullable: true
+          type: string
+        CityOfIssue:
+          description: City that issued the ID
+          nullable: true
+          type: string
+        ProvinceOfIssue:
+          description: Province that issued the ID
+          nullable: true
+          type: string
+        CountyOfIssue:
+          description: County that issued the ID
+          nullable: true
+          type: string
+      type: object
+    Passport:
+      additionalProperties: false
+      description: ""
+      example:
+        Number: Number
+        DayOfExpiry: 9
+        MonthOfExpiry: 3
+        YearOfExpiry: 2
+        Mrz1: Mrz1
+        Mrz2: Mrz2
+      properties:
+        Mrz1:
+          description: Line 1 of the passport MRZ
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Mrz2:
+          description: line 2 of the passport MRZ
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Number:
+          description: Passport Number
+          nullable: true
+          type: string
+        DayOfExpiry:
+          description: Passport's Licence day of expiry of the individual to be verified
+          format: int32
+          nullable: true
+          type: integer
+        MonthOfExpiry:
+          description: Passport's Licence month of expiry of the individual to be
+            verified
+          format: int32
+          nullable: true
+          type: integer
+        YearOfExpiry:
+          description: Passport's Licence year of expiry of the individual to be verified
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    PersonInfo:
+      additionalProperties: false
+      description: Personal Information
+      example:
+        DayOfBirth: 0
+        YearOfBirth: 1
+        AdditionalFields:
+          FullName: FullName
+        FirstSurName: FirstSurName
+        MonthOfBirth: 6
+        SecondSurname: SecondSurname
+        MinimumAge: 5
+        FirstGivenName: FirstGivenName
+        Gender: Gender
+        MiddleName: MiddleName
+        isoLatin1Name: isoLatin1Name
+      properties:
+        FirstGivenName:
+          description: First name of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        MiddleName:
+          description: Second given name of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        FirstSurName:
+          description: First (paternal) family name of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        SecondSurname:
+          description: second family name of the individual to be verified
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        isoLatin1Name:
+          description: Enter full name in ISO Latin-1 character set
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        DayOfBirth:
+          description: Day of birth date (e.g. 23 for a date of birth of 23/11/1975)
+          format: int32
+          nullable: true
+          type: integer
+        MonthOfBirth:
+          description: Month of birth date (e.g. 11 for a date of birth of 23/11/1975)
+          format: int32
+          nullable: true
+          type: integer
+        YearOfBirth:
+          description: Year of birth date (e.g. 1975 for a date of birth of 23/11/1975)
+          format: int32
+          nullable: true
+          type: integer
+        MinimumAge:
+          description: Minimum permitted age of the individual
+          format: int32
+          nullable: true
+          type: integer
+        Gender:
+          description: "Single character M / F (M = Male, F = Female)"
+          maxLength: 1
+          minLength: 0
+          nullable: true
+          type: string
+        AdditionalFields:
+          $ref: '#/components/schemas/PersonInfoAdditionalFields'
+      type: object
+    PersonInfoAdditionalFields:
+      additionalProperties: false
+      description: ""
+      example:
+        FullName: FullName
+      properties:
+        FullName:
+          description: Full name of of the individual to be verified
+          nullable: true
+          type: string
+      type: object
+    PersonOfSignificantControl:
+      additionalProperties: false
+      example:
+        DayOfBirth: DayOfBirth
+        BusinessName: BusinessName
+        YearOfBirth: YearOfBirth
+        FullName: FullName
+        MonthOfBirth: MonthOfBirth
+        FirstSurname: FirstSurname
+        SecondSurname: SecondSurname
+        FirstGivenName: FirstGivenName
+        MiddleName: MiddleName
+      properties:
+        FirstGivenName:
+          nullable: true
+          type: string
+        MiddleName:
+          nullable: true
+          type: string
+        FirstSurname:
+          nullable: true
+          type: string
+        SecondSurname:
+          nullable: true
+          type: string
+        FullName:
+          nullable: true
+          type: string
+        BusinessName:
+          nullable: true
+          type: string
+        YearOfBirth:
+          nullable: true
+          type: string
+        MonthOfBirth:
+          nullable: true
+          type: string
+        DayOfBirth:
+          nullable: true
+          type: string
+      type: object
+    ProblemDetails:
+      additionalProperties: {}
+      properties:
+        Type:
+          nullable: true
+          type: string
+        Title:
+          nullable: true
+          type: string
+        Status:
+          format: int32
+          nullable: true
+          type: integer
+        Detail:
+          nullable: true
+          type: string
+        Instance:
+          nullable: true
+          type: string
+      type: object
+    Record:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        DatasourceResults:
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceFields:
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+            AppendedFields:
+              - Data: ""
+                FieldName: FieldName
+              - Data: ""
+                FieldName: FieldName
+            DatasourceStatus: DatasourceStatus
+            DatasourceName: DatasourceName
+            FieldGroups:
+              - FieldGroups
+              - FieldGroups
+          - Errors:
+              - Message: Message
+                Code: Code
+              - Message: Message
+                Code: Code
+            DatasourceFields:
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+              - Status: Status
+                TruMatchThreshold: TruMatchThreshold
+                TruMatchValue: TruMatchValue
+                FieldGroup: FieldGroup
+                FieldName: FieldName
+            AppendedFields:
+              - Data: ""
+                FieldName: FieldName
+              - Data: ""
+                FieldName: FieldName
+            DatasourceStatus: DatasourceStatus
+            DatasourceName: DatasourceName
+            FieldGroups:
+              - FieldGroups
+              - FieldGroups
+        SecondaryRecordStatus: SecondaryRecordStatus
+        TransactionRecordID: TransactionRecordID
+        Rule:
+          SecondaryRuleNote: SecondaryRuleNote
+          Note: Note
+          SecondaryRuleName: SecondaryRuleName
+          RuleName: RuleName
+        RecordStatus: RecordStatus
+      properties:
+        TransactionRecordID:
+          description: "The TransactionRecordID, this is the ID you will use to fetch\
+            \ the transaction again."
+          nullable: true
+          type: string
+        RecordStatus:
+          description: '''match'' or ''nomatch'' if the verification passed the rules
+            configured on your account this will be ''match''.'
+          nullable: true
+          type: string
+        SecondaryRecordStatus:
+          description: '''match'' or ''nomatch'' if the secondary verification was
+            run and passed the rules configured on your account this will be ''match''.'
+          nullable: true
+          type: string
+        DatasourceResults:
+          description: Results for each datasource that was queried
+          items:
+            $ref: '#/components/schemas/DatasourceResult'
+          nullable: true
+          type: array
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+        Rule:
+          $ref: '#/components/schemas/RecordRule'
+      type: object
+    RecordRule:
+      additionalProperties: false
+      description: RecordRule used for the transaction.
+      example:
+        SecondaryRuleNote: SecondaryRuleNote
+        Note: Note
+        SecondaryRuleName: SecondaryRuleName
+        RuleName: RuleName
+      properties:
+        RuleName:
+          description: Name of RecordRule.
+          nullable: true
+          type: string
+        Note:
+          description: Rule Description.
+          nullable: true
+          type: string
+        SecondaryRuleName:
+          description: Name of the Secondary RecordRule.
+          nullable: true
+          type: string
+        SecondaryRuleNote:
+          description: Secondary Rule Description.
+          nullable: true
+          type: string
+      type: object
+    Result:
+      additionalProperties: false
+      example:
+        FullAddress: FullAddress
+        TaxIDNumber: TaxIDNumber
+        BusinessName: BusinessName
+        Address:
+          StreetName: StreetName
+          Suburb: Suburb
+          BuildingName: BuildingName
+          StateProvince: StateProvince
+          StateProvinceCode: StateProvinceCode
+          PostalCode: PostalCode
+          City: City
+          Address1: Address1
+          StreetType: StreetType
+          BuildingNumber: BuildingNumber
+          Country: Country
+          UnitNumber: UnitNumber
+          AddressType: AddressType
+          CountryCode: CountryCode
+        Telephone: Telephone
+        BusinessRegistrationNumber: BusinessRegistrationNumber
+        BusinessType: BusinessType
+        Website: Website
+        TaxIDNumbers:
+          - TaxIDNumbers
+          - TaxIDNumbers
+        Index: Index
+        WebDomain: WebDomain
+        MatchingScore: MatchingScore
+        Sic:
+          - Description: Description
+            Code: Code
+          - Description: Description
+            Code: Code
+        BusinessStatus: BusinessStatus
+        EmailAddress: EmailAddress
+        TradeStyleName: TradeStyleName
+        OtherBusinessNames:
+          - OtherBusinessNames
+          - OtherBusinessNames
+        BusinessTaxIDNumber: BusinessTaxIDNumber
+        JurisdictionOfIncorporation: JurisdictionOfIncorporation
+        BusinessLicenseNumber: BusinessLicenseNumber
+        OriginalBusinessStatus: OriginalBusinessStatus
+        WebDomains:
+          - WebDomains
+          - WebDomains
+        dunsNumber: dunsNumber
+        Naics:
+          - Description: Description
+            Code: Code
+          - Description: Description
+            Code: Code
+      properties:
+        Index:
+          description: ""
+          nullable: true
+          type: string
+        BusinessName:
+          description: ""
+          nullable: true
+          type: string
+        MatchingScore:
+          description: ""
+          nullable: true
+          type: string
+        BusinessRegistrationNumber:
+          description: ""
+          nullable: true
+          type: string
+        dunsNumber:
+          description: ""
+          nullable: true
+          type: string
+        BusinessTaxIDNumber:
+          description: ""
+          nullable: true
+          type: string
+        BusinessLicenseNumber:
+          description: ""
+          nullable: true
+          type: string
+        JurisdictionOfIncorporation:
+          description: ""
+          nullable: true
+          type: string
+        FullAddress:
+          description: ""
+          nullable: true
+          type: string
+        BusinessStatus:
+          description: Business Status
+          nullable: true
+          type: string
+        OriginalBusinessStatus:
+          description: Original Business Status
+          nullable: true
+          type: string
+        TradeStyleName:
+          description: Trade Style Name
+          nullable: true
+          type: string
+        BusinessType:
+          description: Business Type
+          nullable: true
+          type: string
+        Address:
+          $ref: '#/components/schemas/Address'
+        OtherBusinessNames:
+          description: ""
+          items:
+            type: string
+          nullable: true
+          type: array
+        Website:
+          description: ""
+          nullable: true
+          type: string
+        Telephone:
+          description: ""
+          nullable: true
+          type: string
+        TaxIDNumber:
+          description: ""
+          nullable: true
+          type: string
+        TaxIDNumbers:
+          description: ""
+          items:
+            type: string
+          nullable: true
+          type: array
+        EmailAddress:
+          description: ""
+          nullable: true
+          type: string
+        WebDomain:
+          description: ""
+          nullable: true
+          type: string
+        WebDomains:
+          description: ""
+          items:
+            type: string
+          nullable: true
+          type: array
+        Naics:
+          description: North American Industry Classification System
+          items:
+            $ref: '#/components/schemas/BusinessSearchResponseIndustryCode'
+          nullable: true
+          type: array
+        Sic:
+          description: Standard Industrial Classification
+          items:
+            $ref: '#/components/schemas/BusinessSearchResponseIndustryCode'
+          nullable: true
+          type: array
+      type: object
+    RiskMonitorSettings:
+      additionalProperties: false
+      description: Fraud Monitoring (Risk) Information
+      example:
+        CallbackUrl: CallbackUrl
+        Action: Action
+        Email: Email
+        DeviceID: DeviceID
+        Phone: Phone
+        Ip: Ip
+        UserAgent: UserAgent
+        Frequency: Frequency
+      properties:
+        Frequency:
+          description: Frequency to run a fraud check on the enrolled entity
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          type: string
+        CallbackUrl:
+          description: Callback Url for Fraud product
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        Ip:
+          description: The IP address of the end user
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          type: string
+        Email:
+          description: Email of end user
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        Action:
+          description: Contextual input for datasource
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        UserAgent:
+          description: User Agent of end user
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        DeviceID:
+          description: Device ID of end user
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          type: string
+        Phone:
+          description: Phone number of end user
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
+    ServiceError:
+      additionalProperties: false
+      description: ""
+      example:
+        Message: Message
+        Code: Code
+      properties:
+        Code:
+          description: ""
+          nullable: true
+          type: string
+        Message:
+          description: ""
+          nullable: true
+          type: string
+      type: object
+    SubmitAddressVerificationCredentialsRequest:
+      additionalProperties: false
+      description: The credentials submission call for the Normalized API is a POST
+        method call
+      example:
+        Username3: Username3
+        Username: Username
+        Username2: Username2
+        Password4: Password4
+        Password3: Password3
+        Username4: Username4
+        Password2: Password2
+        TransactionID: TransactionID
+        Password: Password
+      properties:
+        TransactionID:
+          description: The id for the transaction will be a GUID
+          minLength: 1
+          type: string
+        Username:
+          description: Username for credentials
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Password:
+          description: Password for credentials
+          format: password
+          maxLength: 10240
+          minLength: 0
+          nullable: true
+          type: string
+        Username2:
+          description: Additional username
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Password2:
+          description: Additional password
+          format: password
+          maxLength: 10240
+          minLength: 0
+          nullable: true
+          type: string
+        Username3:
+          description: Additional username
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Password3:
+          description: Additional password
+          format: password
+          maxLength: 10240
+          minLength: 0
+          nullable: true
+          type: string
+        Username4:
+          description: Additional username
+          maxLength: 200
+          minLength: 0
+          nullable: true
+          type: string
+        Password4:
+          description: Additional password
+          format: password
+          maxLength: 10240
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+        - transactionID
+      type: object
+    TransactionRecordResult:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        ProductName: ProductName
+        CustomerReferenceID: CustomerReferenceID
+        Record:
+          Errors:
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
+          DatasourceResults:
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+          SecondaryRecordStatus: SecondaryRecordStatus
+          TransactionRecordID: TransactionRecordID
+          Rule:
+            SecondaryRuleNote: SecondaryRuleNote
+            Note: Note
+            SecondaryRuleName: SecondaryRuleName
+            RuleName: RuleName
+          RecordStatus: RecordStatus
+        UploadedDt: 2000-01-23T04:56:07.000+00:00
+        CountryCode: CountryCode
+        CompletedDt: 2000-01-23T04:56:07.000+00:00
+        TransactionID: TransactionID
+        InputFields:
+          - FieldGroup: FieldGroup
+            Value: Value
+            FieldName: FieldName
+          - FieldGroup: FieldGroup
+            Value: Value
+            FieldName: FieldName
+      properties:
+        TransactionID:
+          description: The id for the transaction it will be a GUID
+          nullable: true
+          type: string
+        UploadedDt:
+          description: Time in UTC
+          format: date-time
+          type: string
+        CompletedDt:
+          description: Time in UTC
+          format: date-time
+          nullable: true
+          type: string
+        CountryCode:
+          description: Country Code
+          nullable: true
+          type: string
+        ProductName:
+          description: Product Name
+          nullable: true
+          type: string
+        Record:
+          $ref: '#/components/schemas/Record'
+        CustomerReferenceID:
+          description: Customer Reference Id
+          nullable: true
+          type: string
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+        InputFields:
+          description: ""
+          items:
+            $ref: '#/components/schemas/DataField'
+          nullable: true
+          type: array
+      type: object
+    TransactionStatus:
+      additionalProperties: false
+      description: Transaction Status
+      example:
+        Status: Status
+        TransactionRecordId: TransactionRecordId
+        UploadedDt: 2000-01-23T04:56:07.000+00:00
+        TransactionId: TransactionId
+        IsTimedOut: true
+      properties:
+        TransactionId:
+          description: Transaction ID of the transaction
+          maxLength: 36
+          minLength: 0
+          nullable: true
+          type: string
+        TransactionRecordId:
+          description: Transaction Record ID of the transaction available once the
+            transaction has finished processing
+          maxLength: 36
+          minLength: 0
+          nullable: true
+          type: string
+        Status:
+          description: "Status of the transaction. Possible Values: Uploading, Processing,\
+            \ Completed, InProgress, Failed, WaitAsync, ToBeResumed, Canceled, TimeoutCanceled.\
+            \ Call GetTransactionRecord when status changes to Completed, Failed,\
+            \ Canceled or TimeoutCanceled to get the verification results."
+          maxLength: 25
+          minLength: 0
+          nullable: true
+          type: string
+        UploadedDt:
+          description: Uploaded date for transaction
+          format: date-time
+          type: string
+        IsTimedOut:
+          description: Set to true when transaction has timed out
+          type: boolean
+      type: object
+    VerifyAddressCredentials:
+      additionalProperties: false
+      example:
+        Username3: Username3
+        Username: Username
+        Username2: Username2
+        Password4: Password4
+        Password3: Password3
+        Username4: Username4
+        Password2: Password2
+        Password: Password
+      properties:
+        Username:
+          nullable: true
+          type: string
+        Password:
+          nullable: true
+          type: string
+        Username2:
+          nullable: true
+          type: string
+        Password2:
+          nullable: true
+          type: string
+        Username3:
+          nullable: true
+          type: string
+        Password3:
+          nullable: true
+          type: string
+        Username4:
+          nullable: true
+          type: string
+        Password4:
+          nullable: true
+          type: string
+      type: object
+    VerifyAddressRequest:
+      additionalProperties: false
+      description: The verification call for the Normalized API is a POST method call
+      example:
+        ConsentForDataSources:
+          - ConsentForDataSources
+          - ConsentForDataSources
+        ProviderName: ProviderName
+        ProviderCredentials:
+          Username3: Username3
+          Username: Username
+          Username2: Username2
+          Password4: Password4
+          Password3: Password3
+          Username4: Username4
+          Password2: Password2
+          Password: Password
+        CustomerReferenceID: CustomerReferenceID
+        VerificationType: Live
+        CallBackUrl: CallBackUrl
+        PackageId: PackageId
+        CleansedAddress: true
+        CountryCode: CountryCode
+        DataFields:
+          Passport:
+            Number: Number
+            DayOfExpiry: 9
+            MonthOfExpiry: 3
+            YearOfExpiry: 2
+            Mrz1: Mrz1
+            Mrz2: Mrz2
+          PersonInfo:
+            DayOfBirth: 0
+            YearOfBirth: 1
+            AdditionalFields:
+              FullName: FullName
+            FirstSurName: FirstSurName
+            MonthOfBirth: 6
+            SecondSurname: SecondSurname
+            MinimumAge: 5
+            FirstGivenName: FirstGivenName
+            Gender: Gender
+            MiddleName: MiddleName
+            isoLatin1Name: isoLatin1Name
+          DriverLicence:
+            Number: Number
+            DayOfExpiry: 5
+            MonthOfExpiry: 2
+            State: State
+            YearOfExpiry: 7
+          NationalIds:
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
+          Risk:
+            CallbackUrl: CallbackUrl
+            Action: Action
+            Email: Email
+            DeviceID: DeviceID
+            Phone: Phone
+            Ip: Ip
+            UserAgent: UserAgent
+            Frequency: Frequency
+          Document:
+            AcceptIncompleteDocument: true
+            DocumentBackImage: DocumentBackImage
+            ValidateDocumentImageQuality: true
+            DocumentType: DocumentType
+            DocumentFrontImage: DocumentFrontImage
+            LivePhoto: LivePhoto
+          CountrySpecific:
+            key:
+              key: CountrySpecific
+          Location:
+            StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            AdditionalFields:
+              Address1: Address1
+            PostalCode: PostalCode
+            City: City
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
+          Communication:
+            MobileNumber: MobileNumber
+            Telephone: Telephone
+            Telephone2: Telephone2
+            EmailAddress: EmailAddress
+          Business:
+            MonthOfIncorporation: 7
+            TaxIDNumber: TaxIDNumber
+            BusinessName: BusinessName
+            BusinessRegistrationNumber: BusinessRegistrationNumber
+            ShareholderListDocument: true
+            AnnualReport: true
+            DunsNumber: DunsNumber
+            RegistrationDetails: true
+            TradestyleName: TradestyleName
+            Entities: true
+            DayOfIncorporation: 4
+            ArticleOfAssociation: true
+            JurisdictionOfIncorporation: JurisdictionOfIncorporation
+            FinancialInformationDocument: true
+            YearOfIncorporation: 1
+            PeopleOfSignificantControl:
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
+            Filings: true
+      properties:
+        VerificationType:
+          description: The type of verification to perform. i.e 'Live' or 'Demo'
+          enum:
+            - Live
+          type: string
+        PackageId:
+          description: The Package ID to run the transaction under which can be obtained
+            by your Customer Success Manager or via a support ticket.
+          maxLength: 36
+          minLength: 0
+          type: string
+        CallBackUrl:
+          description: ""
+          maxLength: 2083
+          minLength: 0
+          type: string
+        CleansedAddress:
+          description: "Set to true if you want to receive address cleanse information,\r\
+            \nThis will only change the response if you have address cleansing enabled\
+            \ for the country you are querying for."
+          type: boolean
+        ConsentForDataSources:
+          description: "Some datasources required your customer provide consent to\
+            \ access them.  Set that the customer has provided consent for each\r\n\
+            datasource that requires one.  If consent is not provided the datasource\
+            \ will not be queried."
+          items:
+            type: string
+          nullable: true
+          type: array
+        CountryCode:
+          description: The country code for which the verification needs to be performed.
+          minLength: 1
+          type: string
+        CustomerReferenceID:
+          description: Customer Reference Id
+          maxLength: 128
+          minLength: 0
+          nullable: true
+          type: string
+        DataFields:
+          $ref: '#/components/schemas/DataFields'
+        ProviderName:
+          description: The organization that will provide the address verification.
+          minLength: 1
+          type: string
+        ProviderCredentials:
+          $ref: '#/components/schemas/VerifyAddressCredentials'
+      required:
+        - callBackUrl
+        - countryCode
+        - dataFields
+        - packageId
+        - providerName
+      type: object
+    VerifyAddressResult:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        Schema:
+          RequiredFieldMetadata:
+            - FieldLabel: FieldLabel
+              FieldName: FieldName
+            - FieldLabel: FieldLabel
+              FieldName: FieldName
+          SupportsCredentialValidation: true
+        TransactionID: TransactionID
+      properties:
+        TransactionID:
+          description: The id for the transaction it will be a GUID
+          nullable: true
+          type: string
+        Schema:
+          $ref: '#/components/schemas/CommonProviderCacheSchema'
+        Errors:
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+      type: object
+    VerifyRequest:
+      additionalProperties: false
+      description: The verification call for the Normalized API is a POST method call
+      example:
+        ConsentForDataSources:
+          - ConsentForDataSources
+          - ConsentForDataSources
+        CustomerReferenceID: CustomerReferenceID
+        VerificationType: Live
+        Timeout: 0
+        CallBackUrl: CallBackUrl
+        PackageId: PackageId
+        VerboseMode: false
+        CleansedAddress: true
+        CountryCode: CountryCode
+        DataFields:
+          Passport:
+            Number: Number
+            DayOfExpiry: 9
+            MonthOfExpiry: 3
+            YearOfExpiry: 2
+            Mrz1: Mrz1
+            Mrz2: Mrz2
+          PersonInfo:
+            DayOfBirth: 0
+            YearOfBirth: 1
+            AdditionalFields:
+              FullName: FullName
+            FirstSurName: FirstSurName
+            MonthOfBirth: 6
+            SecondSurname: SecondSurname
+            MinimumAge: 5
+            FirstGivenName: FirstGivenName
+            Gender: Gender
+            MiddleName: MiddleName
+            isoLatin1Name: isoLatin1Name
+          DriverLicence:
+            Number: Number
+            DayOfExpiry: 5
+            MonthOfExpiry: 2
+            State: State
+            YearOfExpiry: 7
+          NationalIds:
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
+            - Type: Type
+              DistrictOfIssue: DistrictOfIssue
+              CountyOfIssue: CountyOfIssue
+              Number: Number
+              CityOfIssue: CityOfIssue
+              ProvinceOfIssue: ProvinceOfIssue
+          Risk:
+            CallbackUrl: CallbackUrl
+            Action: Action
+            Email: Email
+            DeviceID: DeviceID
+            Phone: Phone
+            Ip: Ip
+            UserAgent: UserAgent
+            Frequency: Frequency
+          Document:
+            AcceptIncompleteDocument: true
+            DocumentBackImage: DocumentBackImage
+            ValidateDocumentImageQuality: true
+            DocumentType: DocumentType
+            DocumentFrontImage: DocumentFrontImage
+            LivePhoto: LivePhoto
+          CountrySpecific:
+            key:
+              key: CountrySpecific
+          Location:
+            StreetName: StreetName
+            Suburb: Suburb
+            BuildingName: BuildingName
+            StateProvinceCode: StateProvinceCode
+            AdditionalFields:
+              Address1: Address1
+            PostalCode: PostalCode
+            City: City
+            StreetType: StreetType
+            County: County
+            poBox: poBox
+            BuildingNumber: BuildingNumber
+            Country: Country
+            UnitNumber: UnitNumber
+          Communication:
+            MobileNumber: MobileNumber
+            Telephone: Telephone
+            Telephone2: Telephone2
+            EmailAddress: EmailAddress
+          Business:
+            MonthOfIncorporation: 7
+            TaxIDNumber: TaxIDNumber
+            BusinessName: BusinessName
+            BusinessRegistrationNumber: BusinessRegistrationNumber
+            ShareholderListDocument: true
+            AnnualReport: true
+            DunsNumber: DunsNumber
+            RegistrationDetails: true
+            TradestyleName: TradestyleName
+            Entities: true
+            DayOfIncorporation: 4
+            ArticleOfAssociation: true
+            JurisdictionOfIncorporation: JurisdictionOfIncorporation
+            FinancialInformationDocument: true
+            YearOfIncorporation: 1
+            PeopleOfSignificantControl:
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
+              - DayOfBirth: DayOfBirth
+                BusinessName: BusinessName
+                YearOfBirth: YearOfBirth
+                FullName: FullName
+                MonthOfBirth: MonthOfBirth
+                FirstSurname: FirstSurname
+                SecondSurname: SecondSurname
+                FirstGivenName: FirstGivenName
+                MiddleName: MiddleName
+            Filings: true
+        RequestErrors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        RequestMetadata:
+          - Channel: Channel
+            Value: Value
+          - Channel: Channel
+            Value: Value
+      properties:
+        VerificationType:
+          description: The type of verification to perform. i.e 'Live' or 'Demo'
+          enum:
+            - Live
+            - Demo
+          type: string
+        PackageId:
+          description: The Package ID to run the transaction under which can be obtained
+            by your Customer Success Manager or via a support ticket.
+          maxLength: 36
+          minLength: 0
+          type: string
+        CallBackUrl:
+          maxLength: 2083
+          minLength: 0
+          nullable: true
+          type: string
+        Timeout:
+          format: int32
+          nullable: true
+          type: integer
+        CleansedAddress:
+          description: "Set to true if you want to receive address cleanse information,\r\
+            \nThis will only change the response if you have address cleansing enabled\
+            \ for the country you are querying for."
+          type: boolean
+        ConsentForDataSources:
+          description: "Some datasources required your customer provide consent to\
+            \ access them.  Set that the customer has provided consent for each\r\n\
+            datasource that requires one.  If consent is not provided the datasource\
+            \ will not be queried."
+          items:
+            type: string
+          nullable: true
+          type: array
+        CountryCode:
+          description: The country code for which the verification needs to be performed.
+          minLength: 1
+          type: string
+        CustomerReferenceID:
+          description: Customer Reference Id
+          maxLength: 128
+          minLength: 0
+          nullable: true
+          type: string
+        DataFields:
+          $ref: '#/components/schemas/DataFields'
+        RequestErrors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+        VerboseMode:
+          default: false
+          description: Verbose Mode Output Flag.
+          type: boolean
+        RequestMetadata:
+          items:
+            $ref: '#/components/schemas/VerifyRequest.Metadata'
+          nullable: true
+          type: array
+      required:
+        - countryCode
+        - dataFields
+        - packageId
+      type: object
+    VerifyRequest.Metadata:
+      additionalProperties: false
+      example:
+        Channel: Channel
+        Value: Value
+      properties:
+        Channel:
+          description: ""
+          maxLength: 32
+          minLength: 0
+          nullable: true
+          type: string
+        Value:
+          description: ""
+          maxLength: 255
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
+    VerifyResult:
+      additionalProperties: false
+      description: ""
+      example:
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        ProductName: ProductName
+        CustomerReferenceID: CustomerReferenceID
+        Record:
+          Errors:
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
+          DatasourceResults:
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+          SecondaryRecordStatus: SecondaryRecordStatus
+          TransactionRecordID: TransactionRecordID
+          Rule:
+            SecondaryRuleNote: SecondaryRuleNote
+            Note: Note
+            SecondaryRuleName: SecondaryRuleName
+            RuleName: RuleName
+          RecordStatus: RecordStatus
+        UploadedDt: 2000-01-23T04:56:07.000+00:00
+        CountryCode: CountryCode
+        CompletedDt: 2000-01-23T04:56:07.000+00:00
+        TransactionID: TransactionID
+      properties:
+        TransactionID:
+          description: The id for the transaction it will be a GUID
+          nullable: true
+          type: string
+        UploadedDt:
+          description: Time in UTC
+          format: date-time
+          type: string
+        CompletedDt:
+          description: Time in UTC
+          format: date-time
+          nullable: true
+          type: string
+        CountryCode:
+          description: Country Code
+          nullable: true
+          type: string
+        ProductName:
+          description: Product Name
+          nullable: true
+          type: string
+        Record:
+          $ref: '#/components/schemas/Record'
+        CustomerReferenceID:
+          description: Customer Reference Id
+          nullable: true
+          type: string
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+      type: object
+    VerifyResultPartial:
+      additionalProperties: false
+      description: The verification call for the Normalized API is a POST method call
+      example:
+        Status: Status
+        Errors:
+          - Message: Message
+            Code: Code
+          - Message: Message
+            Code: Code
+        ProductName: ProductName
+        CustomerReferenceID: CustomerReferenceID
+        Record:
+          Errors:
+            - Message: Message
+              Code: Code
+            - Message: Message
+              Code: Code
+          DatasourceResults:
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+            - Errors:
+                - Message: Message
+                  Code: Code
+                - Message: Message
+                  Code: Code
+              DatasourceFields:
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+                - Status: Status
+                  TruMatchThreshold: TruMatchThreshold
+                  TruMatchValue: TruMatchValue
+                  FieldGroup: FieldGroup
+                  FieldName: FieldName
+              AppendedFields:
+                - Data: ""
+                  FieldName: FieldName
+                - Data: ""
+                  FieldName: FieldName
+              DatasourceStatus: DatasourceStatus
+              DatasourceName: DatasourceName
+              FieldGroups:
+                - FieldGroups
+                - FieldGroups
+          SecondaryRecordStatus: SecondaryRecordStatus
+          TransactionRecordID: TransactionRecordID
+          Rule:
+            SecondaryRuleNote: SecondaryRuleNote
+            Note: Note
+            SecondaryRuleName: SecondaryRuleName
+            RuleName: RuleName
+          RecordStatus: RecordStatus
+        UploadedDt: 2000-01-23T04:56:07.000+00:00
+        CountryCode: CountryCode
+        CompletedDt: 2000-01-23T04:56:07.000+00:00
+        DatasourcesAwaitingResult:
+          - DatasourcesAwaitingResult
+          - DatasourcesAwaitingResult
+        TransactionID: TransactionID
+      properties:
+        TransactionID:
+          description: The id for the transaction it will be a GUID
+          nullable: true
+          type: string
+        UploadedDt:
+          description: Time in UTC
+          format: date-time
+          type: string
+        CompletedDt:
+          description: Time in UTC
+          format: date-time
+          nullable: true
+          type: string
+        CountryCode:
+          description: Country Code
+          nullable: true
+          type: string
+        ProductName:
+          description: Product Name
+          nullable: true
+          type: string
+        Record:
+          $ref: '#/components/schemas/Record'
+        CustomerReferenceID:
+          description: Customer Reference Id
+          nullable: true
+          type: string
+        Errors:
+          description: ""
+          items:
+            $ref: '#/components/schemas/ServiceError'
+          nullable: true
+          type: array
+        DatasourcesAwaitingResult:
+          items:
+            type: string
+          nullable: true
+          type: array
+        Status:
+          nullable: true
+          type: string
+      type: object
+  securitySchemes:
+    oAuth2:
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://auth-api.globaldatacompany.com/connect/token
+      type: oauth2
+
