@@ -179,10 +179,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Name of the business to be verified
    * @return businessName
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getBusinessName() {
@@ -201,10 +201,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Trade Style Name of the business to be verified
    * @return tradestyleName
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getTradestyleName() {
@@ -223,10 +223,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Tax ID Number of the business to be verified
    * @return taxIDNumber
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getTaxIDNumber() {
@@ -245,10 +245,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Registration number of business to be verified
    * @return businessRegistrationNumber
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getBusinessRegistrationNumber() {
@@ -267,10 +267,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Day of incorporation of the business to be verified
    * @return dayOfIncorporation
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Integer getDayOfIncorporation() {
@@ -289,10 +289,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Month of incorporation of the business to be verified
    * @return monthOfIncorporation
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Integer getMonthOfIncorporation() {
@@ -311,10 +311,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Year of incorporation of the business to be verified
    * @return yearOfIncorporation
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Integer getYearOfIncorporation() {
@@ -333,10 +333,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Jurisdiction Of Incorporation of the business to be verified
    * @return jurisdictionOfIncorporation
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getJurisdictionOfIncorporation() {
@@ -355,10 +355,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve shareholderList document
    * @return shareholderListDocument
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getShareholderListDocument() {
@@ -377,10 +377,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve financial information document
    * @return financialInformationDocument
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getFinancialInformationDocument() {
@@ -399,10 +399,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Duns Number
    * @return dunsNumber
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getDunsNumber() {
@@ -420,10 +420,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve enhancedProfile detail
    * @return enhancedProfile
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getEnhancedProfile() {
@@ -442,10 +442,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve entity detail
    * @return entities
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getEntities() {
@@ -472,10 +472,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * A list of people to check for their matchstatus
    * @return peopleOfSignificantControl
-   **/
+  **/
   @javax.annotation.Nullable
 
   public List<PersonOfSignificantControl> getPeopleOfSignificantControl() {
@@ -494,10 +494,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve filing detail
    * @return filings
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getFilings() {
@@ -516,10 +516,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve article of association document
    * @return articleOfAssociation
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getArticleOfAssociation() {
@@ -538,10 +538,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve registration detail document
    * @return registrationDetails
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getRegistrationDetails() {
@@ -560,10 +560,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Whether or not to retrieve annual report document
    * @return annualReport
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Boolean getAnnualReport() {
@@ -757,10 +757,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Telephone number of the business to be verified
    * @return telephone
-   **/
+  **/
   @javax.annotation.Nullable
 
   public String getTelephone() {
@@ -787,10 +787,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * CountrySpecific fields  {\&quot;CountryCode\&quot; : {\&quot;Field1\&quot; : \&quot;Value\&quot;,  \&quot;Field2\&quot; : \&quot;Value\&quot;  }}
    * @return countrySpecific
-   **/
+  **/
   @javax.annotation.Nullable
 
   public Map<String, Map<String, String>> getCountrySpecific() {
@@ -817,10 +817,10 @@ public class BusinessDataFields {
     return this;
   }
 
-  /**
+   /**
    * Location Information
    * @return location
-   **/
+  **/
   @javax.annotation.Nullable
 
   public List<BusinessLocation> getLocation() {
@@ -844,37 +844,37 @@ public class BusinessDataFields {
     }
     BusinessDataFields businessDataFields = (BusinessDataFields) o;
     return Objects.equals(this.businessName, businessDataFields.businessName) &&
-            Objects.equals(this.tradestyleName, businessDataFields.tradestyleName) &&
-            Objects.equals(this.taxIDNumber, businessDataFields.taxIDNumber) &&
-            Objects.equals(this.businessRegistrationNumber, businessDataFields.businessRegistrationNumber) &&
-            Objects.equals(this.dayOfIncorporation, businessDataFields.dayOfIncorporation) &&
-            Objects.equals(this.monthOfIncorporation, businessDataFields.monthOfIncorporation) &&
-            Objects.equals(this.yearOfIncorporation, businessDataFields.yearOfIncorporation) &&
-            Objects.equals(this.jurisdictionOfIncorporation, businessDataFields.jurisdictionOfIncorporation) &&
-            Objects.equals(this.shareholderListDocument, businessDataFields.shareholderListDocument) &&
-            Objects.equals(this.financialInformationDocument, businessDataFields.financialInformationDocument) &&
-            Objects.equals(this.dunsNumber, businessDataFields.dunsNumber) &&
-            Objects.equals(this.enhancedProfile, businessDataFields.enhancedProfile) &&
-            Objects.equals(this.entities, businessDataFields.entities) &&
-            Objects.equals(this.peopleOfSignificantControl, businessDataFields.peopleOfSignificantControl) &&
-            Objects.equals(this.filings, businessDataFields.filings) &&
-            Objects.equals(this.articleOfAssociation, businessDataFields.articleOfAssociation) &&
-            Objects.equals(this.registrationDetails, businessDataFields.registrationDetails) &&
-            Objects.equals(this.annualReport, businessDataFields.annualReport) &&
-            Objects.equals(this.registerReport, businessDataFields.registerReport) &&
-            Objects.equals(this.creditCheck, businessDataFields.creditCheck) &&
-            Objects.equals(this.creditReport, businessDataFields.creditReport) &&
-            Objects.equals(this.gisaExtract, businessDataFields.gisaExtract) &&
-            Objects.equals(this.vrExtract, businessDataFields.vrExtract) &&
-            Objects.equals(this.registerCheck, businessDataFields.registerCheck) &&
-            Objects.equals(this.tradeRegisterReport, businessDataFields.tradeRegisterReport) &&
-            Objects.equals(this.beneficialOwnersCheck, businessDataFields.beneficialOwnersCheck) &&
-            Objects.equals(this.filedChanges, businessDataFields.filedChanges) &&
-            Objects.equals(this.filedDocuments, businessDataFields.filedDocuments) &&
-            Objects.equals(this.annualAccounts, businessDataFields.annualAccounts) &&
-            Objects.equals(this.telephone, businessDataFields.telephone) &&
-            Objects.equals(this.countrySpecific, businessDataFields.countrySpecific) &&
-            Objects.equals(this.location, businessDataFields.location);
+        Objects.equals(this.tradestyleName, businessDataFields.tradestyleName) &&
+        Objects.equals(this.taxIDNumber, businessDataFields.taxIDNumber) &&
+        Objects.equals(this.businessRegistrationNumber, businessDataFields.businessRegistrationNumber) &&
+        Objects.equals(this.dayOfIncorporation, businessDataFields.dayOfIncorporation) &&
+        Objects.equals(this.monthOfIncorporation, businessDataFields.monthOfIncorporation) &&
+        Objects.equals(this.yearOfIncorporation, businessDataFields.yearOfIncorporation) &&
+        Objects.equals(this.jurisdictionOfIncorporation, businessDataFields.jurisdictionOfIncorporation) &&
+        Objects.equals(this.shareholderListDocument, businessDataFields.shareholderListDocument) &&
+        Objects.equals(this.financialInformationDocument, businessDataFields.financialInformationDocument) &&
+        Objects.equals(this.dunsNumber, businessDataFields.dunsNumber) &&
+        Objects.equals(this.enhancedProfile, businessDataFields.enhancedProfile) &&
+        Objects.equals(this.entities, businessDataFields.entities) &&
+        Objects.equals(this.peopleOfSignificantControl, businessDataFields.peopleOfSignificantControl) &&
+        Objects.equals(this.filings, businessDataFields.filings) &&
+        Objects.equals(this.articleOfAssociation, businessDataFields.articleOfAssociation) &&
+        Objects.equals(this.registrationDetails, businessDataFields.registrationDetails) &&
+        Objects.equals(this.registerReport, businessDataFields.registerReport) &&
+        Objects.equals(this.creditCheck, businessDataFields.creditCheck) &&
+        Objects.equals(this.creditReport, businessDataFields.creditReport) &&
+        Objects.equals(this.gisaExtract, businessDataFields.gisaExtract) &&
+        Objects.equals(this.vrExtract, businessDataFields.vrExtract) &&
+        Objects.equals(this.registerCheck, businessDataFields.registerCheck) &&
+        Objects.equals(this.tradeRegisterReport, businessDataFields.tradeRegisterReport) &&
+        Objects.equals(this.beneficialOwnersCheck, businessDataFields.beneficialOwnersCheck) &&
+        Objects.equals(this.filedChanges, businessDataFields.filedChanges) &&
+        Objects.equals(this.filedDocuments, businessDataFields.filedDocuments) &&
+        Objects.equals(this.annualAccounts, businessDataFields.annualAccounts) &&
+        Objects.equals(this.annualReport, businessDataFields.annualReport) &&
+        Objects.equals(this.telephone, businessDataFields.telephone) &&
+        Objects.equals(this.countrySpecific, businessDataFields.countrySpecific) &&
+        Objects.equals(this.location, businessDataFields.location);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -988,122 +988,122 @@ public class BusinessDataFields {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Object and throws an exception if issues found
-   *
-   * @param jsonObj JSON Object
-   * @throws IOException if the JSON Object is invalid with respect to BusinessDataFields
-   */
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to BusinessDataFields
+  */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-    if (jsonObj == null) {
-      if (!BusinessDataFields.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-        throw new IllegalArgumentException(String.format("The required field(s) %s in BusinessDataFields is not found in the empty JSON string", BusinessDataFields.openapiRequiredFields.toString()));
-      }
-    }
-
-    Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-    // check to see if the JSON string contains additional fields
-    for (Entry<String, JsonElement> entry : entries) {
-      if (!BusinessDataFields.openapiFields.contains(entry.getKey())) {
-        throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BusinessDataFields` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-      }
-    }
-    if ((jsonObj.get("BusinessName") != null && !jsonObj.get("BusinessName").isJsonNull()) && !jsonObj.get("BusinessName").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `BusinessName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BusinessName").toString()));
-    }
-    if ((jsonObj.get("TradestyleName") != null && !jsonObj.get("TradestyleName").isJsonNull()) && !jsonObj.get("TradestyleName").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `TradestyleName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TradestyleName").toString()));
-    }
-    if ((jsonObj.get("TaxIDNumber") != null && !jsonObj.get("TaxIDNumber").isJsonNull()) && !jsonObj.get("TaxIDNumber").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `TaxIDNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaxIDNumber").toString()));
-    }
-    if ((jsonObj.get("BusinessRegistrationNumber") != null && !jsonObj.get("BusinessRegistrationNumber").isJsonNull()) && !jsonObj.get("BusinessRegistrationNumber").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `BusinessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BusinessRegistrationNumber").toString()));
-    }
-    if ((jsonObj.get("JurisdictionOfIncorporation") != null && !jsonObj.get("JurisdictionOfIncorporation").isJsonNull()) && !jsonObj.get("JurisdictionOfIncorporation").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `JurisdictionOfIncorporation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JurisdictionOfIncorporation").toString()));
-    }
-    if ((jsonObj.get("DunsNumber") != null && !jsonObj.get("DunsNumber").isJsonNull()) && !jsonObj.get("DunsNumber").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `DunsNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DunsNumber").toString()));
-    }
-    if (jsonObj.get("PeopleOfSignificantControl") != null && !jsonObj.get("PeopleOfSignificantControl").isJsonNull()) {
-      JsonArray jsonArraypeopleOfSignificantControl = jsonObj.getAsJsonArray("PeopleOfSignificantControl");
-      if (jsonArraypeopleOfSignificantControl != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("PeopleOfSignificantControl").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `PeopleOfSignificantControl` to be an array in the JSON string but got `%s`", jsonObj.get("PeopleOfSignificantControl").toString()));
+      if (jsonObj == null) {
+        if (!BusinessDataFields.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BusinessDataFields is not found in the empty JSON string", BusinessDataFields.openapiRequiredFields.toString()));
         }
-
-        // validate the optional field `PeopleOfSignificantControl` (array)
-        for (int i = 0; i < jsonArraypeopleOfSignificantControl.size(); i++) {
-          PersonOfSignificantControl.validateJsonObject(jsonArraypeopleOfSignificantControl.get(i).getAsJsonObject());
-        };
       }
-    }
-    if ((jsonObj.get("Telephone") != null && !jsonObj.get("Telephone").isJsonNull()) && !jsonObj.get("Telephone").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `Telephone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Telephone").toString()));
-    }
-    if (jsonObj.get("Location") != null && !jsonObj.get("Location").isJsonNull()) {
-      JsonArray jsonArraylocation = jsonObj.getAsJsonArray("Location");
-      if (jsonArraylocation != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("Location").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `Location` to be an array in the JSON string but got `%s`", jsonObj.get("Location").toString()));
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!BusinessDataFields.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BusinessDataFields` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-
-        // validate the optional field `Location` (array)
-        for (int i = 0; i < jsonArraylocation.size(); i++) {
-          BusinessLocation.validateJsonObject(jsonArraylocation.get(i).getAsJsonObject());
-        };
       }
-    }
+      if ((jsonObj.get("BusinessName") != null && !jsonObj.get("BusinessName").isJsonNull()) && !jsonObj.get("BusinessName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BusinessName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BusinessName").toString()));
+      }
+      if ((jsonObj.get("TradestyleName") != null && !jsonObj.get("TradestyleName").isJsonNull()) && !jsonObj.get("TradestyleName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TradestyleName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TradestyleName").toString()));
+      }
+      if ((jsonObj.get("TaxIDNumber") != null && !jsonObj.get("TaxIDNumber").isJsonNull()) && !jsonObj.get("TaxIDNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaxIDNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaxIDNumber").toString()));
+      }
+      if ((jsonObj.get("BusinessRegistrationNumber") != null && !jsonObj.get("BusinessRegistrationNumber").isJsonNull()) && !jsonObj.get("BusinessRegistrationNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BusinessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BusinessRegistrationNumber").toString()));
+      }
+      if ((jsonObj.get("JurisdictionOfIncorporation") != null && !jsonObj.get("JurisdictionOfIncorporation").isJsonNull()) && !jsonObj.get("JurisdictionOfIncorporation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `JurisdictionOfIncorporation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JurisdictionOfIncorporation").toString()));
+      }
+      if ((jsonObj.get("DunsNumber") != null && !jsonObj.get("DunsNumber").isJsonNull()) && !jsonObj.get("DunsNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DunsNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DunsNumber").toString()));
+      }
+      if (jsonObj.get("PeopleOfSignificantControl") != null && !jsonObj.get("PeopleOfSignificantControl").isJsonNull()) {
+        JsonArray jsonArraypeopleOfSignificantControl = jsonObj.getAsJsonArray("PeopleOfSignificantControl");
+        if (jsonArraypeopleOfSignificantControl != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("PeopleOfSignificantControl").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `PeopleOfSignificantControl` to be an array in the JSON string but got `%s`", jsonObj.get("PeopleOfSignificantControl").toString()));
+          }
+
+          // validate the optional field `PeopleOfSignificantControl` (array)
+          for (int i = 0; i < jsonArraypeopleOfSignificantControl.size(); i++) {
+            PersonOfSignificantControl.validateJsonObject(jsonArraypeopleOfSignificantControl.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("Telephone") != null && !jsonObj.get("Telephone").isJsonNull()) && !jsonObj.get("Telephone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Telephone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Telephone").toString()));
+      }
+      if (jsonObj.get("Location") != null && !jsonObj.get("Location").isJsonNull()) {
+        JsonArray jsonArraylocation = jsonObj.getAsJsonArray("Location");
+        if (jsonArraylocation != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Location").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Location` to be an array in the JSON string but got `%s`", jsonObj.get("Location").toString()));
+          }
+
+          // validate the optional field `Location` (array)
+          for (int i = 0; i < jsonArraylocation.size(); i++) {
+            BusinessLocation.validateJsonObject(jsonArraylocation.get(i).getAsJsonObject());
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-      if (!BusinessDataFields.class.isAssignableFrom(type.getRawType())) {
-        return null; // this class only serializes 'BusinessDataFields' and its subtypes
-      }
-      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<BusinessDataFields> thisAdapter
-              = gson.getDelegateAdapter(this, TypeToken.get(BusinessDataFields.class));
+       if (!BusinessDataFields.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BusinessDataFields' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<BusinessDataFields> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BusinessDataFields.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<BusinessDataFields>() {
-        @Override
-        public void write(JsonWriter out, BusinessDataFields value) throws IOException {
-          JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+       return (TypeAdapter<T>) new TypeAdapter<BusinessDataFields>() {
+           @Override
+           public void write(JsonWriter out, BusinessDataFields value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
 
-        @Override
-        public BusinessDataFields read(JsonReader in) throws IOException {
-          JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-          validateJsonObject(jsonObj);
-          return thisAdapter.fromJsonTree(jsonObj);
-        }
+           @Override
+           public BusinessDataFields read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
 
-      }.nullSafe();
+       }.nullSafe();
     }
   }
 
-  /**
-   * Create an instance of BusinessDataFields given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of BusinessDataFields
-   * @throws IOException if the JSON string is invalid with respect to BusinessDataFields
-   */
+ /**
+  * Create an instance of BusinessDataFields given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of BusinessDataFields
+  * @throws IOException if the JSON string is invalid with respect to BusinessDataFields
+  */
   public static BusinessDataFields fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, BusinessDataFields.class);
   }
 
-  /**
-   * Convert an instance of BusinessDataFields to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of BusinessDataFields to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
